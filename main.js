@@ -333,6 +333,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Audio and Modal Variables (Safely declared to prevent ReferenceError)
+  const btnToggleAudio = document.getElementById('btnToggleAudio');
+  const waseemMainVideo = document.getElementById('waseemMainVideo');
+  const audioIcon = document.getElementById('audioIcon');
+  const videoReelModal = document.getElementById('videoReelModal');
+  const modalFullscreenVideo = document.getElementById('modalFullscreenVideo');
+  const btnPlayFullscreenVideo = document.getElementById('btnPlayFullscreenVideo');
+  const btnCloseVideoModal = document.getElementById('btnCloseVideoModal');
+  const videoModalBackdrop = document.getElementById('videoModalBackdrop');
+  const heroWaseemCard = document.getElementById('heroWaseemCard');
+
   // Audio Toggle Button
   if (btnToggleAudio && waseemMainVideo) {
     btnToggleAudio.addEventListener('click', (e) => {
@@ -522,6 +533,9 @@ document.addEventListener('DOMContentLoaded', () => {
       isSliding = false;
     }, 850);
   }
+
+  // Expose for external navigation and debugging
+  window.goToSlide = goToSlide;
 
   if (isSlideshow) {
     // Initial slide state
