@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   updateCursor();
 
-  const interactiveElements = document.querySelectorAll('a, button, .brand-card, .showcase-card, .orbit-node, .stage-mockup-wrapper');
+  const interactiveElements = document.querySelectorAll('a, button, .brand-card, .showcase-card, .orbit-node, .social-node, .stage-mockup-wrapper');
   interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 4. CONTINUOUS SCROLL TRACKING & NAVIGATION ENGINE
   // =========================================================================
-  const sectionIds = ['hero', 'orbit', 'storytelling', 'skills', 'boundless', 'showcase', 'contact'];
+  const sectionIds = ['hero', 'orbit', 'storytelling', 'skills', 'boundless', 'showcase', 'social', 'contact'];
   const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
   const activeSectionNum = document.getElementById('activeSectionNum');
   const scrubberDots = document.querySelectorAll('.scrubber-dot');

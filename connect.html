@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect & Social Media Ecosystem — Waseem Abbas</title>
+  <meta name="description" content="Connect with Waseem Abbas across all verified official channels: WhatsApp (+92 327 0831470), Facebook, TikTok, Instagram, Twitter / X, LinkedIn, and YouTube.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .connect-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 12px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .connect-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    }
+    .connect-card.featured-whatsapp {
+      grid-column: span 3;
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.12) 0%, rgba(8, 17, 36, 0.95) 100%);
+      border-color: rgba(37, 211, 102, 0.4);
+      box-shadow: 0 0 35px rgba(37, 211, 102, 0.15);
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
+    }
+    .connect-card.featured-whatsapp:hover {
+      box-shadow: 0 0 50px rgba(37, 211, 102, 0.3);
+      border-color: #25d366;
+    }
+    .connect-icon-large {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .featured-whatsapp .connect-icon-large {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      font-size: 2.6rem;
+      margin-bottom: 0;
+      color: #25d366;
+      background: rgba(37, 211, 102, 0.15);
+      border-color: rgba(37, 211, 102, 0.4);
+    }
+    .connect-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .connect-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .connect-card-handle {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .connect-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 992px) {
+      .connect-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .connect-card.featured-whatsapp {
+        grid-column: span 2;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    @media (max-width: 600px) {
+      .connect-grid {
+        grid-template-columns: 1fr;
+      }
+      .connect-card.featured-whatsapp {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body class="subpage-body">
+
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursorFollower"></div>
+  <div class="film-grain"></div>
+  <div class="ambient-glow" id="ambientGlow"></div>
+
+  <!-- Header Navigation -->
+  <header class="site-header scrolled" id="header">
+    <div class="header-container">
+      <nav class="nav-links left-nav">
+        <a href="index.html" class="nav-item"><span class="nav-text">HOME</span></a>
+        <span class="nav-dot-sep">•</span>
+        <a href="web-development.html" class="nav-item"><span class="nav-text">WEB DEV</span></a>
+        <span class="nav-dot-sep">•</span>
+        <a href="digital-marketing.html" class="nav-item"><span class="nav-text">MARKETING</span></a>
+      </nav>
+
+      <a href="index.html" class="brand-monogram" aria-label="Waseem Abbas Home">
+        <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M33 24 H46" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <nav class="nav-links right-nav">
+        <a href="ai-automation.html" class="nav-item"><span class="nav-text">AI AGENTS</span></a>
+        <span class="nav-dot-sep">•</span>
+        <a href="real-estate.html" class="nav-item"><span class="nav-text">REAL ESTATE</span></a>
+        <span class="nav-dot-sep">•</span>
+        <a href="connect.html" class="nav-item active"><span class="nav-text">CONNECT</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="subpage-main">
+    
+    <!-- Hero Banner -->
+    <section class="subpage-hero">
+      <div class="section-topo-bg"></div>
+      <div class="container">
+        <span class="subpage-badge"><i class="fa-solid fa-satellite-dish"></i> OFFICIAL CONNECTIVITY ECOSYSTEM</span>
+        <h1 class="subpage-title">Verified Channels &amp; Direct Line to Waseem Abbas</h1>
+        <p class="subpage-subtitle">
+          Connect directly for international development contracts, performance growth retainers, media inquiries, or technical consultations.
+        </p>
+
+        <div class="subpage-actions">
+          <a href="https://wa.me/923270831470" target="_blank" rel="noopener noreferrer" class="gold-luxury-btn magnetic-btn">
+            <span><i class="fa-brands fa-whatsapp"></i> INSTANT WHATSAPP CHAT</span>
+            <span>▸</span>
+          </a>
+          <a href="index.html#social" class="ghost-luxury-btn">
+            <span>3D SOCIAL ORBIT WHEEL</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect Grid Section -->
+    <section class="section" style="padding-top: 20px;">
+      <div class="container">
+        
+        <div class="connect-grid">
+
+          <!-- 01. WhatsApp Featured Hero Card -->
+          <div class="connect-card featured-whatsapp">
+            <div class="connect-icon-large">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div style="flex: 1;">
+              <span class="connect-card-tag">FASTEST RESPONSE • DIRECT 1-ON-1</span>
+              <h3 class="connect-card-title">WhatsApp Business Direct</h3>
+              <span class="connect-card-handle">+92 327 0831470</span>
+              <p class="connect-card-desc">
+                Fast-track discussions for custom development retainers, paid acquisition budgets, technical architecture audits, and immediate consultations.
+              </p>
+            </div>
+            <div>
+              <a href="https://wa.me/923270831470" target="_blank" rel="noopener noreferrer" class="gold-luxury-btn" style="white-space: nowrap;">
+                <span>START DIRECT CHAT</span>
+                <span>▸</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 02. Facebook -->
+          <div class="connect-card">
+            <div>
+              <div class="connect-icon-large" style="color: #1877f2; border-color: rgba(24, 119, 242, 0.4);">
+                <i class="fa-brands fa-facebook-f"></i>
+              </div>
+              <span class="connect-card-tag">COMMUNITY &amp; UPDATES</span>
+              <h3 class="connect-card-title">Facebook Official</h3>
+              <span class="connect-card-handle">Waseem Abbas Official</span>
+              <p class="connect-card-desc">
+                Follow recent project case studies, marketing launch analyses, live client results, and agency milestones.
+              </p>
+            </div>
+            <a href="https://www.facebook.com/share/1EqXm2Hz43/" target="_blank" rel="noopener noreferrer" class="ghost-luxury-btn full-width">
+              <span>VISIT FACEBOOK PROFILE</span>
+            </a>
+          </div>
+
+          <!-- 03. TikTok -->
+          <div class="connect-card">
+            <div>
+              <div class="connect-icon-large" style="color: #00f2fe; border-color: rgba(0, 242, 254, 0.4);">
+                <i class="fa-brands fa-tiktok"></i>
+              </div>
+              <span class="connect-card-tag">TECH REELS &amp; MOTION</span>
+              <h3 class="connect-card-title">TikTok Channel</h3>
+              <span class="connect-card-handle">@waseem97199</span>
+              <p class="connect-card-desc">
+                Short-form videos showcasing 3D WebGL interactions, full-stack workflow hacks, and performance marketing breakdown clips.
+              </p>
+            </div>
+            <a href="https://www.tiktok.com/@waseem97199" target="_blank" rel="noopener noreferrer" class="ghost-luxury-btn full-width">
+              <span>WATCH ON TIKTOK</span>
+            </a>
+          </div>
+
+          <!-- 04. Instagram -->
+          <div class="connect-card">
+            <div>
+              <div class="connect-icon-large" style="color: #e1306c; border-color: rgba(225, 48, 108, 0.4);">
+                <i class="fa-brands fa-instagram"></i>
+              </div>
+              <span class="connect-card-tag">AESTHETIC &amp; LIFESTYLE</span>
+              <h3 class="connect-card-title">Instagram Grid</h3>
+              <span class="connect-card-handle">@waseem79199</span>
+              <p class="connect-card-desc">
+                Curated visual architectures, UI/UX aesthetics, luxury property visuals, and behind-the-scenes engineering stories.
+              </p>
+            </div>
+            <a href="https://www.instagram.com/waseem79199?stkn=MWVtMmZhc3BjN3Vucg==" target="_blank" rel="noopener noreferrer" class="ghost-luxury-btn full-width">
+              <span>FOLLOW ON INSTAGRAM</span>
+            </a>
+          </div>
+
+          <!-- 05. Twitter / X -->
+          <div class="connect-card">
+            <div>
+              <div class="connect-icon-large" style="color: #fff; border-color: rgba(255, 255, 255, 0.4);">
+                <i class="fa-brands fa-x-twitter"></i>
+              </div>
+              <span class="connect-card-tag">TECH THOUGHT LEADERSHIP</span>
+              <h3 class="connect-card-title">X (Twitter)</h3>
+              <span class="connect-card-handle">@WaseemAbba34198</span>
+              <p class="connect-card-desc">
+                Daily commentary on autonomous AI agents, Google &amp; Meta ad algorithm shifts, and high-performance WebGL systems.
+              </p>
+            </div>
+            <a href="https://x.com/WaseemAbba34198" target="_blank" rel="noopener noreferrer" class="ghost-luxury-btn full-width">
+              <span>CONNECT ON X</span>
+            </a>
+          </div>
+
+          <!-- 06. LinkedIn -->
+          <div class="connect-card">
+            <div>
+              <div class="connect-icon-large" style="color: #0a66c2; border-color: rgba(10, 102, 194, 0.4);">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </div>
+              <span class="connect-card-tag">B2B &amp; ENTERPRISE</span>
+              <h3 class="connect-card-title">LinkedIn Network</h3>
+              <span class="connect-card-handle">Waseem Abbas</span>
+              <p class="connect-card-desc">
+                Corporate consulting, agency partnerships, international retainers, and high-level strategy collaborations.
+              </p>
+            </div>
+            <a href="https://www.linkedin.com/in/waseem-abbas-441496163?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="ghost-luxury-btn full-width">
+              <span>CONNECT ON LINKEDIN</span>
+            </a>
+          </div>
+
+          <!-- 07. YouTube -->
+          <div class="connect-card">
+            <div>
+              <div class="connect-icon-large" style="color: #ff0000; border-color: rgba(255, 0, 0, 0.4);">
+                <i class="fa-brands fa-youtube"></i>
+              </div>
+              <span class="connect-card-tag">KEYNOTES &amp; MASTERCLASSES</span>
+              <h3 class="connect-card-title">YouTube Channel</h3>
+              <span class="connect-card-handle">@wamedia79979</span>
+              <p class="connect-card-desc">
+                Long-form technical tutorials, marketing case studies, system breakdowns, and scalable digital agency playbooks.
+              </p>
+            </div>
+            <a href="https://youtube.com/@wamedia79979?si=C6-sgoMhrPIsY8da" target="_blank" rel="noopener noreferrer" class="ghost-luxury-btn full-width">
+              <span>SUBSCRIBE ON YOUTUBE</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Direct Inquiry Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container contact-container">
+        <div class="contact-box-glass">
+          <span class="contact-sup-tag">SCHEDULE DIRECT</span>
+          <h2 class="contact-title">Have a Specific Project or Opportunity?</h2>
+          <p class="contact-desc">Drop your details below or send a message directly on WhatsApp for an immediate response.</p>
+          
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Inquiry received! Waseem Abbas will reach back within 24 hours.');">
+            <div class="form-row">
+              <input type="text" class="input-glass" placeholder="Your Name" required>
+              <input type="email" class="input-glass" placeholder="Your Email" required>
+            </div>
+            <div class="form-row">
+              <input type="text" class="input-glass" placeholder="WhatsApp Number or Preferred Platform">
+              <input type="text" class="input-glass" placeholder="Project Budget / Scope">
+            </div>
+            <textarea class="input-glass textarea-glass" placeholder="Share brief project details or collaboration intent..." rows="4" required></textarea>
+            <button type="submit" class="gold-luxury-btn full-width magnetic-btn">
+              <span>TRANSMIT BRIEF DIRECTLY</span>
+              <span>▸</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-socials-col">
+        <a href="https://www.facebook.com/share/1EqXm2Hz43/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@waseem97199" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/waseem79199?stkn=MWVtMmZhc3BjN3Vucg==" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://x.com/WaseemAbba34198" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/waseem-abbas-441496163?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://youtube.com/@wamedia79979?si=C6-sgoMhrPIsY8da" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/923270831470" target="_blank" rel="noopener noreferrer" class="social-circle-btn" title="WhatsApp Direct" style="color: #25d366; border-color: rgba(37, 211, 102, 0.4);"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+      <div class="footer-logo-col">
+        <a href="index.html" class="footer-emblem-box"><span class="footer-emblem-text">WA</span></a>
+      </div>
+      <div class="footer-nav-col">
+        <nav class="footer-links">
+          <a href="index.html">Home</a>
+          <span class="footer-sep">/</span>
+          <a href="web-development.html">Web Dev</a>
+          <span class="footer-sep">/</span>
+          <a href="digital-marketing.html">Marketing</a>
+          <span class="footer-sep">/</span>
+          <a href="ai-automation.html">AI Agents</a>
+          <span class="footer-sep">/</span>
+          <a href="real-estate.html">Real Estate</a>
+          <span class="footer-sep">/</span>
+          <a href="connect.html">Social Hub</a>
+        </nav>
+        <p class="footer-copyright">&copy; 2026 WASEEM ABBAS. ALL RIGHTS RESERVED.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

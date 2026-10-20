@@ -221,6 +221,37 @@
       });
     });
 
+    // Social Orbit Reveal
+    const socialSection = document.querySelector('.social-orbit-section');
+    const socialStage = document.getElementById('socialStageWrapper');
+    const socialDetailCard = document.getElementById('socialDetailCard');
+
+    if (socialSection && socialStage) {
+      gsap.from(socialStage, {
+        opacity: 0,
+        scale: 0.88,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: socialSection,
+          start: 'top 85%'
+        }
+      });
+    }
+
+    if (socialSection && socialDetailCard) {
+      gsap.from(socialDetailCard, {
+        opacity: 0,
+        y: 35,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: socialDetailCard,
+          start: 'top 92%'
+        }
+      });
+    }
+
     // Contact Box Reveal
     const contactBox = document.querySelector('.contact-box-glass');
     if (contactBox) {

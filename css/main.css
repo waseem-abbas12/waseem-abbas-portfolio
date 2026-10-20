@@ -2366,3 +2366,206 @@ body.cursor-hover .custom-cursor-follower {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   07. INTERACTIVE 3D SOCIAL MEDIA ORBIT ECOSYSTEM
+   ========================================================================== */
+.social-orbit-section {
+  position: relative;
+  width: 100%;
+  padding: 110px 0;
+  background: radial-gradient(circle at 50% 50%, #0d1e3a 0%, #030814 75%);
+  overflow: hidden;
+}
+
+.social-stage-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 580px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.social-wheel-container {
+  position: relative;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+
+.social-center-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0284c7 0%, #1e1b4b 60%, #030814 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 50px rgba(56, 189, 248, 0.45), inset 0 0 20px rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(56, 189, 248, 0.4);
+  z-index: 15;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.social-center-core:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 0 70px rgba(223, 167, 83, 0.6);
+}
+
+.social-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 128px;
+  padding: 12px 10px;
+  background: rgba(8, 17, 36, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s, box-shadow 0.35s;
+  z-index: 20;
+}
+
+.social-node:hover, .social-node.active {
+  transform: translate(-50%, -50%) scale(1.15) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+}
+
+.social-node .node-icon-box {
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 6px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s;
+}
+
+.social-node:hover .node-icon-box {
+  transform: scale(1.12);
+}
+
+/* Specific Channel Colors */
+.node-facebook .node-icon-box { color: #1877f2; border-color: rgba(24, 119, 242, 0.3); box-shadow: 0 0 15px rgba(24, 119, 242, 0.3); }
+.node-facebook:hover, .node-facebook.active { border-color: #1877f2; }
+
+.node-tiktok .node-icon-box { color: #00f2fe; border-color: rgba(0, 242, 254, 0.3); box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); }
+.node-tiktok:hover, .node-tiktok.active { border-color: #00f2fe; }
+
+.node-instagram .node-icon-box { color: #e1306c; border-color: rgba(225, 48, 108, 0.3); box-shadow: 0 0 15px rgba(225, 48, 108, 0.3); }
+.node-instagram:hover, .node-instagram.active { border-color: #e1306c; }
+
+.node-twitter .node-icon-box { color: #ffffff; border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
+.node-twitter:hover, .node-twitter.active { border-color: #ffffff; }
+
+.node-linkedin .node-icon-box { color: #0a66c2; border-color: rgba(10, 102, 194, 0.3); box-shadow: 0 0 15px rgba(10, 102, 194, 0.3); }
+.node-linkedin:hover, .node-linkedin.active { border-color: #0a66c2; }
+
+.node-youtube .node-icon-box { color: #ff0000; border-color: rgba(255, 0, 0, 0.3); box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+.node-youtube:hover, .node-youtube.active { border-color: #ff0000; }
+
+.node-whatsapp .node-icon-box { color: #25d366; border-color: rgba(37, 211, 102, 0.3); box-shadow: 0 0 15px rgba(37, 211, 102, 0.3); }
+.node-whatsapp:hover, .node-whatsapp.active { border-color: #25d366; }
+
+.social-mobile-pills {
+  display: none;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto 20px;
+  max-width: 520px;
+}
+
+.social-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.social-pill.active, .social-pill:hover {
+  background: rgba(56, 189, 248, 0.16);
+  border-color: var(--accent-cyan);
+  color: #fff;
+  box-shadow: 0 0 12px var(--accent-cyan-glow);
+}
+
+@media (max-width: 768px) {
+  .social-orbit-section {
+    padding: 60px 0;
+  }
+  .social-mobile-pills {
+    display: flex;
+  }
+  .social-stage-wrapper {
+    height: 330px;
+    margin: 0 auto 16px;
+  }
+  .social-wheel-container {
+    width: 250px;
+    height: 250px;
+  }
+  .social-center-core {
+    width: 66px;
+    height: 66px;
+  }
+  .social-node {
+    width: 78px;
+    padding: 6px 4px;
+    border-radius: 8px;
+  }
+  .social-node .node-icon-box {
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+  }
+  .social-node .node-title {
+    font-size: 0.54rem;
+  }
+  .social-node .node-tag {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .social-stage-wrapper {
+    height: 290px;
+  }
+  .social-wheel-container {
+    width: 220px;
+    height: 220px;
+  }
+  .social-node {
+    width: 72px;
+    padding: 5px 3px;
+  }
+}
