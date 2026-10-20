@@ -237,45 +237,36 @@ document.addEventListener('DOMContentLoaded', () => {
   initThree();
 
   // =========================================================================
-  // 3. MODE TOGGLE: WASEEM PROFILE REEL vs. INTERACTIVE 3D
+  // 3. DRIBBLE 3D TORUS CINEMA LOOP & EXECUTIVE REEL
   // =========================================================================
+  const heroCinemaVideo = document.getElementById('heroCinemaVideo');
+  if (heroCinemaVideo) {
+    heroCinemaVideo.play().catch(() => {});
+    // Perfectly loop the Dribbble Torus rotation sequence
+    heroCinemaVideo.addEventListener('timeupdate', () => {
+      if (heroCinemaVideo.currentTime >= 2.15) {
+        heroCinemaVideo.currentTime = 0.04;
+      }
+    });
+  }
+
   const btnModeProfile = document.getElementById('btnModeProfile');
   const btnMode3D = document.getElementById('btnMode3D');
-  const heroWaseemCard = document.getElementById('heroWaseemCard');
-  const waseemMainVideo = document.getElementById('waseemMainVideo');
-  const btnToggleAudio = document.getElementById('btnToggleAudio');
-  const audioIcon = document.getElementById('audioIcon');
 
-  const btnPlayFullscreenVideo = document.getElementById('btnPlayFullscreenVideo');
-  const videoReelModal = document.getElementById('videoReelModal');
-  const videoModalBackdrop = document.getElementById('videoModalBackdrop');
-  const btnCloseVideoModal = document.getElementById('btnCloseVideoModal');
-  const modalFullscreenVideo = document.getElementById('modalFullscreenVideo');
-
-  function switchToProfileMode() {
-    if (heroWaseemCard) heroWaseemCard.classList.add('active');
-    if (btnModeProfile) btnModeProfile.classList.add('active');
-    if (btnMode3D) btnMode3D.classList.remove('active');
-    if (waseemMainVideo) {
-      waseemMainVideo.play().catch(() => {});
-    }
+  if (btnModeProfile && heroCinemaVideo) {
+    btnModeProfile.addEventListener('click', () => {
+      heroCinemaVideo.classList.add('active');
+      btnModeProfile.classList.add('active');
+      if (btnMode3D) btnMode3D.classList.remove('active');
+    });
   }
 
-  function switchTo3DMode() {
-    if (heroWaseemCard) heroWaseemCard.classList.remove('active');
-    if (btnModeProfile) btnModeProfile.classList.remove('active');
-    if (btnMode3D) btnMode3D.classList.add('active');
-    if (waseemMainVideo) {
-      waseemMainVideo.pause();
-    }
-  }
-
-  if (btnModeProfile) {
-    btnModeProfile.addEventListener('click', switchToProfileMode);
-  }
-
-  if (btnMode3D) {
-    btnMode3D.addEventListener('click', switchTo3DMode);
+  if (btnMode3D && canvas) {
+    btnMode3D.addEventListener('click', () => {
+      if (heroCinemaVideo) heroCinemaVideo.classList.remove('active');
+      btnMode3D.classList.add('active');
+      if (btnModeProfile) btnModeProfile.classList.remove('active');
+    });
   }
 
   // Audio Toggle Button
@@ -678,5 +669,99 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   loadSavedUserData();
-  console.log('⚡ SIMON SPARKS Portfolio Loaded — 100% Replication Ready');
+
+  // =========================================================================
+  // 10. MULTI-PAGE OPERATIONAL FEATURES (Work Filters, ROI, Contact, FAQ)
+  // =========================================================================
+  
+  // A. Work Filter Bar (work.html)
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.work-project-card');
+  if (filterBtns.length > 0 && projectCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filterVal = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category') || '';
+          if (filterVal === 'all' || category.includes(filterVal)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // B. Interactive ROI Estimator (services.html)
+  const budgetSlider = document.getElementById('budgetSlider');
+  const roasSlider = document.getElementById('roasSlider');
+  const budgetDisplay = document.getElementById('budgetDisplay');
+  const roasDisplay = document.getElementById('roasDisplay');
+  const projectedRevenue = document.getElementById('projectedRevenue');
+
+  function updateRoiCalculations() {
+    if (!budgetSlider || !roasSlider || !projectedRevenue) return;
+    const budget = parseFloat(budgetSlider.value);
+    const roas = parseFloat(roasSlider.value);
+    const total = budget * roas;
+
+    if (budgetDisplay) budgetDisplay.textContent = `$${budget.toLocaleString()} / mo`;
+    if (roasDisplay) roasDisplay.textContent = `${roas.toFixed(1)}x ROAS`;
+    projectedRevenue.textContent = `$${Math.round(total).toLocaleString()}`;
+  }
+
+  if (budgetSlider && roasSlider) {
+    budgetSlider.addEventListener('input', updateRoiCalculations);
+    roasSlider.addEventListener('input', updateRoiCalculations);
+    updateRoiCalculations();
+  }
+
+  // C. Interactive Contact Form (contact.html)
+  const contactForm = document.getElementById('contactForm');
+  const btnSubmitForm = document.getElementById('btnSubmitForm');
+  const formSuccessToast = document.getElementById('formSuccessToast');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (btnSubmitForm) {
+        btnSubmitForm.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> TRANSMITTING BRIEF...';
+        btnSubmitForm.disabled = true;
+      }
+
+      setTimeout(() => {
+        if (btnSubmitForm) {
+          btnSubmitForm.innerHTML = '<i class="fa-solid fa-check"></i> BRIEF TRANSMITTED';
+          btnSubmitForm.style.background = '#22c55e';
+          btnSubmitForm.style.color = '#fff';
+        }
+        if (formSuccessToast) {
+          formSuccessToast.classList.add('active');
+        }
+        contactForm.reset();
+      }, 900);
+    });
+  }
+
+  // D. FAQ Accordions (contact.html)
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const header = item.querySelector('.faq-header');
+    if (header) {
+      header.addEventListener('click', () => {
+        const wasActive = item.classList.contains('active');
+        faqItems.forEach(i => i.classList.remove('active'));
+        if (!wasActive) {
+          item.classList.add('active');
+        }
+      });
+    }
+  });
+
+  console.log('⚡ Waseem Abbas Multi-Page Engine Initialized Successfully');
 });
+

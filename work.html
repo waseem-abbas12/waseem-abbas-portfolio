@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work & Portfolio — Waseem Abbas (Developer & Digital Marketer)</title>
+  
+  <meta name="description" content="Explore featured case studies, full-stack applications, and high-ROAS marketing campaigns engineered by Waseem Abbas.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Core Design Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Three.js 3D Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Glow Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursorFollower"></div>
+
+  <!-- Noise Film Grain -->
+  <div class="film-grain"></div>
+
+  <!-- Ambient Dynamic Mouse Glow -->
+  <div class="ambient-glow" id="ambientGlow"></div>
+
+  <!-- Top Floating Utility Dock -->
+  <div class="floating-utility-dock">
+    <div class="dock-theme-group" title="Aesthetic Themes">
+      <button class="dock-btn theme-pill active" data-set-theme="midnight" title="Midnight Navy Theme">
+        <span class="dot-swatch swatch-midnight"></span>
+      </button>
+      <button class="dock-btn theme-pill" data-set-theme="violet" title="Cyber Violet Theme">
+        <span class="dot-swatch swatch-violet"></span>
+      </button>
+      <button class="dock-btn theme-pill" data-set-theme="crimson" title="Monochrome Crimson Theme">
+        <span class="dot-swatch swatch-crimson"></span>
+      </button>
+    </div>
+    <div class="dock-divider"></div>
+    <a href="index.html" class="dock-btn" title="Back to 3D Showcase">
+      <i class="fa-solid fa-cube"></i> <span class="dock-text">3D Home</span>
+    </a>
+  </div>
+
+  <!-- Side Indicator -->
+  <aside class="side-indicator-left">
+    <span class="step-num">03</span>
+    <span class="step-arrow">⟶</span>
+  </aside>
+
+  <!-- Site Header -->
+  <header class="site-header" id="header">
+    <div class="header-container">
+      <nav class="nav-links left-nav">
+        <a href="about.html" class="nav-item">
+          <span class="nav-text">ABOUT</span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="work.html" class="nav-item active">
+          <span class="nav-text">WORK</span>
+          <span class="nav-active-pip"></span>
+        </a>
+      </nav>
+
+      <!-- Center Logo: WA Monogram -->
+      <a href="index.html" class="brand-monogram" aria-label="Waseem Abbas Home">
+        <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M33 24 H46" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <nav class="nav-links right-nav">
+        <a href="services.html" class="nav-item">
+          <span class="nav-text">SERVICES</span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="contact.html" class="nav-item">
+          <span class="nav-text">CONTACTS</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Banner -->
+    <section class="page-hero-banner">
+      <div class="section-topo-bg"></div>
+      <div class="container">
+        <span class="page-category-label">SELECTED CASE STUDIES & PRODUCTION DELIVERABLES</span>
+        <h1 class="page-main-heading">PORTFOLIO & WORK</h1>
+        <p class="page-lead-summary">
+          High-performance web applications, programmatic SEO architectures, and hyper-targeted advertising campaigns engineered for measurable exponential growth.
+        </p>
+      </div>
+    </section>
+
+    <!-- Work Gallery Section -->
+    <section class="page-grid-section">
+      <div class="container">
+
+        <!-- Category Filter Bar -->
+        <div class="work-filter-bar" id="workFilterBar">
+          <button class="filter-btn active" data-filter="all">ALL PROJECTS</button>
+          <button class="filter-btn" data-filter="dev">FULL-STACK DEV</button>
+          <button class="filter-btn" data-filter="marketing">PAID MEDIA & ADS</button>
+          <button class="filter-btn" data-filter="ecommerce">E-COMMERCE & CRO</button>
+          <button class="filter-btn" data-filter="generative">3D / GENERATIVE</button>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="work-cards-grid" id="workGrid">
+
+          <!-- Project 01: Boundless Scale SaaS -->
+          <article class="work-project-card interactive-tilt" data-category="dev" data-project="boundless">
+            <div class="work-card-media">
+              <img src="assets/cropped/stage_art.png" alt="Boundless Scale SaaS" class="work-card-img">
+              <span class="work-card-badge">+280K TRAFFIC</span>
+            </div>
+            <div class="work-card-body">
+              <span class="work-card-cat">ENTERPRISE SAAS & ARCHITECTURE</span>
+              <h3 class="work-card-title">Boundless Reach: Cloud Platform</h3>
+              <p class="work-card-desc">Unified React & Node.js web application built with serverless cloud infrastructure, paired with programmatic SEO capturing over 280,000 monthly organic visitors.</p>
+              <div class="work-card-tags">
+                <span class="work-tag-pill">React</span>
+                <span class="work-tag-pill">Node.js</span>
+                <span class="work-tag-pill">Programmatic SEO</span>
+                <span class="work-tag-pill">AWS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 02: TNQ E-Commerce -->
+          <article class="work-project-card interactive-tilt" data-category="ecommerce marketing" data-project="tnq">
+            <div class="work-card-media">
+              <img src="assets/cropped/tnq_art.png" alt="TNQ E-Commerce Platform" class="work-card-img">
+              <span class="work-card-badge">4.9x ROAS</span>
+            </div>
+            <div class="work-card-body">
+              <span class="work-card-cat">E-COMMERCE & FUNNEL OVERHAUL</span>
+              <h3 class="work-card-title">TNQ Fashion: Conversion Engine</h3>
+              <p class="work-card-desc">Headless shopping experience built for maximum sub-second load times, combined with Meta Ads and TikTok retargeting funnels that drove a 4.9x return on ad spend.</p>
+              <div class="work-card-tags">
+                <span class="work-tag-pill">Shopify Headless</span>
+                <span class="work-tag-pill">Meta Ads</span>
+                <span class="work-tag-pill">CRO</span>
+                <span class="work-tag-pill">TikTok Ads</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 03: Linea Generative Engine -->
+          <article class="work-project-card interactive-tilt" data-category="generative dev" data-project="boundless">
+            <div class="work-card-media">
+              <img src="assets/cropped/linea_art.png" alt="Linea Generative Design" class="work-card-img">
+              <span class="work-card-badge">WEBGL 3D</span>
+            </div>
+            <div class="work-card-body">
+              <span class="work-card-cat">GENERATIVE DESIGN & 3D WEB</span>
+              <h3 class="work-card-title">Linea Vol. 1: Interactive Shaders</h3>
+              <p class="work-card-desc">GPU-accelerated interactive WebGL canvas allowing real-time fluid marble procedural generation, utilized as an experiential landing page with 82% session duration increase.</p>
+              <div class="work-card-tags">
+                <span class="work-tag-pill">Three.js</span>
+                <span class="work-tag-pill">GLSL Shaders</span>
+                <span class="work-tag-pill">Canvas 2D</span>
+                <span class="work-tag-pill">Interaction</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 04: Dreams SaaS App & SEO -->
+          <article class="work-project-card interactive-tilt" data-category="dev marketing" data-project="dreams">
+            <div class="work-card-media">
+              <img src="assets/cropped/dreams_art.png" alt="Dreams SaaS Web App" class="work-card-img">
+              <span class="work-card-badge">+140% CONV</span>
+            </div>
+            <div class="work-card-body">
+              <span class="work-card-cat">SAAS WEB APP & TECHNICAL SEO</span>
+              <h3 class="work-card-title">Dreams Platform: Search Authority</h3>
+              <p class="work-card-desc">End-to-end web software application built with Next.js and Tailwind CSS, featuring automated schema markup, Core Web Vitals score of 99, and rapid ranking for high-intent queries.</p>
+              <div class="work-card-tags">
+                <span class="work-tag-pill">Next.js</span>
+                <span class="work-tag-pill">Technical SEO</span>
+                <span class="work-tag-pill">Stripe API</span>
+                <span class="work-tag-pill">PostgreSQL</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 05: Escape Omnichannel -->
+          <article class="work-project-card interactive-tilt" data-category="marketing" data-project="escape">
+            <div class="work-card-media">
+              <img src="assets/cropped/escape_art.png" alt="Escape Omnichannel Launch" class="work-card-img">
+              <span class="work-card-badge">\$1.2M REV</span>
+            </div>
+            <div class="work-card-body">
+              <span class="work-card-cat">OMNICHANNEL LAUNCH CAMPAIGN</span>
+              <h3 class="work-card-title">Escape: Scale & Retention Funnel</h3>
+              <p class="work-card-desc">Multi-touch marketing campaign combining Google Search Ads, YouTube pre-roll, automated Klaviyo email flows, and real-time server-side tracking via Google Tag Manager.</p>
+              <div class="work-card-tags">
+                <span class="work-tag-pill">Google Ads</span>
+                <span class="work-tag-pill">GTM / GA4</span>
+                <span class="work-tag-pill">Email Drips</span>
+                <span class="work-tag-pill">Attribution</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 06: Spheres Odyssey Matrix -->
+          <article class="work-project-card interactive-tilt" data-category="ecommerce dev" data-project="spheres">
+            <div class="work-card-media">
+              <img src="assets/cropped/spheres_art.png" alt="Art Unbound Odyssey" class="work-card-img">
+              <span class="work-card-badge">62% UPLIFT</span>
+            </div>
+            <div class="work-card-body">
+              <span class="work-card-cat">CONVERSION ARCHITECTURE & AUDIT</span>
+              <h3 class="work-card-title">Growth Unbound Odyssey</h3>
+              <p class="work-card-desc">Full technical performance audit and conversion rate optimization sprint, removing cart abandonment friction and unlocking a 62% increase in checkout conversions.</p>
+              <div class="work-card-tags">
+                <span class="work-tag-pill">CRO Audit</span>
+                <span class="work-tag-pill">A/B Testing</span>
+                <span class="work-tag-pill">React UI</span>
+                <span class="work-tag-pill">Hotjar</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Lightbox Modal -->
+  <div class="project-modal" id="projectModal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">✕</button>
+      <div class="modal-content">
+        <div class="modal-media-wrap">
+          <img src="" alt="Case Study Visual" class="modal-main-img" id="modalImg">
+        </div>
+        <div class="modal-info-wrap">
+          <span class="modal-category" id="modalCategory">CASE STUDY</span>
+          <h2 class="modal-title" id="modalTitle">Project Title</h2>
+          <p class="modal-desc" id="modalDesc">Detailed breakdown of development stack and growth marketing metrics.</p>
+          <div class="modal-tags" id="modalTags">
+            <span class="modal-tag">Full-Stack Code</span>
+            <span class="modal-tag">Performance Marketing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 38px; height: 32px;">
+            <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <span class="footer-name">WASEEM ABBAS</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="work.html">Work</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom-row">
+        <p class="copyright-text">2026 COPYRIGHT &nbsp;|&nbsp; WASEEM ABBAS &nbsp;|&nbsp; ALL RIGHTS RESERVED</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Talking AI Avatar Engine -->
+  <script src="ai-avatar.js"></script>
+  <!-- Main JavaScript Engine -->
+  <script src="main.js"></script>
+</body>
+</html>

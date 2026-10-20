@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Waseem Abbas — Digital Marketer & Full-Stack Developer</title>
+  
+  <meta name="description" content="Discover the background, technical skills, and marketing philosophy of Waseem Abbas — hybrid Full-Stack Developer and High-Performance Digital Marketer.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Core Design Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Three.js 3D Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Glow Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursorFollower"></div>
+
+  <!-- Noise Film Grain -->
+  <div class="film-grain"></div>
+
+  <!-- Ambient Dynamic Mouse Glow -->
+  <div class="ambient-glow" id="ambientGlow"></div>
+
+  <!-- Top Floating Utility Dock -->
+  <div class="floating-utility-dock">
+    <div class="dock-theme-group" title="Aesthetic Themes">
+      <button class="dock-btn theme-pill active" data-set-theme="midnight" title="Midnight Navy Theme">
+        <span class="dot-swatch swatch-midnight"></span>
+      </button>
+      <button class="dock-btn theme-pill" data-set-theme="violet" title="Cyber Violet Theme">
+        <span class="dot-swatch swatch-violet"></span>
+      </button>
+      <button class="dock-btn theme-pill" data-set-theme="crimson" title="Monochrome Crimson Theme">
+        <span class="dot-swatch swatch-crimson"></span>
+      </button>
+    </div>
+    <div class="dock-divider"></div>
+    <a href="index.html" class="dock-btn" title="Back to 3D Showcase">
+      <i class="fa-solid fa-cube"></i> <span class="dock-text">3D Home</span>
+    </a>
+  </div>
+
+  <!-- Side Indicator -->
+  <aside class="side-indicator-left">
+    <span class="step-num">02</span>
+    <span class="step-arrow">⟶</span>
+  </aside>
+
+  <!-- Site Header -->
+  <header class="site-header" id="header">
+    <div class="header-container">
+      <nav class="nav-links left-nav">
+        <a href="about.html" class="nav-item active">
+          <span class="nav-text">ABOUT</span>
+          <span class="nav-active-pip"></span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="work.html" class="nav-item">
+          <span class="nav-text">WORK</span>
+        </a>
+      </nav>
+
+      <!-- Center Logo: WA Monogram -->
+      <a href="index.html" class="brand-monogram" aria-label="Waseem Abbas Home">
+        <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M33 24 H46" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <nav class="nav-links right-nav">
+        <a href="services.html" class="nav-item">
+          <span class="nav-text">SERVICES</span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="contact.html" class="nav-item">
+          <span class="nav-text">CONTACTS</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Banner -->
+    <section class="page-hero-banner">
+      <div class="section-topo-bg"></div>
+      <div class="container">
+        <span class="page-category-label">BIOGRAPHY & STRATEGIC VISION</span>
+        <h1 class="page-main-heading">WASEEM ABBAS</h1>
+        <p class="page-lead-summary">
+          Where Software Engineering Precision Converges With Aggressive, Data-Driven Performance Marketing.
+        </p>
+      </div>
+    </section>
+
+    <!-- Executive Video Theater & Story -->
+    <section class="page-grid-section">
+      <div class="container">
+        <div class="about-executive-stage">
+          
+          <!-- Cinematic Video Showcase Frame -->
+          <div class="about-video-frame">
+            <video class="about-video-player" playsinline autoplay muted loop poster="assets/waseem_portrait.jpg" id="aboutPageVideo">
+              <source src="assets/waseem_profile.mp4" type="video/mp4">
+            </video>
+            <div class="waseem-video-overlay-gradient"></div>
+            <div class="waseem-live-badge">
+              <span class="live-dot"></span> WASEEM ABBAS • LIVE REEL
+            </div>
+          </div>
+
+          <!-- Story Text -->
+          <div class="about-story-text">
+            <span class="section-badge-code">[ 01 • THE DUAL FORCE ADVANTAGE ]</span>
+            <h3>Bridging Code & Customer Acquisition</h3>
+            <p>
+              In today's digital landscape, the biggest bottleneck for businesses is the disconnect between marketers who don't understand code, and developers who don't understand conversion psychology.
+            </p>
+            <p>
+              As a hybrid <strong>Full-Stack Developer</strong> and <strong>Performance Digital Marketer</strong>, I eliminate that friction. I don't just build lightning-fast web applications with React, Next.js, and Three.js—I architect the tracking infrastructure, programmatic SEO authority, and hyper-targeted advertising funnels that convert visitors into recurring revenue.
+            </p>
+            <p>
+              Every line of code I ship is optimized for speed and search authority; every ad campaign I launch is grounded in technical attribution and conversion rate optimization (CRO).
+            </p>
+            <div style="margin-top: 30px; display: flex; gap: 16px; flex-wrap: wrap;">
+              <a href="work.html" class="gold-luxury-btn">
+                <span class="btn-text">EXPLORE PORTFOLIO</span>
+                <span class="btn-icon">⟶</span>
+              </a>
+              <a href="contact.html" class="outline-luxury-btn">
+                <span class="btn-text">SCHEDULE DISCOVERY CALL</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Verified Key Performance Metrics -->
+        <div class="stats-counter-strip">
+          <div class="stat-box">
+            <span class="stat-big-num">\$2.5M+</span>
+            <span class="stat-label">Ad Spend Scaled</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-big-num">4.8x</span>
+            <span class="stat-label">Average ROAS</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-big-num">45+</span>
+            <span class="stat-label">Production Apps Launched</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-big-num">99.4%</span>
+            <span class="stat-label">Client CSAT Score</span>
+          </div>
+        </div>
+
+        <!-- Experience Timeline -->
+        <div style="margin-top: 80px;">
+          <div class="section-title-wrap" style="text-align: center; margin-bottom: 50px;">
+            <span class="section-badge-code">[ CAREER MILESTONES ]</span>
+            <h2 style="font-family: var(--font-serif); font-size: 2.4rem; color: #fff; margin-top: 10px;">
+              Path of Growth & Engineering
+            </h2>
+          </div>
+
+          <div class="timeline-milestones">
+            <div class="timeline-item">
+              <span class="timeline-year">2024 — NOW</span>
+              <div class="timeline-detail">
+                <h4>Principal Growth Engineer & Technical Marketing Consultant</h4>
+                <p>Leading enterprise omnichannel client growth, scaling multi-channel paid ads across Meta & Google Ads, building custom headless e-commerce stacks, and implementing programmatic technical SEO suites.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <span class="timeline-year">2022 — 2024</span>
+              <div class="timeline-detail">
+                <h4>Full-Stack Web Developer & SEO Lead</h4>
+                <p>Engineered React, Next.js, and Node.js microservices. Integrated advanced WebGL interactive visual components, payment gateways (Stripe, PayPal), and achieved sub-second Core Web Vitals on high-traffic consumer web apps.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <span class="timeline-year">2020 — 2022</span>
+              <div class="timeline-detail">
+                <h4>Performance Marketing & Paid Acquisition Specialist</h4>
+                <p>Architected Meta Ads (Facebook/Instagram) and Google Search/Performance Max campaigns for international e-commerce and SaaS brands, consistently exceeding 4x ROAS benchmarks.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Skills Radar / Matrix -->
+        <div style="margin-top: 90px; background: rgba(5, 14, 34, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px;">
+          <h3 style="font-family: var(--font-serif); font-size: 2rem; color: #fff; margin-bottom: 30px; text-align: center;">
+            Specialized Tech & Marketing Toolstack
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <div>
+              <h4 style="font-family: var(--font-mono); color: var(--accent-gold); font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px;">
+                <i class="fa-solid fa-code"></i> DEVELOPMENT ARSENAL
+              </h4>
+              <div class="modal-tags">
+                <span class="modal-tag">JavaScript / TypeScript</span>
+                <span class="modal-tag">React.js & Next.js</span>
+                <span class="modal-tag">Node.js & Express</span>
+                <span class="modal-tag">Three.js WebGL</span>
+                <span class="modal-tag">Tailwind CSS</span>
+                <span class="modal-tag">PostgreSQL & MongoDB</span>
+                <span class="modal-tag">REST & GraphQL APIs</span>
+                <span class="modal-tag">Docker & Serverless Cloud</span>
+              </div>
+            </div>
+            <div>
+              <h4 style="font-family: var(--font-mono); color: var(--accent-cyan); font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px;">
+                <i class="fa-solid fa-chart-line"></i> GROWTH MARKETING SUITE
+              </h4>
+              <div class="modal-tags">
+                <span class="modal-tag">Meta Ads Manager</span>
+                <span class="modal-tag">Google Ads & PMax</span>
+                <span class="modal-tag">Technical Programmatic SEO</span>
+                <span class="modal-tag">Google Analytics 4 & GTM</span>
+                <span class="modal-tag">Conversion Rate Optimization (CRO)</span>
+                <span class="modal-tag">Klaviyo Email Automation</span>
+                <span class="modal-tag">SEMrush & Ahrefs</span>
+                <span class="modal-tag">Funnel Attribution & A/B Testing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 38px; height: 32px;">
+            <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <span class="footer-name">WASEEM ABBAS</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="work.html">Work</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom-row">
+        <p class="copyright-text">2026 COPYRIGHT &nbsp;|&nbsp; WASEEM ABBAS &nbsp;|&nbsp; ALL RIGHTS RESERVED</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Talking AI Avatar Engine -->
+  <script src="ai-avatar.js"></script>
+  <!-- Main JavaScript Engine -->
+  <script src="main.js"></script>
+</body>
+</html>

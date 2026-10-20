@@ -84,23 +84,22 @@
 
   <!-- ========================================================
        SITE HEADER: WASEEM ABBAS SIGNATURE NAVIGATION
-       ABOUT • WORK • [CENTER WA MONOGRAM] • EXPERIENCE • CONTACTS
+       ABOUT • WORK • [CENTER WA MONOGRAM] • SERVICES • CONTACTS
        ======================================================== -->
   <header class="site-header" id="header">
     <div class="header-container">
       <nav class="nav-links left-nav">
-        <a href="#hero" class="nav-item active">
+        <a href="about.html" class="nav-item">
           <span class="nav-text">ABOUT</span>
-          <span class="nav-active-pip"></span>
         </a>
         <span class="nav-dot-sep">•</span>
-        <a href="#skills" class="nav-item">
+        <a href="work.html" class="nav-item">
           <span class="nav-text">WORK</span>
         </a>
       </nav>
 
       <!-- Center Logo: WA Monogram -->
-      <a href="#hero" class="brand-monogram" aria-label="Waseem Abbas Portfolio Home">
+      <a href="index.html" class="brand-monogram" aria-label="Waseem Abbas Portfolio Home">
         <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -110,11 +109,11 @@
       </a>
 
       <nav class="nav-links right-nav">
-        <a href="#showcase" class="nav-item">
-          <span class="nav-text">EXPERIENCE</span>
+        <a href="services.html" class="nav-item">
+          <span class="nav-text">SERVICES</span>
         </a>
         <span class="nav-dot-sep">•</span>
-        <a href="#contact" class="nav-item">
+        <a href="contact.html" class="nav-item">
           <span class="nav-text">CONTACTS</span>
         </a>
       </nav>
@@ -125,37 +124,18 @@
   <main>
 
     <!-- ========================================================
-         HERO SECTION: WASEEM ABBAS LIVE VIDEO & LUXURY 3D
+         HERO SECTION: 100% DRIBBLE 3D TORUS SCULPTURE & KINETIC TYPOGRAPHY
          ======================================================== -->
     <section class="section hero-section" id="hero" data-section-index="01">
       <div class="hero-bg-canvas-wrapper" id="heroSculptureWrapper">
         
-        <!-- 1. Waseem Abbas Real Profile Video Frame (Featured Centerpiece) -->
-        <div class="hero-waseem-video-card active" id="heroWaseemCard">
-          <div class="waseem-video-inner">
-            <video id="waseemMainVideo" class="waseem-video-player" playsinline muted loop autoplay poster="assets/waseem_portrait.jpg">
-              <source src="assets/waseem_profile.mp4" type="video/mp4">
-            </video>
-            <div class="waseem-video-overlay-gradient"></div>
-            <!-- Audio Unmute Toggle -->
-            <button class="waseem-audio-toggle" id="btnToggleAudio" title="Toggle Sound" aria-label="Toggle Audio">
-              <i class="fa-solid fa-volume-xmark" id="audioIcon"></i>
-            </button>
-            <div class="waseem-live-badge">
-              <span class="live-dot"></span> LIVE PROFILE REEL
-            </div>
-          </div>
-          <!-- Reflection Glass Border -->
-          <div class="waseem-video-glow"></div>
-        </div>
-
-        <!-- 2. Interactive WebGL 3D Canvas (Alternative Mode) -->
-        <canvas id="threeCanvas" class="hero-3d-canvas"></canvas>
-
-        <!-- 3. Original Dribbble Cinema Reel Video -->
-        <video id="heroCinemaVideo" class="hero-centerpiece-video" playsinline muted loop preload="auto">
+        <!-- 1. Original Pristine Dribbble 3D Torus Loop (Centered & Uninterrupted) -->
+        <video id="heroCinemaVideo" class="hero-centerpiece-video active" playsinline muted loop autoplay preload="auto">
           <source src="assets/video.mp4" type="video/mp4">
         </video>
+
+        <!-- 2. Interactive WebGL 3D Canvas (Overlay with Mouse Parallax & Stardust) -->
+        <canvas id="threeCanvas" class="hero-3d-canvas active"></canvas>
 
       </div>
 
@@ -163,11 +143,11 @@
       <div class="hero-glow-underlay"></div>
       <div class="hero-pedestal-shadow"></div>
 
-      <!-- Floating Kinetic Typography Overlay -->
-      <div class="hero-typography-container hero-typography-with-video">
+      <!-- Floating Kinetic Typography Overlay (Faithfully matching Dribbble Shot 25949833) -->
+      <div class="hero-typography-container">
         <!-- Top Subtitle -->
         <div class="hero-sub-label">
-          DIGITAL MARKETER & DEVELOPER
+          DIGITAL ARCHITECT
         </div>
 
         <!-- Master Title: WASEEM ABBAS -->
@@ -181,14 +161,17 @@
 
         <!-- Bottom Tagline -->
         <div class="hero-bottom-tagline" id="displayPortfolioTagline">
-          FULL-STACK CODE • HIGH-PERFORMANCE GROWTH
+          DIGITAL MARKETER & DEVELOPER
         </div>
 
         <!-- Quick Video Interaction CTA -->
         <div class="hero-actions-row">
           <button class="hero-cta-pill" id="btnPlayFullscreenVideo">
-            <i class="fa-solid fa-expand"></i> View Full Video Reel
+            <i class="fa-solid fa-play"></i> Watch Executive Reel
           </button>
+          <a href="about.html" class="hero-cta-pill hero-cta-outline">
+            <i class="fa-solid fa-user"></i> About Waseem
+          </a>
         </div>
       </div>
 
@@ -634,6 +617,8 @@
     </div>
   </aside>
 
+  <!-- Interactive Talking AI Avatar Engine -->
+  <script src="ai-avatar.js"></script>
   <!-- Main JavaScript Engine -->
   <script src="main.js"></script>
 </body>

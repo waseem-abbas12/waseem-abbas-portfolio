@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Consultation — Waseem Abbas (Developer & Marketer)</title>
+  
+  <meta name="description" content="Get in touch with Waseem Abbas for custom web development, high-ROAS marketing campaigns, or a 1-on-1 strategy consultation.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Core Design Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Three.js 3D Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Glow Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursorFollower"></div>
+
+  <!-- Noise Film Grain -->
+  <div class="film-grain"></div>
+
+  <!-- Ambient Dynamic Mouse Glow -->
+  <div class="ambient-glow" id="ambientGlow"></div>
+
+  <!-- Top Floating Utility Dock -->
+  <div class="floating-utility-dock">
+    <div class="dock-theme-group" title="Aesthetic Themes">
+      <button class="dock-btn theme-pill active" data-set-theme="midnight" title="Midnight Navy Theme">
+        <span class="dot-swatch swatch-midnight"></span>
+      </button>
+      <button class="dock-btn theme-pill" data-set-theme="violet" title="Cyber Violet Theme">
+        <span class="dot-swatch swatch-violet"></span>
+      </button>
+      <button class="dock-btn theme-pill" data-set-theme="crimson" title="Monochrome Crimson Theme">
+        <span class="dot-swatch swatch-crimson"></span>
+      </button>
+    </div>
+    <div class="dock-divider"></div>
+    <a href="index.html" class="dock-btn" title="Back to 3D Showcase">
+      <i class="fa-solid fa-cube"></i> <span class="dock-text">3D Home</span>
+    </a>
+  </div>
+
+  <!-- Side Indicator -->
+  <aside class="side-indicator-left">
+    <span class="step-num">05</span>
+    <span class="step-arrow">⟶</span>
+  </aside>
+
+  <!-- Site Header -->
+  <header class="site-header" id="header">
+    <div class="header-container">
+      <nav class="nav-links left-nav">
+        <a href="about.html" class="nav-item">
+          <span class="nav-text">ABOUT</span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="work.html" class="nav-item">
+          <span class="nav-text">WORK</span>
+        </a>
+      </nav>
+
+      <!-- Center Logo: WA Monogram -->
+      <a href="index.html" class="brand-monogram" aria-label="Waseem Abbas Home">
+        <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M33 24 H46" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <nav class="nav-links right-nav">
+        <a href="services.html" class="nav-item">
+          <span class="nav-text">SERVICES</span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="contact.html" class="nav-item active">
+          <span class="nav-text">CONTACTS</span>
+          <span class="nav-active-pip"></span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Banner -->
+    <section class="page-hero-banner">
+      <div class="section-topo-bg"></div>
+      <div class="container">
+        <span class="page-category-label">INITIATE PARTNERSHIP</span>
+        <h1 class="page-main-heading">LET'S CONNECT</h1>
+        <p class="page-lead-summary">
+          Ready to scale your next digital product, optimize your acquisition funnel, or architect a high-performance web experience? Let's talk.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Channels & Form Grid -->
+    <section class="page-grid-section">
+      <div class="container">
+        <div class="contact-layout-grid">
+
+          <!-- Left Column: Direct Channels -->
+          <div class="contact-channels-card">
+            
+            <!-- WhatsApp Priority Chat -->
+            <a href="https://wa.me/923000000000?text=Hi%20Waseem,%20I%20am%20interested%20in%20your%20development%20and%20marketing%20services." target="_blank" rel="noopener noreferrer" class="contact-method-item contact-method-whatsapp">
+              <div class="contact-method-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div class="contact-method-details">
+                <h4>Instant WhatsApp VIP Chat</h4>
+                <p>Direct communication for immediate quotes & inquiries</p>
+              </div>
+            </a>
+
+            <!-- Direct Email -->
+            <a href="mailto:contact@waseemabbas.dev?subject=Project%20Inquiry%20via%20Portfolio" class="contact-method-item">
+              <div class="contact-method-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-method-details">
+                <h4>Priority Email Inbox</h4>
+                <p>contact@waseemabbas.dev</p>
+              </div>
+            </a>
+
+            <!-- Global Availability -->
+            <div class="contact-method-item">
+              <div class="contact-method-icon">
+                <i class="fa-solid fa-earth-americas"></i>
+              </div>
+              <div class="contact-method-details">
+                <h4>Global Remote Availability</h4>
+                <p>Available across US, UK, Middle East & Asian Timezones</p>
+              </div>
+            </div>
+
+            <!-- Fast Response SLA -->
+            <div class="contact-method-item">
+              <div class="contact-method-icon">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div class="contact-method-details">
+                <h4>Rapid Turnaround SLA</h4>
+                <p>Response guaranteed within 2 hours on business days</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Contact Form -->
+          <div class="contact-form-wrapper">
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: #fff; margin-bottom: 24px;">
+              Send a Project Brief
+            </h3>
+
+            <form id="contactForm">
+              <div class="contact-form-grid">
+                
+                <div class="form-group">
+                  <label class="contact-form-label" for="contactName">Your Full Name *</label>
+                  <input type="text" id="contactName" class="contact-form-input" placeholder="e.g. Alexander Vance" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="contact-form-label" for="contactEmail">Work Email *</label>
+                  <input type="email" id="contactEmail" class="contact-form-input" placeholder="alex@company.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="contact-form-label" for="contactService">Required Service *</label>
+                  <select id="contactService" class="contact-form-select">
+                    <option value="Full-Stack Dev + Marketing Synergy">Full-Stack Dev + Marketing Synergy (Recommended)</option>
+                    <option value="Paid Media Scaling (Meta & Google Ads)">Paid Media Scaling (Meta & Google Ads)</option>
+                    <option value="Custom Web App Engineering">Custom Web App Engineering (React/Next.js)</option>
+                    <option value="Technical Programmatic SEO">Technical Programmatic SEO</option>
+                    <option value="CRO Funnel Audit">CRO Funnel Audit</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="contact-form-label" for="contactBudget">Estimated Monthly Budget</label>
+                  <select id="contactBudget" class="contact-form-select">
+                    <option value="\$2,500 – \$5,000">\$2,500 – \$5,000</option>
+                    <option value="\$5,000 – \$15,000">\$5,000 – \$15,000</option>
+                    <option value="\$15,000+">\$15,000+ (Enterprise)</option>
+                  </select>
+                </div>
+
+                <div class="form-group contact-full-width">
+                  <label class="contact-form-label" for="contactMessage">Project Details & Objectives *</label>
+                  <textarea id="contactMessage" class="contact-form-textarea" rows="4" placeholder="Briefly describe your product goals, current traffic, or advertising challenges..." required></textarea>
+                </div>
+
+              </div>
+
+              <button type="submit" class="contact-form-submit" id="btnSubmitForm">
+                <i class="fa-solid fa-paper-plane"></i> TRANSMIT PROJECT BRIEF
+              </button>
+
+              <div class="contact-success-toast" id="formSuccessToast">
+                ✨ <strong>Thank you!</strong> Your inquiry has been transmitted directly to Waseem Abbas. You will receive a response within 2 hours.
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- FAQ Accordion Section -->
+        <div class="faq-section">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          
+          <div class="faq-accordion-list">
+            
+            <div class="faq-item active">
+              <div class="faq-header">
+                <h4>What makes your dual Marketer & Developer approach unique?</h4>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-content">
+                Most agencies suffer from a communication divide: developers build websites without understanding conversion tracking or SEO schema, while marketers launch ads without being able to fix Core Web Vitals or implement custom API funnels. Waseem Abbas unifies both disciplines into a single high-velocity execution engine.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-header">
+                <h4>How soon can we launch our campaigns or web development?</h4>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-content">
+                Campaign audits and initial paid media setups typically launch within 3 to 5 business days. Full-stack custom web applications and e-commerce platforms typically deploy in agile sprints between 2 to 4 weeks depending on architectural scope.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-header">
+                <h4>Do you work on fixed-price projects or monthly retainers?</h4>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-content">
+                Both models are supported. Web engineering builds and landing page overhauls can be structured as fixed-price milestones, while continuous paid media management and technical SEO scaling operate on monthly performance retainers.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-header">
+                <h4>What tracking and analytics stack do you implement?</h4>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-content">
+                Every project is equipped with server-side Facebook Conversions API (CAPI), Google Analytics 4 via Google Tag Manager, custom offline event conversion tracking, and session recording tools like Hotjar to guarantee accurate data attribution.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 38px; height: 32px;">
+            <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <span class="footer-name">WASEEM ABBAS</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="work.html">Work</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom-row">
+        <p class="copyright-text">2026 COPYRIGHT &nbsp;|&nbsp; WASEEM ABBAS &nbsp;|&nbsp; ALL RIGHTS RESERVED</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Talking AI Avatar Engine -->
+  <script src="ai-avatar.js"></script>
+  <!-- Main JavaScript Engine -->
+  <script src="main.js"></script>
+</body>
+</html>
