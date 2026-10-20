@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WASEEM ABBAS — Digital Marketer & Developer Portfolio</title>
+  <meta name="description" content="Official portfolio of Waseem Abbas: Full-Stack Developer & Performance Digital Marketer. Showcasing high-end web applications, growth systems, and creative technology.">
+
+  <!-- Google Fonts: Cormorant Garamond, Cinzel, Plus Jakarta Sans, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Three.js 3D Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Glow Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursorFollower"></div>
+
+  <!-- Noise Film Grain -->
+  <div class="film-grain"></div>
+
+  <!-- Ambient Dynamic Mouse Glow -->
+  <div class="ambient-glow" id="ambientGlow"></div>
+
+  <!-- ========================================================
+       TOP FLOATING UTILITY DOCK (Theme Switcher & Quick Tools)
+       ======================================================== -->
+  <div class="floating-utility-dock">
+    <div class="dock-theme-group" title="Aesthetic Colorways">
+      <button class="dock-btn theme-pill active" data-set-theme="midnight" title="Midnight Navy Theme">
+        <span class="dot-swatch swatch-midnight"></span>
+      </button>
+      <button class="dock-btn theme-pill" data-set-theme="violet" title="Cyber Violet Theme">
+        <span class="dot-swatch swatch-violet"></span>
+      </button>
+      <button class="dock-btn theme-pill" data-set-theme="crimson" title="Monochrome Crimson Theme">
+        <span class="dot-swatch swatch-crimson"></span>
+      </button>
+    </div>
+    <div class="dock-divider"></div>
+    <button class="dock-btn" id="btnModeToggle" title="Toggle between Interactive 3D & Cinema Reel">
+      <i class="fa-solid fa-cube"></i> <span class="dock-text">Play Reel</span>
+    </button>
+    <button class="dock-btn" id="btnOpenCustomizer" title="Customize portfolio details">
+      <i class="fa-solid fa-user-pen"></i> <span class="dock-text">Edit Info</span>
+    </button>
+  </div>
+
+  <!-- ========================================================
+       SIDE STEP INDICATOR & RIGHT SCRUBBER TRACK (Exact Dribbble Match)
+       ======================================================== -->
+  <aside class="side-indicator-left">
+    <span class="step-num" id="activeSectionNum">01</span>
+    <span class="step-arrow">⟶</span>
+  </aside>
+
+  <aside class="side-indicator-right" aria-label="Page Progress">
+    <div class="scrubber-track">
+      <div class="scrubber-active-ring" id="scrubberIndicator">
+        <div class="ring-arc"></div>
+      </div>
+      <a href="#hero" class="scrubber-dot active" data-target="hero" title="Home / About"></a>
+      <a href="#skills" class="scrubber-dot" data-target="skills" title="Expertise Pillars"></a>
+      <a href="#boundless" class="scrubber-dot" data-target="boundless" title="Growth Architecture"></a>
+      <a href="#odyssey" class="scrubber-dot" data-target="odyssey" title="Code & Marketing Synergy"></a>
+      <a href="#showcase" class="scrubber-dot" data-target="showcase" title="Featured Projects"></a>
+      <a href="#contact" class="scrubber-dot" data-target="contact" title="Contact Waseem"></a>
+    </div>
+  </aside>
+
+  <!-- ========================================================
+       SITE HEADER: WASEEM ABBAS SIGNATURE NAVIGATION
+       ABOUT • WORK • [CENTER WA MONOGRAM] • SKILLS • CONTACTS
+       ======================================================== -->
+  <header class="site-header" id="header">
+    <div class="header-container">
+      <nav class="nav-links left-nav">
+        <a href="#hero" class="nav-item active">
+          <span class="nav-text">ABOUT</span>
+          <span class="nav-active-pip"></span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="#skills" class="nav-item">
+          <span class="nav-text">WORK</span>
+        </a>
+      </nav>
+
+      <!-- Center Logo: WA Monogram -->
+      <a href="#hero" class="brand-monogram" aria-label="Waseem Abbas Portfolio Home">
+        <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- W strokes -->
+          <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Intersecting A -->
+          <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M33 24 H46" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <!-- Dynamic gold horizon slash -->
+          <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <nav class="nav-links right-nav">
+        <a href="#showcase" class="nav-item">
+          <span class="nav-text">EXPERIENCE</span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="#contact" class="nav-item">
+          <span class="nav-text">CONTACTS</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN VIEWPORT CONTENT -->
+  <main>
+
+    <!-- ========================================================
+         HERO SECTION: 3D KINETIC TORUS & WASEEM ABBAS IDENTITY
+         ======================================================== -->
+    <section class="section hero-section" id="hero" data-section-index="01">
+      <div class="hero-bg-canvas-wrapper" id="heroSculptureWrapper">
+        <!-- Interactive WebGL 3D Canvas -->
+        <canvas id="threeCanvas" class="hero-3d-canvas active"></canvas>
+
+        <!-- High-res Cinema Video Player (Alternative mode) -->
+        <video id="heroCinemaVideo" class="hero-centerpiece-video" playsinline muted loop preload="auto">
+          <source src="assets/video.mp4" type="video/mp4">
+        </video>
+
+        <!-- Fallback Still Image with 3D Depth Parallax -->
+        <img src="assets/still.png" alt="Generative 3D Kinetic Ring" class="hero-centerpiece-still" id="heroStillImg">
+      </div>
+
+      <!-- Hero Glow Underlay & Pedestal Shadow -->
+      <div class="hero-glow-underlay"></div>
+      <div class="hero-pedestal-shadow"></div>
+
+      <!-- Floating Kinetic Typography Overlay -->
+      <div class="hero-typography-container">
+        <!-- Top Subtitle -->
+        <div class="hero-sub-label">
+          DIGITAL MARKETER & DEVELOPER
+        </div>
+
+        <!-- Master Title: WASEEM ABBAS -->
+        <h1 class="hero-main-title" id="displayPortfolioName">
+          <span class="title-word first-word">WASEEM</span>
+          <span class="title-word last-word">ABBAS</span>
+        </h1>
+
+        <!-- Directional Indicator Marker -->
+        <div class="hero-indicator-triangle">▲</div>
+
+        <!-- Bottom Tagline -->
+        <div class="hero-bottom-tagline" id="displayPortfolioTagline">
+          FULL-STACK CODE • HIGH-PERFORMANCE GROWTH
+        </div>
+      </div>
+
+      <!-- Scroll Prompter -->
+      <a href="#skills" class="hero-scroll-prompter" aria-label="Explore Expertise">
+        <span class="scroll-mouse">
+          <span class="scroll-wheel"></span>
+        </span>
+        <span class="scroll-text">EXPLORE WORK</span>
+      </a>
+    </section>
+
+    <!-- ========================================================
+         FEATURED EXPERTISE PILLARS (MARKETING, DEVELOPMENT, GENERATIVE, SEO)
+         ======================================================== -->
+    <section class="section brands-section" id="skills" data-section-index="02">
+      <div class="section-topo-bg"></div>
+
+      <div class="container brands-container">
+        <div class="brand-cards-grid" id="brandCardsGrid">
+
+          <!-- Card 01: DIGITAL MARKETING -->
+          <article class="brand-card" data-card-id="1">
+            <div class="card-inner">
+              <div class="card-top-marker">▼</div>
+              <div class="card-symbol-wrap">
+                <img src="assets/cropped/logo_studio74.png" alt="Marketing Icon" class="brand-mark-img">
+              </div>
+              <div class="card-dot-pip">•</div>
+              <h3 class="card-title">PAID MEDIA</h3>
+              <p class="card-mini-desc">Meta Ads, Google Ads & High-ROAS Funnels</p>
+              <span class="card-index">01</span>
+              <div class="card-hover-border"></div>
+            </div>
+          </article>
+
+          <!-- Card 02: FULL-STACK DEVELOPMENT -->
+          <article class="brand-card" data-card-id="2">
+            <div class="card-inner">
+              <div class="card-top-marker">▼</div>
+              <div class="card-symbol-wrap">
+                <img src="assets/cropped/logo_gloster.png" alt="Developer Icon" class="brand-mark-img">
+              </div>
+              <div class="card-dot-pip">•</div>
+              <h3 class="card-title">DEV SUITE</h3>
+              <p class="card-mini-desc">Modern Web Apps, React & Scalable APIs</p>
+              <span class="card-index">02</span>
+              <div class="card-hover-border"></div>
+            </div>
+          </article>
+
+          <!-- Card 03: LINEA GROWTH (Featured Active Card with Rich Artwork) -->
+          <article class="brand-card featured-active" data-card-id="3">
+            <div class="card-inner">
+              <div class="card-top-marker">▼</div>
+              <div class="card-featured-artwork">
+                <img src="assets/cropped/linea_art.png" alt="Growth Matrix Artwork" class="artwork-img">
+                <div class="artwork-glow-line"></div>
+              </div>
+              <h3 class="card-title">LINEA <span class="vol-tag">VOL.1</span></h3>
+              <p class="card-mini-desc accent-desc">Code & Marketing Convergence</p>
+              <span class="card-index accent-index">03</span>
+              <div class="card-active-glow-bottom"></div>
+            </div>
+          </article>
+
+          <!-- Card 04: SEO & CONVERSIONS -->
+          <article class="brand-card" data-card-id="4">
+            <div class="card-inner">
+              <div class="card-top-marker">▼</div>
+              <div class="card-symbol-wrap">
+                <img src="assets/cropped/logo_cube.png" alt="SEO & Analytics Icon" class="brand-mark-img">
+              </div>
+              <div class="card-dot-pip">•</div>
+              <h3 class="card-title">SEO & CRO</h3>
+              <p class="card-mini-desc">Technical Search & Conversion Optimization</p>
+              <span class="card-index">04</span>
+              <div class="card-hover-border"></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         BOUNDLESS REACH: CODE & GROWTH (STAGE PRODUCTION / INSTALLATION)
+         ======================================================== -->
+    <section class="section boundless-section" id="boundless" data-section-index="03">
+      <div class="section-topo-bg"></div>
+
+      <div class="container boundless-container">
+        <!-- Section Category Header -->
+        <div class="section-tag-row">
+          <span class="tag-arrow">▸</span>
+          <span class="section-category-label">PORTFOLIO & EXPERTISE</span>
+        </div>
+
+        <!-- Central Stage Production Visual Art with WA Monogram -->
+        <div class="stage-mockup-wrapper interactive-tilt" id="stageWrapper">
+          <div class="stage-frame-border">
+            <img src="assets/cropped/stage_art.png" alt="Waseem Abbas Stage LED Visuals" class="stage-mockup-img">
+            <div class="stage-light-sweep"></div>
+            <!-- Stage Live Screen Overlay with WASEEM ABBAS -->
+            <div class="stage-screen-custom-brand">
+              <span class="stage-sub-brand">WASEEM ABBAS</span>
+              <span class="stage-role-brand">DIGITAL MARKETER & DEVELOPER</span>
+            </div>
+            <button class="stage-play-badge" aria-label="Play Reel" id="btnPlayStageReel">
+              <i class="fa-solid fa-play"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Editorial Content Description -->
+        <div class="boundless-text-block">
+          <span class="artist-sub-tag" id="displayArtistSub">WASEEM ABBAS</span>
+          <h2 class="boundless-heading">Boundless Reach: Code & Growth Architecture</h2>
+          <p class="boundless-paragraph" id="displayBoundlessBio">
+            As a hybrid Full-Stack Developer and Performance Digital Marketer, I merge high-velocity web engineering with aggressive, data-backed growth marketing. I don't just build lightning-fast web applications—I architect the acquisition engines, search authority, and conversion funnels that scale businesses exponentially.
+          </p>
+
+          <div class="btn-wrap">
+            <button class="gold-luxury-btn magnetic-btn" id="btnBoundlessReadMore">
+              <span class="btn-text">READ CASE STUDIES</span>
+              <span class="btn-arrow">▸</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         ART UNBOUND ODYSSEY (BIO & STRATEGIC MATRIX)
+         ======================================================== -->
+    <section class="section odyssey-section" id="odyssey" data-section-index="04">
+      <div class="section-topo-bg"></div>
+
+      <div class="container odyssey-container">
+        <div class="odyssey-split-grid">
+
+          <!-- Left Side: Golden-framed Organic Artwork -->
+          <div class="odyssey-artwork-card interactive-tilt">
+            <div class="gold-foil-outer-frame">
+              <div class="gold-foil-inner">
+                <img src="assets/cropped/spheres_art.png" alt="Organic Digital Synergy" class="spheres-img">
+                <div class="artwork-year-stamp">2 0 2 6</div>
+                <div class="specular-shine"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Dark Navy Card with Compass Dial -->
+          <div class="odyssey-content-card">
+            <div class="odyssey-card-inner">
+              <div class="compass-dial-wrapper">
+                <div class="compass-circle-gradient">
+                  <div class="compass-needle"></div>
+                </div>
+              </div>
+
+              <h2 class="odyssey-title">
+                <span>DIGITAL</span>
+                <span>GROWTH</span>
+                <span class="odyssey-accent">ODYSSEY</span>
+              </h2>
+
+              <div class="odyssey-subtitle">HYBRID DEV & MARKETING MATRIX</div>
+
+              <div class="odyssey-meta-pills">
+                <span class="meta-pill"><i class="fa-solid fa-code"></i> Full-Stack Dev</span>
+                <span class="meta-pill"><i class="fa-solid fa-bullhorn"></i> Paid Ads / Meta & Google</span>
+                <span class="meta-pill"><i class="fa-solid fa-chart-line"></i> Technical SEO</span>
+                <span class="meta-pill"><i class="fa-solid fa-bolt"></i> CRO & Funnel Science</span>
+                <span class="meta-pill"><i class="fa-solid fa-server"></i> Cloud & APIs</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         LIVE EVENTS / COLLABORATION CTA BANNER
+         ======================================================== -->
+    <section class="section live-events-section" id="events" data-section-index="05">
+      <div class="container live-events-container">
+        <div class="events-cta-row">
+          <div class="events-tag-col">
+            <span class="tag-arrow">▸</span>
+            <span class="events-tag-label">CLIENT COLLABORATION</span>
+          </div>
+
+          <div class="events-heading-col">
+            <h3 class="events-lead-text">Planning your next project or campaign?</h3>
+          </div>
+
+          <div class="events-action-col">
+            <a href="#contact" class="gold-luxury-btn magnetic-btn">
+              <span class="btn-text">HIRE WASEEM</span>
+              <span class="btn-arrow">▸</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         TRIPLE CASE STUDY GRID (TNQ, DREAMS, ESCAPE)
+         ======================================================== -->
+    <section class="section showcase-section" id="showcase" data-section-index="06">
+      <div class="section-topo-bg"></div>
+
+      <div class="container showcase-container">
+        <div class="showcase-cards-grid">
+
+          <!-- Card 1: E-COMMERCE GROWTH PLATFORM -->
+          <article class="showcase-card card-tnq interactive-tilt" data-project="tnq">
+            <div class="showcase-card-inner">
+              <div class="showcase-media-box">
+                <img src="assets/cropped/tnq_art.png" alt="E-Commerce Scale Engine" class="showcase-img">
+                <div class="media-hover-overlay">
+                  <span class="overlay-zoom-icon"><i class="fa-solid fa-expand"></i> View Case Study</span>
+                </div>
+              </div>
+              <footer class="showcase-footer-bar">
+                <span class="showcase-project-name">E-COMMERCE GROWTH PLATFORM</span>
+                <span class="showcase-arrow">▸</span>
+              </footer>
+            </div>
+          </article>
+
+          <!-- Card 2: SAAS WEB APP & SEO -->
+          <article class="showcase-card card-dreams interactive-tilt" data-project="dreams">
+            <div class="showcase-card-inner">
+              <div class="showcase-media-box">
+                <img src="assets/cropped/dreams_art.png" alt="SaaS Web App & SEO" class="showcase-img">
+                <div class="media-hover-overlay">
+                  <span class="overlay-zoom-icon"><i class="fa-solid fa-expand"></i> View Case Study</span>
+                </div>
+              </div>
+              <footer class="showcase-footer-bar">
+                <span class="showcase-project-name">SAAS WEB APP & SEO</span>
+                <span class="showcase-arrow">▸</span>
+              </footer>
+            </div>
+          </article>
+
+          <!-- Card 3: OMNICHANNEL MARKETING CAMPAIGN -->
+          <article class="showcase-card card-escape interactive-tilt" data-project="escape">
+            <div class="showcase-card-inner">
+              <div class="showcase-media-box">
+                <img src="assets/cropped/escape_art.png" alt="Omnichannel Launch" class="showcase-img">
+                <div class="media-hover-overlay">
+                  <span class="overlay-zoom-icon"><i class="fa-solid fa-expand"></i> View Case Study</span>
+                </div>
+              </div>
+              <footer class="showcase-footer-bar">
+                <span class="showcase-project-name">OMNICHANNEL LAUNCH</span>
+                <span class="showcase-arrow">▸</span>
+              </footer>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         CONTACT SECTION (GET IN TOUCH WITH WASEEM)
+         ======================================================== -->
+    <section class="section contact-section" id="contact" data-section-index="07">
+      <div class="container contact-container">
+        <div class="contact-box-glass">
+          <span class="contact-sup-tag">LET'S CONNECT</span>
+          <h2 class="contact-title">Let’s Scale Your Brand & Code Your Vision</h2>
+          <p class="contact-desc">Available for full-stack development, paid acquisition campaigns, CRO audits, and growth consulting.</p>
+          
+          <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); alert('Thank you, Waseem Abbas has received your inquiry and will respond shortly!');">
+            <div class="form-row">
+              <input type="text" class="input-glass" placeholder="Your Name" required>
+              <input type="email" class="input-glass" placeholder="Your Email" required>
+            </div>
+            <div class="form-row">
+              <select class="input-glass" style="cursor: pointer; background: rgba(10, 20, 40, 0.9);">
+                <option value="both">Full-Stack Development & Digital Marketing</option>
+                <option value="dev">Full-Stack Web Development Only</option>
+                <option value="marketing">Digital Marketing / Paid Media (Meta & Google Ads)</option>
+                <option value="seo">SEO & Conversion Optimization (CRO)</option>
+              </select>
+              <input type="text" class="input-glass" placeholder="Budget / Timeline">
+            </div>
+            <textarea class="input-glass textarea-glass" placeholder="Tell me about your project, target audience, or current goals..." rows="4" required></textarea>
+            <button type="submit" class="gold-luxury-btn full-width magnetic-btn">
+              <span class="btn-text">SEND MESSAGE TO WASEEM</span>
+              <span class="btn-arrow">▸</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       SITE FOOTER (Exact Dribbble Match Customized for Waseem Abbas)
+       ======================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <!-- Left: Social Network Icons -->
+      <div class="footer-socials-col">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-circle-btn" title="LinkedIn" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener" class="social-circle-btn" title="GitHub" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" class="social-circle-btn" title="X (Twitter)" aria-label="Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="social-circle-btn" title="Instagram" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+
+      <!-- Center: Bordered Emblem with WA Monogram -->
+      <div class="footer-logo-col">
+        <div class="footer-logo-emblem">
+          <svg class="wa-footer-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M33 24 H46" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Right: Footer Nav & Copyright -->
+      <div class="footer-meta-col">
+        <nav class="footer-nav">
+          <a href="#hero" class="footer-nav-link">About</a>
+          <span class="footer-nav-slash">/</span>
+          <a href="#skills" class="footer-nav-link">Work</a>
+          <span class="footer-nav-slash">/</span>
+          <a href="#showcase" class="footer-nav-link">Experience</a>
+          <span class="footer-nav-slash">/</span>
+          <a href="#contact" class="footer-nav-link">Contacts</a>
+        </nav>
+        <div class="footer-copyright" id="displayCopyright">
+          2026 COPYRIGHT &nbsp;|&nbsp; WASEEM ABBAS &nbsp;|&nbsp; ALL RIGHTS RESERVED
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       PROJECT LIGHTBOX MODAL
+       ======================================================== -->
+  <div class="project-modal" id="projectModal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">✕</button>
+      <div class="modal-content">
+        <div class="modal-media-wrap">
+          <img src="" alt="Case Study Visual" class="modal-main-img" id="modalImg">
+        </div>
+        <div class="modal-info-wrap">
+          <span class="modal-category" id="modalCategory">CASE STUDY</span>
+          <h2 class="modal-title" id="modalTitle">Project Title</h2>
+          <p class="modal-desc" id="modalDesc">Detailed breakdown of development stack and growth marketing metrics.</p>
+          <div class="modal-tags" id="modalTags">
+            <span class="modal-tag">React / Node.js</span>
+            <span class="modal-tag">Meta Ads & ROAS</span>
+            <span class="modal-tag">Technical SEO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       PORTFOLIO PERSONALIZER DRAWER
+       ======================================================== -->
+  <aside class="customizer-drawer" id="customizerDrawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-palette"></i> Customize Waseem's Portfolio</h3>
+      <button class="drawer-close" id="btnCloseCustomizer">✕</button>
+    </div>
+    <div class="drawer-body">
+      <p class="drawer-help-text">Apna naam, role aur bio yahan tabdeel kar sakte hain. Changes foran apply ho kar save ho jayengi!</p>
+      
+      <div class="form-group">
+        <label for="inputFirstName">First Name</label>
+        <input type="text" id="inputFirstName" class="drawer-input" value="WASEEM">
+      </div>
+      <div class="form-group">
+        <label for="inputLastName">Last Name</label>
+        <input type="text" id="inputLastName" class="drawer-input" value="ABBAS">
+      </div>
+      <div class="form-group">
+        <label for="inputTagline">Role / Tagline</label>
+        <input type="text" id="inputTagline" class="drawer-input" value="DIGITAL MARKETER & DEVELOPER">
+      </div>
+      <div class="form-group">
+        <label for="inputBio">Bio / Statement</label>
+        <textarea id="inputBio" class="drawer-input" rows="4">As a hybrid Full-Stack Developer and Performance Digital Marketer, I merge high-velocity web engineering with aggressive, data-backed growth marketing. I build lightning-fast web applications and architect the acquisition engines, search authority, and conversion funnels that scale businesses exponentially.</textarea>
+      </div>
+
+      <div class="drawer-actions">
+        <button class="gold-luxury-btn full-width" id="btnApplyCustomizer">
+          <span class="btn-text">APPLY CHANGES</span>
+        </button>
+        <button class="reset-link-btn" id="btnResetCustomizer">Reset to Waseem's Defaults</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main JavaScript Engine -->
+  <script src="main.js"></script>
+</body>
+</html>

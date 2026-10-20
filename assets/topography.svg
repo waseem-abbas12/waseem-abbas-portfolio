@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none">
+  <g stroke="#1a3b68" stroke-width="1" stroke-opacity="0.35">
+    <!-- Contour lines resembling generative topographic depth -->
+    <path d="M-100,200 C150,150 250,300 500,220 C750,140 850,320 1100,240 C1250,190 1350,260 1400,250" />
+    <path d="M-100,230 C160,180 260,330 510,250 C760,170 860,350 1110,270 C1260,220 1360,290 1400,280" />
+    <path d="M-100,260 C170,210 270,360 520,280 C770,200 870,380 1120,300 C1270,250 1370,320 1400,310" />
+    <path d="M-100,290 C180,240 280,390 530,310 C780,230 880,410 1130,330 C1280,280 1380,350 1400,340" />
+    <path d="M-100,320 C190,270 290,420 540,340 C790,260 890,440 1140,360 C1290,310 1390,380 1400,370" />
+    <path d="M-100,350 C200,300 300,450 550,370 C800,290 900,470 1150,390 C1300,340 1400,410 1450,400" />
+    <path d="M-100,380 C210,330 310,480 560,400 C810,320 910,500 1160,420 C1310,370 1410,440 1450,430" />
+    
+    <!-- Concentric organic rings on right side -->
+    <ellipse cx="980" cy="480" rx="280" ry="210" transform="rotate(-15 980 480)" />
+    <ellipse cx="980" cy="480" rx="240" ry="180" transform="rotate(-15 980 480)" />
+    <ellipse cx="980" cy="480" rx="200" ry="150" transform="rotate(-15 980 480)" />
+    <ellipse cx="980" cy="480" rx="160" ry="120" transform="rotate(-15 980 480)" />
+    <ellipse cx="980" cy="480" rx="120" ry="90" transform="rotate(-15 980 480)" />
+    <ellipse cx="980" cy="480" rx="80" ry="60" transform="rotate(-15 980 480)" />
+    
+    <!-- Concentric organic rings on left bottom -->
+    <ellipse cx="180" cy="620" rx="260" ry="190" transform="rotate(20 180 620)" />
+    <ellipse cx="180" cy="620" rx="220" ry="160" transform="rotate(20 180 620)" />
+    <ellipse cx="180" cy="620" rx="180" ry="130" transform="rotate(20 180 620)" />
+    <ellipse cx="180" cy="620" rx="140" ry="100" transform="rotate(20 180 620)" />
+    <ellipse cx="180" cy="620" rx="100" ry="70" transform="rotate(20 180 620)" />
+    <ellipse cx="180" cy="620" rx="60" ry="40" transform="rotate(20 180 620)" />
+  </g>
+</svg>
