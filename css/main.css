@@ -46,6 +46,8 @@ html {
   color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
   font-size: 16px;
 }
 
@@ -56,6 +58,8 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 /* Custom Scrollbar */
@@ -403,10 +407,12 @@ body.cursor-hover .custom-cursor-follower {
   top: 0;
   left: 0;
   width: 100vw;
+  max-width: 100vw;
   height: 100vh;
   z-index: 890;
   pointer-events: none;
   visibility: hidden;
+  overflow: hidden;
   transition: visibility 0.4s ease;
 }
 
@@ -913,6 +919,8 @@ body.cursor-hover .custom-cursor-follower {
 /* Floating 3D Service Nodes */
 .orbit-node {
   position: absolute;
+  top: 50%;
+  left: 50%;
   width: 160px;
   padding: 16px 14px;
   background: rgba(8, 17, 36, 0.88);
@@ -1014,25 +1022,148 @@ body.cursor-hover .custom-cursor-follower {
   line-height: 1.5;
 }
 
+/* Quick Mobile Service Selector Pills */
+.orbit-mobile-selector-pills {
+  display: none;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto 20px;
+  max-width: 440px;
+}
+
+.orbit-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.orbit-pill.active, .orbit-pill:hover {
+  background: rgba(56, 189, 248, 0.16);
+  border-color: var(--accent-cyan);
+  color: #fff;
+  box-shadow: 0 0 12px var(--accent-cyan-glow);
+}
+
 @media (max-width: 768px) {
+  .orbit-mobile-selector-pills {
+    display: flex;
+  }
+  .orbit-section-header {
+    margin-bottom: 18px;
+  }
+  .orbit-title {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .orbit-subtitle {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
   .orbit-stage-wrapper {
-    height: 480px;
+    height: 320px;
+    margin: 0 auto 16px;
+    perspective: 800px;
   }
   .orbit-wheel-container {
-    width: 340px;
-    height: 340px;
+    width: 250px;
+    height: 250px;
   }
-  .orbit-ring-outer { width: 330px; height: 330px; }
-  .orbit-ring-mid { width: 240px; height: 240px; }
+  .orbit-ring-outer { width: 240px; height: 240px; }
+  .orbit-ring-mid { width: 170px; height: 170px; }
+  .orbit-ring-inner { width: 100px; height: 100px; }
+  .orbit-center-core {
+    width: 68px;
+    height: 68px;
+    box-shadow: 0 0 25px rgba(223, 167, 83, 0.4);
+  }
+  .core-brand-wa {
+    font-size: 1rem;
+  }
+  .core-sub {
+    font-size: 0.45rem;
+  }
   .orbit-node {
-    width: 120px;
-    padding: 10px 8px;
+    width: 88px;
+    padding: 8px 6px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
   }
-  .node-title { font-size: 0.7rem; }
+  .orbit-node:hover, .orbit-node.active {
+    transform: translate(-50%, -50%) scale(1.08) !important;
+  }
+  .node-icon-box {
+    width: 28px;
+    height: 28px;
+    font-size: 0.88rem;
+    margin-bottom: 4px;
+    border-radius: 6px;
+  }
+  .node-title {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0;
+  }
+  .node-tag {
+    display: none;
+  }
   .orbit-detail-card {
     flex-direction: column;
     text-align: center;
-    padding: 20px;
+    padding: 20px 16px;
+    margin: 12px auto 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .orbit-detail-heading {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .orbit-detail-desc {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .orbit-detail-card .gold-luxury-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .orbit-stage-wrapper {
+    height: 290px;
+  }
+  .orbit-wheel-container {
+    width: 220px;
+    height: 220px;
+  }
+  .orbit-ring-outer { width: 210px; height: 210px; }
+  .orbit-ring-mid { width: 150px; height: 150px; }
+  .orbit-node {
+    width: 80px;
+    padding: 6px 4px;
+  }
+  .node-icon-box {
+    width: 24px;
+    height: 24px;
+    font-size: 0.78rem;
+  }
+  .node-title {
+    font-size: 0.56rem;
   }
 }
 
@@ -1842,6 +1973,15 @@ body.cursor-hover .custom-cursor-follower {
   }
   .footer-nav-col {
     align-items: center;
+    width: 100%;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+  }
+  .footer-links a {
+    font-size: 0.72rem;
   }
 }
 
@@ -1904,6 +2044,50 @@ body.cursor-hover .custom-cursor-follower {
 .story-slide.active {
   display: block;
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .story-tabs-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 6px 4px 14px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 24px;
+  }
+  .story-tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .story-tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+  .story-slides-container {
+    min-height: auto;
+  }
+  .story-title {
+    font-size: clamp(1.5rem, 5.5vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .story-lead {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+  .story-visual-frame {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 10;
+    margin: 16px auto 0;
+    border-radius: 8px;
+  }
 }
 
 /* ==========================================================================

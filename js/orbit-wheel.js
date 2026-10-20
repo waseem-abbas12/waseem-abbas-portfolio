@@ -52,9 +52,17 @@
     let startX = 0;
     let autoRotateSpeed = 0.22; // smooth degrees per frame
 
+    function getRadius() {
+      const w = window.innerWidth;
+      if (w <= 380) return 86;
+      if (w <= 480) return 98;
+      if (w <= 768) return 120;
+      return 210;
+    }
+
     // Position the 4 nodes evenly on the circle
     function positionNodes(angleOffset = 0) {
-      const radius = window.innerWidth <= 768 ? 140 : 210;
+      const radius = getRadius();
       const totalNodes = nodes.length;
 
       nodes.forEach((node, index) => {
@@ -66,6 +74,10 @@
         node.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) translateZ(${z}px)`;
       });
     }
+
+    window.addEventListener('resize', () => {
+      positionNodes(currentAngle);
+    });
 
     // Animation Loop
     function animateOrbit() {
@@ -95,11 +107,13 @@
       }
     });
 
-    // Touch Support for Mobile
+    // Touch Support for Mobile (Safe Touch Scrolling)
+    let startY = 0;
     orbitContainer.addEventListener('touchstart', (e) => {
       if (e.touches && e.touches.length > 0) {
         isDragging = true;
         startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
       }
     }, { passive: true });
 
@@ -110,11 +124,41 @@
     window.addEventListener('touchmove', (e) => {
       if (isDragging && e.touches && e.touches.length > 0) {
         const deltaX = e.touches[0].clientX - startX;
-        startX = e.touches[0].clientX;
-        currentAngle += deltaX * 0.45;
-        positionNodes(currentAngle);
+        const deltaY = e.touches[0].clientY - startY;
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 6) {
+          startX = e.touches[0].clientX;
+          currentAngle += deltaX * 0.4;
+          positionNodes(currentAngle);
+        }
       }
     }, { passive: true });
+
+    // Quick Mobile Selector Pills Connection
+    const orbitPills = document.querySelectorAll('.orbit-pill');
+    orbitPills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
+        const key = pill.getAttribute('data-service');
+        orbitPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        nodes.forEach(n => {
+          if (n.getAttribute('data-service') === key) {
+            n.classList.add('active');
+          } else {
+            n.classList.remove('active');
+          }
+        });
+
+        const nodeIndex = Array.from(nodes).findIndex(n => n.getAttribute('data-service') === key);
+        if (nodeIndex !== -1) {
+          currentAngle = (360 - (nodeIndex * (360 / nodes.length)) + 90) % 360;
+          positionNodes(currentAngle);
+        }
+
+        updateDetailCard(key);
+      });
+    });
 
     // Node Interaction
     nodes.forEach(node => {
@@ -162,6 +206,12 @@
           const detailLink = document.getElementById('orbitDetailLink');
           if (detailLink && data.url) {
             detailLink.href = data.url;
+          }
+
+          const activePill = document.querySelector(`.orbit-pill[data-service="${key}"]`);
+          if (activePill) {
+            document.querySelectorAll('.orbit-pill').forEach(p => p.classList.remove('active'));
+            activePill.classList.add('active');
           }
 
           detailCard.style.opacity = '1';

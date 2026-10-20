@@ -14,62 +14,108 @@
 
     gsap.registerPlugin(ScrollTrigger);
 
+    // Optimize ScrollTrigger for mobile browsers (prevent address bar resize jumps)
+    ScrollTrigger.config({
+      ignoreMobileResize: true,
+      autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load,resize'
+    });
+
     // =========================================================================
-    // 1. HORIZONTAL STORYTELLING SCROLL TIMELINE (PINNED)
+    // 1. HERO CINEMATIC ENTRANCE TIMELINE
     // =========================================================================
-    const storySection = document.querySelector('.storytelling-section');
-    const storyWrapper = document.querySelector('.storytelling-wrapper');
-    const chapters = gsap.utils.toArray('.story-chapter');
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    if (storySection && storyWrapper && chapters.length > 1) {
-      // Horizontal scroll animation
-      const scrollTween = gsap.to(storyWrapper, {
-        xPercent: -100 * (chapters.length - 1),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: storySection,
-          pin: true,
-          scrub: 1.1,
-          snap: 1 / (chapters.length - 1),
-          start: 'top top',
-          end: () => '+=' + (storyWrapper.scrollWidth - window.innerWidth),
-          invalidateOnRefresh: true
-        }
-      });
+    const heroCanvas = document.getElementById('torusCanvas');
+    const heroSubLabel = document.querySelector('.hero-sub-label');
+    const heroTitle = document.querySelector('.hero-main-title');
+    const heroTagline = document.getElementById('displayPortfolioTagline');
+    const heroTriangle = document.querySelector('.hero-indicator-triangle');
+    const heroPrompter = document.querySelector('.hero-scroll-prompter');
 
-      // Chapter-specific parallax depth triggers
-      chapters.forEach((chapter, i) => {
-        const content = chapter.querySelector('.story-content-side');
-        const visual = chapter.querySelector('.story-visual-side');
+    if (heroCanvas) {
+      heroTl.fromTo(heroCanvas,
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.2 }
+      );
+    }
 
-        if (content && visual) {
-          gsap.fromTo(visual,
-            { scale: 0.88, opacity: 0.6 },
-            {
-              scale: 1,
-              opacity: 1,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: chapter,
-                containerAnimation: scrollTween,
-                start: 'left center',
-                end: 'center center',
-                scrub: true
-              }
-            }
-          );
-        }
-      });
+    if (heroSubLabel) {
+      heroTl.fromTo(heroSubLabel,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7 },
+        '-=0.8'
+      );
+    }
+
+    if (heroTitle) {
+      heroTl.fromTo(heroTitle,
+        { y: 35, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.9 },
+        '-=0.6'
+      );
+    }
+
+    if (heroTriangle) {
+      heroTl.fromTo(heroTriangle,
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5 },
+        '-=0.5'
+      );
+    }
+
+    if (heroTagline) {
+      heroTl.fromTo(heroTagline,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7 },
+        '-=0.4'
+      );
+    }
+
+    if (heroPrompter) {
+      heroTl.fromTo(heroPrompter,
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6 },
+        '-=0.3'
+      );
     }
 
     // =========================================================================
-    // 2. HERO MULTI-LAYERED PARALLAX DEPTH
+    // 2. HERO SCROLL PARALLAX (Active on Both Desktop & Mobile)
     // =========================================================================
     const heroSection = document.getElementById('hero');
     const heroTypography = document.querySelector('.hero-typography-container');
     const heroGlow = document.querySelector('.hero-glow-underlay');
 
-    if (heroSection) {
+    if (heroSection && heroTypography) {
+      gsap.to(heroTypography, {
+        y: 60,
+        opacity: 0.2,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    }
+
+    if (heroSection && heroCanvas) {
+      gsap.to(heroCanvas, {
+        y: -40,
+        scale: 0.92,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    }
+
+    // Mouse-move Parallax for Desktop Pointers
+    if (window.matchMedia('(pointer: fine)').matches && heroSection) {
       window.addEventListener('mousemove', (e) => {
         const xPos = (e.clientX / window.innerWidth) - 0.5;
         const yPos = (e.clientY / window.innerHeight) - 0.5;
@@ -95,18 +141,68 @@
     }
 
     // =========================================================================
-    // 3. ENTRANCE FADE-UP ON SCROLL (Brand Cards & Showcase)
+    // 3. 3D ORBIT WHEEL SECTION ENTRANCE
+    // =========================================================================
+    const orbitSection = document.querySelector('.orbit-wheel-section');
+    const orbitStage = document.getElementById('orbitStageWrapper');
+    const orbitDetailCard = document.getElementById('orbitDetailCard');
+
+    if (orbitSection && orbitStage) {
+      gsap.from(orbitStage, {
+        opacity: 0,
+        scale: 0.88,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: orbitSection,
+          start: 'top 85%'
+        }
+      });
+    }
+
+    if (orbitSection && orbitDetailCard) {
+      gsap.from(orbitDetailCard, {
+        opacity: 0,
+        y: 35,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: orbitDetailCard,
+          start: 'top 92%'
+        }
+      });
+    }
+
+    // =========================================================================
+    // 4. STORYTELLING CHAPTER DECK REVEAL
+    // =========================================================================
+    const storySection = document.querySelector('.storytelling-section');
+    if (storySection) {
+      gsap.from('.story-deck-wrapper', {
+        opacity: 0,
+        y: 40,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: storySection,
+          start: 'top 85%'
+        }
+      });
+    }
+
+    // =========================================================================
+    // 5. BRAND CARDS & SHOWCASE ENTRANCE
     // =========================================================================
     gsap.utils.toArray('.brand-card').forEach((card, i) => {
       gsap.from(card, {
         opacity: 0,
-        y: 40,
-        duration: 0.8,
-        delay: i * 0.1,
+        y: 35,
+        duration: 0.7,
+        delay: i * 0.08,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: '.brands-section',
-          start: 'top 75%'
+          trigger: card,
+          start: 'top 88%'
         }
       });
     });
@@ -114,17 +210,33 @@
     gsap.utils.toArray('.showcase-card').forEach((card, i) => {
       gsap.from(card, {
         opacity: 0,
-        y: 45,
+        y: 40,
         duration: 0.8,
-        delay: i * 0.12,
+        delay: i * 0.1,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: '.showcase-section',
-          start: 'top 75%'
+          trigger: card,
+          start: 'top 88%'
         }
       });
     });
 
-    console.log('⚡ GSAP & ScrollTrigger Storytelling Matrix Active');
+    // Contact Box Reveal
+    const contactBox = document.querySelector('.contact-box-glass');
+    if (contactBox) {
+      gsap.from(contactBox, {
+        opacity: 0,
+        y: 45,
+        scale: 0.96,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: contactBox,
+          start: 'top 85%'
+        }
+      });
+    }
+
+    console.log('⚡ GSAP Mobile & Desktop Motion Engine Active');
   });
 })();
