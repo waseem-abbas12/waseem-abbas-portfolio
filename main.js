@@ -447,36 +447,50 @@ document.addEventListener('DOMContentLoaded', () => {
   let isSliding = false;
   const isSlideshow = document.body.classList.contains('slideshow-mode') && slides.length > 0;
 
-  function goToSlide(targetIdx) {
-    if (targetIdx < 0 || targetIdx >= slides.length) return;
+  function goToSlide(targetIdx, forceDirection) {
     if (isSliding) return;
+    if (!slides || slides.length === 0) return;
+
+    // Handle smooth wrapping / keynote loop matching reference video
+    if (targetIdx >= slides.length) {
+      targetIdx = 0;
+    } else if (targetIdx < 0) {
+      targetIdx = slides.length - 1;
+    }
+
+    if (targetIdx === currentSlide && document.querySelector('.presentation-slider-wrapper .section.slide-active')) return;
+
     isSliding = true;
+    const direction = forceDirection || (targetIdx > currentSlide ? 'down' : 'up');
+    const oldIdx = currentSlide;
+    currentSlide = targetIdx;
 
     slides.forEach((slide, i) => {
-      slide.classList.remove('slide-active', 'slide-prev');
-      if (i < targetIdx) {
-        slide.classList.add('slide-prev');
-      } else if (i === targetIdx) {
+      slide.classList.remove('slide-active', 'slide-up', 'slide-down', 'slide-prev');
+      if (i === targetIdx) {
         slide.classList.add('slide-active');
+      } else if (i < targetIdx) {
+        slide.classList.add('slide-up');
+      } else {
+        slide.classList.add('slide-down');
       }
     });
 
-    currentSlide = targetIdx;
     const currentSection = slides[targetIdx];
     const currentSectionId = currentSection ? currentSection.id : 'hero';
     const indexStr = String(targetIdx + 1).padStart(2, '0');
 
-    // Update active section step number (01 ⟶, 02 ⟶ ...)
+    // Update active section step number (01 ⟶, 02 ⟶, 03 ⟶)
     if (activeSectionNum) {
       activeSectionNum.textContent = indexStr;
     }
 
-    // Update scrubber dots & arc indicator
+    // Update scrubber dots & active ring
     scrubberDots.forEach((dot, idx) => {
       if (idx === targetIdx || dot.getAttribute('data-target') === currentSectionId) {
         dot.classList.add('active');
         if (scrubberIndicator) {
-          scrubberIndicator.style.transform = `translateY(${dot.offsetTop + 7}px)`;
+          scrubberIndicator.style.top = `${dot.offsetTop}px`;
         }
       } else {
         dot.classList.remove('active');
@@ -503,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Unlock transition after smooth animation
+    // Unlock transition after smooth animation completes
     setTimeout(() => {
       isSliding = false;
     }, 850);
@@ -517,13 +531,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastWheelTime = 0;
     window.addEventListener('wheel', (e) => {
       const now = Date.now();
-      if (now - lastWheelTime < 600) return;
-      if (Math.abs(e.deltaY) > 20) {
+      if (now - lastWheelTime < 650) return;
+      if (Math.abs(e.deltaY) > 15) {
         lastWheelTime = now;
         if (e.deltaY > 0) {
-          goToSlide(currentSlide + 1);
+          goToSlide(currentSlide + 1, 'down');
         } else {
-          goToSlide(currentSlide - 1);
+          goToSlide(currentSlide - 1, 'up');
         }
       }
     }, { passive: true });
@@ -532,16 +546,16 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('keydown', (e) => {
       if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
         e.preventDefault();
-        goToSlide(currentSlide + 1);
+        goToSlide(currentSlide + 1, 'down');
       } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
         e.preventDefault();
-        goToSlide(currentSlide - 1);
+        goToSlide(currentSlide - 1, 'up');
       } else if (e.key === 'Home') {
         e.preventDefault();
-        goToSlide(0);
+        goToSlide(0, 'up');
       } else if (e.key === 'End') {
         e.preventDefault();
-        goToSlide(slides.length - 1);
+        goToSlide(slides.length - 1, 'down');
       }
     });
 
@@ -557,11 +571,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.changedTouches && e.changedTouches.length > 0) {
         const touchEndY = e.changedTouches[0].clientY;
         const diffY = touchStartY - touchEndY;
-        if (Math.abs(diffY) > 50) {
+        if (Math.abs(diffY) > 40) {
           if (diffY > 0) {
-            goToSlide(currentSlide + 1);
+            goToSlide(currentSlide + 1, 'down');
           } else {
-            goToSlide(currentSlide - 1);
+            goToSlide(currentSlide - 1, 'up');
           }
         }
       }
@@ -571,7 +585,8 @@ document.addEventListener('DOMContentLoaded', () => {
     scrubberDots.forEach((dot, idx) => {
       dot.addEventListener('click', (e) => {
         e.preventDefault();
-        goToSlide(idx);
+        const dir = idx > currentSlide ? 'down' : 'up';
+        goToSlide(idx, dir);
       });
     });
 
