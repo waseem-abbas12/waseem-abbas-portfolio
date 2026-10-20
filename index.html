@@ -228,40 +228,40 @@
             </div>
 
             <!-- Floating 3D Node 01: Web Dev -->
-            <div class="orbit-node node-web active" data-service="web-dev">
+            <a href="web-development.html" class="orbit-node node-web active" data-service="web-dev" title="View Full-Stack Web Dev Details">
               <div class="node-icon-box">
                 <i class="fa-solid fa-code"></i>
               </div>
               <h4 class="node-title">Web Dev</h4>
               <span class="node-tag">Full-Stack &amp; WebGL</span>
-            </div>
+            </a>
 
             <!-- Floating 3D Node 02: Digital Marketing -->
-            <div class="orbit-node node-marketing" data-service="marketing">
+            <a href="digital-marketing.html" class="orbit-node node-marketing" data-service="marketing" title="View Digital Marketing Details">
               <div class="node-icon-box">
                 <i class="fa-solid fa-chart-line"></i>
               </div>
               <h4 class="node-title">Marketing</h4>
               <span class="node-tag">Paid Media &amp; ROAS</span>
-            </div>
+            </a>
 
             <!-- Floating 3D Node 03: AI Automation -->
-            <div class="orbit-node node-ai" data-service="ai-automation">
+            <a href="ai-automation.html" class="orbit-node node-ai" data-service="ai-automation" title="View AI Automation Details">
               <div class="node-icon-box">
                 <i class="fa-solid fa-microchip"></i>
               </div>
               <h4 class="node-title">AI Agents</h4>
               <span class="node-tag">Autonomous Systems</span>
-            </div>
+            </a>
 
             <!-- Floating 3D Node 04: Real Estate -->
-            <div class="orbit-node node-realestate" data-service="real-estate">
+            <a href="real-estate.html" class="orbit-node node-realestate" data-service="real-estate" title="View Real Estate Funnel Details">
               <div class="node-icon-box">
                 <i class="fa-solid fa-building"></i>
               </div>
               <h4 class="node-title">Real Estate</h4>
               <span class="node-tag">High-Ticket Funnels</span>
-            </div>
+            </a>
 
           </div>
         </div>
@@ -275,8 +275,8 @@
               High-velocity web applications engineered with Next.js, Three.js WebGL, and scalable cloud microservices. Built for sub-second Core Web Vitals and immersive 3D experiences.
             </p>
           </div>
-          <a href="#contact" class="gold-luxury-btn magnetic-btn">
-            <span>INQUIRE BRIEF</span>
+          <a href="web-development.html" class="gold-luxury-btn magnetic-btn" id="orbitDetailLink">
+            <span>EXPLORE FULL SERVICE DETAILS</span>
             <span>▸</span>
           </a>
         </div>
@@ -285,127 +285,172 @@
     </section>
 
     <!-- ========================================================
-         SECTION 03: HORIZONTAL STORYTELLING SCROLL TIMELINE (GSAP PINNED)
+         SECTION 03: INTERACTIVE CHAPTER EXPERIENCE DECK
          ======================================================== -->
-    <section class="storytelling-section" id="storytelling" data-section-index="03">
-      <div class="storytelling-wrapper">
+    <section class="section storytelling-section" id="storytelling" data-section-index="03">
+      <div class="section-topo-bg"></div>
+      
+      <div class="container">
+        <header class="orbit-section-header" style="margin-bottom: 36px;">
+          <span class="orbit-badge">THE ODYSSEY • 2021-2026</span>
+          <h2 class="orbit-title">Evolution of Systems &amp; Impact</h2>
+          <p class="orbit-subtitle">Explore the milestones of engineering, performance marketing, and autonomous AI architectures.</p>
+        </header>
 
-        <!-- Chapter 01: Foundations -->
-        <article class="story-chapter chapter-01">
-          <div class="chapter-bg-gradient"></div>
-          <div class="story-card-grid">
-            <div class="story-content-side">
-              <span class="story-year-pip"><i class="fa-solid fa-compass"></i> CHAPTER 01 • 2021-2022</span>
-              <h2 class="story-title">The Genesis of Code &amp; Visual Mastery</h2>
-              <p class="story-lead">
-                Started as an obsessive frontend craftsman, dissecting 3D geometry and shader physics to engineer digital web products that don't just load—they captivate.
-              </p>
-              <div class="story-metric-row">
-                <div class="story-metric-item">
-                  <span class="metric-val">100+</span>
-                  <span class="metric-lbl">Components Shipped</span>
+        <div class="story-deck-wrapper">
+          <nav class="story-tabs-nav" aria-label="Odyssey Chapters">
+            <button class="story-tab-btn active" data-chapter="1">
+              <span class="tab-num">01</span> GENESIS (2021-2022)
+            </button>
+            <button class="story-tab-btn" data-chapter="2">
+              <span class="tab-num">02</span> SYSTEMS (2023)
+            </button>
+            <button class="story-tab-btn" data-chapter="3">
+              <span class="tab-num">03</span> ACQUISITION (2024-2025)
+            </button>
+            <button class="story-tab-btn" data-chapter="4">
+              <span class="tab-num">04</span> AI ECOSYSTEM (2026+)
+            </button>
+          </nav>
+
+          <div class="story-slides-container">
+            <!-- Chapter 01: Foundations -->
+            <article class="story-slide active" data-chapter="1">
+              <div class="story-card-grid">
+                <div class="story-content-side">
+                  <span class="story-year-pip"><i class="fa-solid fa-compass"></i> CHAPTER 01 • 2021-2022</span>
+                  <h2 class="story-title">The Genesis of Code &amp; Visual Mastery</h2>
+                  <p class="story-lead">
+                    Started as an obsessive frontend craftsman, dissecting 3D geometry and shader physics to engineer digital web products that don't just load—they captivate.
+                  </p>
+                  <div class="story-metric-row">
+                    <div class="story-metric-item">
+                      <span class="metric-val">100+</span>
+                      <span class="metric-lbl">Components Shipped</span>
+                    </div>
+                    <div class="story-metric-item">
+                      <span class="metric-val">&lt; 0.8s</span>
+                      <span class="metric-lbl">Average FCP</span>
+                    </div>
+                  </div>
+                  <div style="margin-top: 24px;">
+                    <a href="web-development.html" class="ghost-luxury-btn" style="padding: 10px 20px; font-size: 0.72rem;">
+                      <span>VIEW WEB ARCHITECTURE</span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
                 </div>
-                <div class="story-metric-item">
-                  <span class="metric-val">&lt; 0.8s</span>
-                  <span class="metric-lbl">Average FCP</span>
+                <div class="story-visual-side">
+                  <div class="story-visual-frame interactive-tilt">
+                    <img src="assets/cropped/spheres_art.png" alt="Genesis Chapter 3D Spheres" class="story-img">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="story-visual-side">
-              <div class="story-visual-frame interactive-tilt">
-                <img src="assets/cropped/spheres_art.png" alt="Genesis Chapter 3D Spheres" class="story-img">
+            </article>
+
+            <!-- Chapter 02: Performance Scaling -->
+            <article class="story-slide" data-chapter="2">
+              <div class="story-card-grid">
+                <div class="story-content-side">
+                  <span class="story-year-pip"><i class="fa-solid fa-bolt"></i> CHAPTER 02 • 2023</span>
+                  <h2 class="story-title">High-Velocity Full-Stack Systems</h2>
+                  <p class="story-lead">
+                    Evolved into full-stack architecture: marrying custom backend APIs with conversion-engineered user interfaces to handle massive peak traffic without latency spikes.
+                  </p>
+                  <div class="story-metric-row">
+                    <div class="story-metric-item">
+                      <span class="metric-val">99.9%</span>
+                      <span class="metric-lbl">Uptime Architecture</span>
+                    </div>
+                    <div class="story-metric-item">
+                      <span class="metric-val">4.8x</span>
+                      <span class="metric-lbl">Average ROAS</span>
+                    </div>
+                  </div>
+                  <div style="margin-top: 24px;">
+                    <a href="digital-marketing.html" class="ghost-luxury-btn" style="padding: 10px 20px; font-size: 0.72rem;">
+                      <span>VIEW PERFORMANCE ENGINE</span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="story-visual-side">
+                  <div class="story-visual-frame interactive-tilt">
+                    <img src="assets/cropped/linea_art.png" alt="High-Velocity Architecture Artwork" class="story-img">
+                  </div>
+                </div>
               </div>
-            </div>
+            </article>
+
+            <!-- Chapter 03: Data & Acquisition -->
+            <article class="story-slide" data-chapter="3">
+              <div class="story-card-grid">
+                <div class="story-content-side">
+                  <span class="story-year-pip"><i class="fa-solid fa-bullseye"></i> CHAPTER 03 • 2024-2025</span>
+                  <h2 class="story-title">Omnichannel Growth &amp; Paid Funnels</h2>
+                  <p class="story-lead">
+                    Bridged the critical divide between software development and performance digital marketing—transforming high-end websites into relentless revenue generation machines.
+                  </p>
+                  <div class="story-metric-row">
+                    <div class="story-metric-item">
+                      <span class="metric-val">$1.2M+</span>
+                      <span class="metric-lbl">Client Ad Spend Managed</span>
+                    </div>
+                    <div class="story-metric-item">
+                      <span class="metric-val">+140%</span>
+                      <span class="metric-lbl">Conversion Lift</span>
+                    </div>
+                  </div>
+                  <div style="margin-top: 24px;">
+                    <a href="real-estate.html" class="ghost-luxury-btn" style="padding: 10px 20px; font-size: 0.72rem;">
+                      <span>VIEW HIGH-TICKET FUNNELS</span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="story-visual-side">
+                  <div class="story-visual-frame interactive-tilt">
+                    <img src="assets/cropped/stage_art.png" alt="Growth Keynote Stage" class="story-img">
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Chapter 04: The Future Matrix -->
+            <article class="story-slide" data-chapter="4">
+              <div class="story-card-grid">
+                <div class="story-content-side">
+                  <span class="story-year-pip"><i class="fa-solid fa-robot"></i> CHAPTER 04 • 2026 &amp; BEYOND</span>
+                  <h2 class="story-title">Autonomous AI Agency Ecosystem</h2>
+                  <p class="story-lead">
+                    Now deploying intelligent AI agents, interactive voice twins, and real estate acquisition engines that operate autonomously around the clock for global clients.
+                  </p>
+                  <div class="story-metric-row">
+                    <div class="story-metric-item">
+                      <span class="metric-val">10x</span>
+                      <span class="metric-lbl">Execution Velocity</span>
+                    </div>
+                    <div class="story-metric-item">
+                      <span class="metric-val">Global</span>
+                      <span class="metric-lbl">Enterprise Reach</span>
+                    </div>
+                  </div>
+                  <div style="margin-top: 24px;">
+                    <a href="ai-automation.html" class="ghost-luxury-btn" style="padding: 10px 20px; font-size: 0.72rem;">
+                      <span>VIEW AI AUTOMATION</span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="story-visual-side">
+                  <div class="story-visual-frame interactive-tilt">
+                    <img src="assets/cropped/escape_art.png" alt="AI Agency Ecosystem Artwork" class="story-img">
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
-
-        <!-- Chapter 02: Performance Scaling -->
-        <article class="story-chapter chapter-02">
-          <div class="chapter-bg-gradient"></div>
-          <div class="story-card-grid">
-            <div class="story-content-side">
-              <span class="story-year-pip"><i class="fa-solid fa-bolt"></i> CHAPTER 02 • 2023</span>
-              <h2 class="story-title">High-Velocity Full-Stack Systems</h2>
-              <p class="story-lead">
-                Evolved into full-stack architecture: marrying custom backend APIs with conversion-engineered user interfaces to handle massive peak traffic without latency spikes.
-              </p>
-              <div class="story-metric-row">
-                <div class="story-metric-item">
-                  <span class="metric-val">99.9%</span>
-                  <span class="metric-lbl">Uptime Architecture</span>
-                </div>
-                <div class="story-metric-item">
-                  <span class="metric-val">4.8x</span>
-                  <span class="metric-lbl">Average ROAS</span>
-                </div>
-              </div>
-            </div>
-            <div class="story-visual-side">
-              <div class="story-visual-frame interactive-tilt">
-                <img src="assets/cropped/linea_art.png" alt="High-Velocity Architecture Artwork" class="story-img">
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Chapter 03: Data & Acquisition -->
-        <article class="story-chapter chapter-03">
-          <div class="chapter-bg-gradient"></div>
-          <div class="story-card-grid">
-            <div class="story-content-side">
-              <span class="story-year-pip"><i class="fa-solid fa-bullseye"></i> CHAPTER 03 • 2024-2025</span>
-              <h2 class="story-title">Omnichannel Growth &amp; Paid Funnels</h2>
-              <p class="story-lead">
-                Bridged the critical divide between software development and performance digital marketing—transforming high-end websites into relentless revenue generation machines.
-              </p>
-              <div class="story-metric-row">
-                <div class="story-metric-item">
-                  <span class="metric-val">$1.2M+</span>
-                  <span class="metric-lbl">Client Ad Spend Managed</span>
-                </div>
-                <div class="story-metric-item">
-                  <span class="metric-val">+140%</span>
-                  <span class="metric-lbl">Conversion Lift</span>
-                </div>
-              </div>
-            </div>
-            <div class="story-visual-side">
-              <div class="story-visual-frame interactive-tilt">
-                <img src="assets/cropped/stage_art.png" alt="Growth Keynote Stage" class="story-img">
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Chapter 04: The Future Matrix -->
-        <article class="story-chapter chapter-04">
-          <div class="chapter-bg-gradient"></div>
-          <div class="story-card-grid">
-            <div class="story-content-side">
-              <span class="story-year-pip"><i class="fa-solid fa-robot"></i> CHAPTER 04 • 2026 &amp; BEYOND</span>
-              <h2 class="story-title">Autonomous AI Agency Ecosystem</h2>
-              <p class="story-lead">
-                Now deploying intelligent AI agents, interactive voice twins, and real estate acquisition engines that operate autonomously around the clock for global clients.
-              </p>
-              <div class="story-metric-row">
-                <div class="story-metric-item">
-                  <span class="metric-val">10x</span>
-                  <span class="metric-lbl">Execution Velocity</span>
-                </div>
-                <div class="story-metric-item">
-                  <span class="metric-val">Global</span>
-                  <span class="metric-lbl">Enterprise Reach</span>
-                </div>
-              </div>
-            </div>
-            <div class="story-visual-side">
-              <div class="story-visual-frame interactive-tilt">
-                <img src="assets/cropped/escape_art.png" alt="AI Agency Ecosystem Artwork" class="story-img">
-              </div>
-            </div>
-          </div>
-        </article>
-
+        </div>
       </div>
     </section>
 
@@ -664,13 +709,17 @@
       <!-- Right: Navigation Links & Copyright -->
       <div class="footer-nav-col">
         <nav class="footer-links">
-          <a href="about.html">About</a>
+          <a href="#hero">Home</a>
           <span class="footer-sep">/</span>
-          <a href="work.html">Work</a>
+          <a href="web-development.html">Web Dev</a>
           <span class="footer-sep">/</span>
-          <a href="services.html">Services</a>
+          <a href="digital-marketing.html">Marketing</a>
           <span class="footer-sep">/</span>
-          <a href="contact.html">Contacts</a>
+          <a href="ai-automation.html">AI Agents</a>
+          <span class="footer-sep">/</span>
+          <a href="real-estate.html">Real Estate</a>
+          <span class="footer-sep">/</span>
+          <a href="#contact">Contact</a>
         </nav>
         <p class="footer-copyright">
           &copy; 2026 WASEEM ABBAS. ALL RIGHTS RESERVED.
@@ -680,91 +729,9 @@
     </div>
   </footer>
 
-  <!-- ========================================================
-       INTERACTIVE TALKING AI AVATAR WIDGET (WASEEM ABBAS)
-       ======================================================== -->
-  <div class="ai-avatar-widget" id="aiAvatarWidget">
-    <div class="ai-avatar-badge" id="aiAvatarBadge" title="Talk to Waseem's AI Avatar">
-      <div class="avatar-photo-ring">
-        <img src="assets/waseem_portrait.jpg" alt="Waseem Abbas" class="avatar-face-thumb">
-        <span class="avatar-pulse-ring"></span>
-        <span class="avatar-status-dot online"></span>
-      </div>
-      <div class="avatar-info-pill">
-        <span class="avatar-pill-title"><i class="fa-solid fa-sparkles"></i> AI WASEEM</span>
-        <span class="avatar-pill-sub" id="avatarPillStatus">Virtual Host • Click to Talk</span>
-      </div>
-      <div class="avatar-soundwaves" id="avatarWaves">
-        <span></span><span></span><span></span><span></span>
-      </div>
-    </div>
-
-    <!-- Collapsible Voice Chat Drawer -->
-    <div class="ai-avatar-drawer" id="aiAvatarDrawer" aria-hidden="true">
-      <div class="drawer-header">
-        <div class="drawer-header-left">
-          <span class="ai-glow-orb"></span>
-          <div>
-            <div class="drawer-title">WASEEM ABBAS — AI TWIN</div>
-            <div class="drawer-status"><span class="green-dot"></span> Interactive Voice &amp; Web Agent</div>
-          </div>
-        </div>
-        <button class="drawer-close-btn" id="btnCloseDrawer" aria-label="Close Assistant">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <!-- Hologram Talking Stage -->
-      <div class="hologram-stage" id="hologramStage">
-        <div class="hologram-torus-ring"></div>
-        <div class="hologram-scanlines"></div>
-        <div class="hologram-avatar-circle">
-          <img src="assets/waseem_portrait.jpg" alt="Waseem Talking Avatar" class="hologram-face" id="hologramFace">
-          <div class="lip-sync-overlay" id="lipSyncGlow"></div>
-        </div>
-        <div class="hologram-subtitle-bar" id="avatarSubtitle">
-          "Assalam-o-Alaikum! I am Waseem Abbas's digital twin. Ask me anything about full-stack development, paid ads, or high-converting funnels!"
-        </div>
-      </div>
-
-      <!-- Quick Action Questions -->
-      <div class="drawer-prompts-row">
-        <button class="drawer-chip" data-prompt="What digital marketing services do you offer?">
-          <i class="fa-solid fa-bullhorn"></i> Paid Ads
-        </button>
-        <button class="drawer-chip" data-prompt="What tech stack do you use for development?">
-          <i class="fa-solid fa-code"></i> Tech Stack
-        </button>
-        <button class="drawer-chip" data-prompt="Can we schedule a call for my project?">
-          <i class="fa-solid fa-calendar-check"></i> Book Call
-        </button>
-      </div>
-
-      <!-- Interactive Chat Stream -->
-      <div class="drawer-chat-stream" id="drawerChatStream">
-        <div class="chat-msg ai">
-          <span class="msg-sender">AI Waseem:</span>
-          Welcome to my official portfolio! How can I help scale your brand or build your next application?
-        </div>
-      </div>
-
-      <!-- Input Bar -->
-      <form class="drawer-input-bar" id="drawerInputForm">
-        <button type="button" class="drawer-voice-btn" id="btnVoiceInput" title="Speak via Microphone">
-          <i class="fa-solid fa-microphone"></i>
-        </button>
-        <input type="text" id="avatarTextInput" class="drawer-text-field" placeholder="Ask Waseem Abbas anything..." autocomplete="off">
-        <button type="submit" class="drawer-send-btn" title="Send message">
-          <i class="fa-solid fa-paper-plane"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-
   <!-- Modular Scripts Execution -->
   <script src="js/orbit-wheel.js"></script>
   <script src="js/gsap-config.js"></script>
   <script src="js/app.js"></script>
-  <script src="ai-avatar.js"></script>
 </body>
 </html>

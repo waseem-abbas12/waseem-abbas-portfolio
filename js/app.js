@@ -350,5 +350,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // =========================================================================
+  // CHAPTER EXPERIENCE DECK TABS (The Odyssey)
+  // =========================================================================
+  const storyTabBtns = document.querySelectorAll('.story-tab-btn');
+  const storySlides = document.querySelectorAll('.story-slide');
+
+  if (storyTabBtns.length > 0 && storySlides.length > 0) {
+    storyTabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const chapter = btn.getAttribute('data-chapter');
+        storyTabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        storySlides.forEach(slide => {
+          if (slide.getAttribute('data-chapter') === chapter) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+
   console.log('⚡ Waseem Abbas Next-Gen 3D Motion Portfolio Initialized');
 });

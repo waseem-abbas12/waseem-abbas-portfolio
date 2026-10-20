@@ -10,25 +10,29 @@
       category: 'ENGINEERING & ARCHITECTURE',
       title: 'Full-Stack Web & WebGL Motion',
       desc: 'High-velocity web applications engineered with Next.js, Three.js WebGL, and scalable cloud microservices. Built for sub-second Core Web Vitals and immersive 3D experiences.',
-      tag: 'REACT • THREE.JS • NODE.JS • AWS'
+      tag: 'REACT • THREE.JS • NODE.JS • AWS',
+      url: 'web-development.html'
     },
     'marketing': {
       category: 'GROWTH & REVENUE',
       title: 'Performance Paid Acquisition',
       desc: 'Hyper-targeted Meta & Google Ads campaigns backed by deep data attribution and conversion rate optimization (CRO) generating 4.8x+ verified ROAS.',
-      tag: 'META ADS • GOOGLE ADS • CRO • FUNNELS'
+      tag: 'META ADS • GOOGLE ADS • CRO • FUNNELS',
+      url: 'digital-marketing.html'
     },
     'ai-automation': {
       category: 'FUTURE SYSTEMS',
       title: 'Agentic AI & Intelligent Workflows',
       desc: 'Autonomous AI agents, conversational voice hosts, and custom CRM automation pipelines designed to eliminate manual bottlenecks and scale client velocity 10x.',
-      tag: 'PYTHON • LLM APIS • AGENTS • N8N'
+      tag: 'PYTHON • LLM APIS • AGENTS • N8N',
+      url: 'ai-automation.html'
     },
     'real-estate': {
       category: 'HIGH-TICKET SPECIALIZATION',
       title: 'Real Estate & Luxury Funnel Architecture',
       desc: 'Bespoke high-ticket lead generation funnels, virtual tour integration, and programmatic investor acquisition systems tailored for enterprise developers.',
-      tag: 'HIGH-TICKET • LEAD FUNNELS • 3D TOURS'
+      tag: 'HIGH-TICKET • LEAD FUNNELS • 3D TOURS',
+      url: 'real-estate.html'
     }
   };
 
@@ -128,6 +132,12 @@
       });
 
       node.addEventListener('click', (e) => {
+        const targetUrl = node.getAttribute('href');
+        if (node.classList.contains('active') && targetUrl) {
+          // Navigates directly if already active
+          return;
+        }
+        e.preventDefault();
         e.stopPropagation();
         nodes.forEach(n => n.classList.remove('active'));
         node.classList.add('active');
@@ -148,6 +158,11 @@
           if (detailCategory) detailCategory.textContent = data.category;
           if (detailHeading) detailHeading.textContent = data.title;
           if (detailDesc) detailDesc.textContent = data.desc;
+
+          const detailLink = document.getElementById('orbitDetailLink');
+          if (detailLink && data.url) {
+            detailLink.href = data.url;
+          }
 
           detailCard.style.opacity = '1';
           detailCard.style.transform = 'translateY(0)';
