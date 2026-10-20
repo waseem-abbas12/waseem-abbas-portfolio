@@ -237,37 +237,107 @@ document.addEventListener('DOMContentLoaded', () => {
   initThree();
 
   // =========================================================================
-  // 3. MODE TOGGLE: CINEMA REEL vs. INTERACTIVE 3D
+  // 3. MODE TOGGLE: WASEEM PROFILE REEL vs. INTERACTIVE 3D
   // =========================================================================
-  const btnModeToggle = document.getElementById('btnModeToggle');
-  const cinemaVideo = document.getElementById('heroCinemaVideo');
-  let isVideoMode = false;
+  const btnModeProfile = document.getElementById('btnModeProfile');
+  const btnMode3D = document.getElementById('btnMode3D');
+  const heroWaseemCard = document.getElementById('heroWaseemCard');
+  const waseemMainVideo = document.getElementById('waseemMainVideo');
+  const btnToggleAudio = document.getElementById('btnToggleAudio');
+  const audioIcon = document.getElementById('audioIcon');
 
-  if (canvas) {
-    canvas.classList.add('active');
-  }
-  if (cinemaVideo) {
-    cinemaVideo.classList.remove('active');
-    cinemaVideo.pause();
+  const btnPlayFullscreenVideo = document.getElementById('btnPlayFullscreenVideo');
+  const videoReelModal = document.getElementById('videoReelModal');
+  const videoModalBackdrop = document.getElementById('videoModalBackdrop');
+  const btnCloseVideoModal = document.getElementById('btnCloseVideoModal');
+  const modalFullscreenVideo = document.getElementById('modalFullscreenVideo');
+
+  function switchToProfileMode() {
+    if (heroWaseemCard) heroWaseemCard.classList.add('active');
+    if (btnModeProfile) btnModeProfile.classList.add('active');
+    if (btnMode3D) btnMode3D.classList.remove('active');
+    if (waseemMainVideo) {
+      waseemMainVideo.play().catch(() => {});
+    }
   }
 
-  if (btnModeToggle && cinemaVideo && canvas) {
-    btnModeToggle.innerHTML = '<i class="fa-solid fa-film"></i> <span class="dock-text">Play Reel</span>';
-    btnModeToggle.addEventListener('click', () => {
-      isVideoMode = !isVideoMode;
-      if (isVideoMode) {
-        cinemaVideo.classList.add('active');
-        canvas.classList.remove('active');
-        cinemaVideo.play().catch(() => {});
-        btnModeToggle.innerHTML = '<i class="fa-solid fa-cube"></i> <span class="dock-text">3D Mode</span>';
-      } else {
-        cinemaVideo.classList.remove('active');
-        canvas.classList.add('active');
-        cinemaVideo.pause();
-        btnModeToggle.innerHTML = '<i class="fa-solid fa-film"></i> <span class="dock-text">Play Reel</span>';
+  function switchTo3DMode() {
+    if (heroWaseemCard) heroWaseemCard.classList.remove('active');
+    if (btnModeProfile) btnModeProfile.classList.remove('active');
+    if (btnMode3D) btnMode3D.classList.add('active');
+    if (waseemMainVideo) {
+      waseemMainVideo.pause();
+    }
+  }
+
+  if (btnModeProfile) {
+    btnModeProfile.addEventListener('click', switchToProfileMode);
+  }
+
+  if (btnMode3D) {
+    btnMode3D.addEventListener('click', switchTo3DMode);
+  }
+
+  // Audio Toggle Button
+  if (btnToggleAudio && waseemMainVideo) {
+    btnToggleAudio.addEventListener('click', (e) => {
+      e.stopPropagation();
+      waseemMainVideo.muted = !waseemMainVideo.muted;
+      if (audioIcon) {
+        if (waseemMainVideo.muted) {
+          audioIcon.className = 'fa-solid fa-volume-xmark';
+        } else {
+          audioIcon.className = 'fa-solid fa-volume-high';
+        }
       }
     });
   }
+
+  // Fullscreen Video Reel Modal
+  function openVideoModal() {
+    if (!videoReelModal) return;
+    if (waseemMainVideo) {
+      waseemMainVideo.pause();
+      if (modalFullscreenVideo) {
+        modalFullscreenVideo.currentTime = waseemMainVideo.currentTime || 0;
+      }
+    }
+    videoReelModal.classList.add('open');
+    videoReelModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (modalFullscreenVideo) {
+      modalFullscreenVideo.muted = false;
+      modalFullscreenVideo.play().catch(() => {});
+    }
+  }
+
+  function closeVideoModal() {
+    if (!videoReelModal) return;
+    videoReelModal.classList.remove('open');
+    videoReelModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (modalFullscreenVideo) {
+      modalFullscreenVideo.pause();
+    }
+    if (heroWaseemCard && heroWaseemCard.classList.contains('active') && waseemMainVideo) {
+      waseemMainVideo.play().catch(() => {});
+    }
+  }
+
+  if (btnPlayFullscreenVideo) {
+    btnPlayFullscreenVideo.addEventListener('click', openVideoModal);
+  }
+  if (btnCloseVideoModal) {
+    btnCloseVideoModal.addEventListener('click', closeVideoModal);
+  }
+  if (videoModalBackdrop) {
+    videoModalBackdrop.addEventListener('click', closeVideoModal);
+  }
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoReelModal && videoReelModal.classList.contains('open')) {
+      closeVideoModal();
+    }
+  });
 
   // =========================================================================
   // 4. THEME SWITCHER LOGIC (Midnight / Cyber Violet / Monochrome Crimson)

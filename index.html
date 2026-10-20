@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WASEEM ABBAS — Digital Marketer & Developer Portfolio</title>
-  <meta name="description" content="Official portfolio of Waseem Abbas: Full-Stack Developer & Performance Digital Marketer. Showcasing high-end web applications, growth systems, and creative technology.">
+  <meta name="description" content="Official portfolio of Waseem Abbas: Full-Stack Developer & Performance Digital Marketer. High-end web development, growth marketing, and scalable digital solutions.">
 
   <!-- Google Fonts: Cormorant Garamond, Cinzel, Plus Jakarta Sans, Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,10 +33,10 @@
   <div class="ambient-glow" id="ambientGlow"></div>
 
   <!-- ========================================================
-       TOP FLOATING UTILITY DOCK (Theme Switcher & Quick Tools)
+       TOP FLOATING UTILITY DOCK (Theme Switcher & Mode Toggles)
        ======================================================== -->
   <div class="floating-utility-dock">
-    <div class="dock-theme-group" title="Aesthetic Colorways">
+    <div class="dock-theme-group" title="Aesthetic Themes">
       <button class="dock-btn theme-pill active" data-set-theme="midnight" title="Midnight Navy Theme">
         <span class="dot-swatch swatch-midnight"></span>
       </button>
@@ -48,16 +48,20 @@
       </button>
     </div>
     <div class="dock-divider"></div>
-    <button class="dock-btn" id="btnModeToggle" title="Toggle between Interactive 3D & Cinema Reel">
-      <i class="fa-solid fa-cube"></i> <span class="dock-text">Play Reel</span>
+    <!-- Mode Toggles: Profile Video / 3D Canvas / Reel -->
+    <button class="dock-btn active" id="btnModeProfile" title="Watch Waseem Abbas Video Reel">
+      <i class="fa-solid fa-play"></i> <span class="dock-text">Waseem Reel</span>
     </button>
-    <button class="dock-btn" id="btnOpenCustomizer" title="Customize portfolio details">
+    <button class="dock-btn" id="btnMode3D" title="Switch to 3D WebGL Torus">
+      <i class="fa-solid fa-cube"></i> <span class="dock-text">3D WebGL</span>
+    </button>
+    <button class="dock-btn" id="btnOpenCustomizer" title="Customize portfolio info">
       <i class="fa-solid fa-user-pen"></i> <span class="dock-text">Edit Info</span>
     </button>
   </div>
 
   <!-- ========================================================
-       SIDE STEP INDICATOR & RIGHT SCRUBBER TRACK (Exact Dribbble Match)
+       SIDE STEP INDICATOR & RIGHT SCRUBBER TRACK
        ======================================================== -->
   <aside class="side-indicator-left">
     <span class="step-num" id="activeSectionNum">01</span>
@@ -80,7 +84,7 @@
 
   <!-- ========================================================
        SITE HEADER: WASEEM ABBAS SIGNATURE NAVIGATION
-       ABOUT • WORK • [CENTER WA MONOGRAM] • SKILLS • CONTACTS
+       ABOUT • WORK • [CENTER WA MONOGRAM] • EXPERIENCE • CONTACTS
        ======================================================== -->
   <header class="site-header" id="header">
     <div class="header-container">
@@ -98,12 +102,9 @@
       <!-- Center Logo: WA Monogram -->
       <a href="#hero" class="brand-monogram" aria-label="Waseem Abbas Portfolio Home">
         <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- W strokes -->
           <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Intersecting A -->
           <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M33 24 H46" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-          <!-- Dynamic gold horizon slash -->
           <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
         </svg>
       </a>
@@ -124,20 +125,38 @@
   <main>
 
     <!-- ========================================================
-         HERO SECTION: 3D KINETIC TORUS & WASEEM ABBAS IDENTITY
+         HERO SECTION: WASEEM ABBAS LIVE VIDEO & LUXURY 3D
          ======================================================== -->
     <section class="section hero-section" id="hero" data-section-index="01">
       <div class="hero-bg-canvas-wrapper" id="heroSculptureWrapper">
-        <!-- Interactive WebGL 3D Canvas -->
-        <canvas id="threeCanvas" class="hero-3d-canvas active"></canvas>
+        
+        <!-- 1. Waseem Abbas Real Profile Video Frame (Featured Centerpiece) -->
+        <div class="hero-waseem-video-card active" id="heroWaseemCard">
+          <div class="waseem-video-inner">
+            <video id="waseemMainVideo" class="waseem-video-player" playsinline muted loop autoplay poster="assets/waseem_portrait.jpg">
+              <source src="assets/waseem_profile.mp4" type="video/mp4">
+            </video>
+            <div class="waseem-video-overlay-gradient"></div>
+            <!-- Audio Unmute Toggle -->
+            <button class="waseem-audio-toggle" id="btnToggleAudio" title="Toggle Sound" aria-label="Toggle Audio">
+              <i class="fa-solid fa-volume-xmark" id="audioIcon"></i>
+            </button>
+            <div class="waseem-live-badge">
+              <span class="live-dot"></span> LIVE PROFILE REEL
+            </div>
+          </div>
+          <!-- Reflection Glass Border -->
+          <div class="waseem-video-glow"></div>
+        </div>
 
-        <!-- High-res Cinema Video Player (Alternative mode) -->
+        <!-- 2. Interactive WebGL 3D Canvas (Alternative Mode) -->
+        <canvas id="threeCanvas" class="hero-3d-canvas"></canvas>
+
+        <!-- 3. Original Dribbble Cinema Reel Video -->
         <video id="heroCinemaVideo" class="hero-centerpiece-video" playsinline muted loop preload="auto">
           <source src="assets/video.mp4" type="video/mp4">
         </video>
 
-        <!-- Fallback Still Image with 3D Depth Parallax -->
-        <img src="assets/still.png" alt="Generative 3D Kinetic Ring" class="hero-centerpiece-still" id="heroStillImg">
       </div>
 
       <!-- Hero Glow Underlay & Pedestal Shadow -->
@@ -145,7 +164,7 @@
       <div class="hero-pedestal-shadow"></div>
 
       <!-- Floating Kinetic Typography Overlay -->
-      <div class="hero-typography-container">
+      <div class="hero-typography-container hero-typography-with-video">
         <!-- Top Subtitle -->
         <div class="hero-sub-label">
           DIGITAL MARKETER & DEVELOPER
@@ -163,6 +182,13 @@
         <!-- Bottom Tagline -->
         <div class="hero-bottom-tagline" id="displayPortfolioTagline">
           FULL-STACK CODE • HIGH-PERFORMANCE GROWTH
+        </div>
+
+        <!-- Quick Video Interaction CTA -->
+        <div class="hero-actions-row">
+          <button class="hero-cta-pill" id="btnPlayFullscreenVideo">
+            <i class="fa-solid fa-expand"></i> View Full Video Reel
+          </button>
         </div>
       </div>
 
@@ -249,7 +275,7 @@
     </section>
 
     <!-- ========================================================
-         BOUNDLESS REACH: CODE & GROWTH (STAGE PRODUCTION / INSTALLATION)
+         BOUNDLESS REACH: CODE & GROWTH (STAGE PRODUCTION WITH WASEEM ON SCREEN)
          ======================================================== -->
     <section class="section boundless-section" id="boundless" data-section-index="03">
       <div class="section-topo-bg"></div>
@@ -258,19 +284,25 @@
         <!-- Section Category Header -->
         <div class="section-tag-row">
           <span class="tag-arrow">▸</span>
-          <span class="section-category-label">PORTFOLIO & EXPERTISE</span>
+          <span class="section-category-label">PORTFOLIO & KEYNOTE</span>
         </div>
 
-        <!-- Central Stage Production Visual Art with WA Monogram -->
+        <!-- Central Stage Production with WASEEM'S VIDEO ON THE MAIN STADIUM LED SCREEN -->
         <div class="stage-mockup-wrapper interactive-tilt" id="stageWrapper">
           <div class="stage-frame-border">
-            <img src="assets/cropped/stage_art.png" alt="Waseem Abbas Stage LED Visuals" class="stage-mockup-img">
-            <div class="stage-light-sweep"></div>
-            <!-- Stage Live Screen Overlay with WASEEM ABBAS -->
-            <div class="stage-screen-custom-brand">
-              <span class="stage-sub-brand">WASEEM ABBAS</span>
-              <span class="stage-role-brand">DIGITAL MARKETER & DEVELOPER</span>
+            <img src="assets/cropped/stage_art.png" alt="Waseem Abbas Keynote Stage" class="stage-mockup-img">
+            
+            <!-- Video Embedded Perfectly in the Concert LED Screen -->
+            <div class="stage-screen-video-holder">
+              <video class="stage-screen-video" autoplay playsinline muted loop>
+                <source src="assets/waseem_profile.mp4" type="video/mp4">
+              </video>
+              <div class="stage-screen-overlay-tag">
+                <span>WASEEM ABBAS • LIVE</span>
+              </div>
             </div>
+
+            <div class="stage-light-sweep"></div>
             <button class="stage-play-badge" aria-label="Play Reel" id="btnPlayStageReel">
               <i class="fa-solid fa-play"></i>
             </button>
@@ -469,7 +501,7 @@
   </main>
 
   <!-- ========================================================
-       SITE FOOTER (Exact Dribbble Match Customized for Waseem Abbas)
+       SITE FOOTER
        ======================================================== -->
   <footer class="site-footer">
     <div class="container footer-container">
@@ -522,6 +554,25 @@
   </footer>
 
   <!-- ========================================================
+       FULLSCREEN VIDEO MODAL (WASEEM'S REEL)
+       ======================================================== -->
+  <div class="video-reel-modal" id="videoReelModal" aria-hidden="true">
+    <div class="modal-backdrop" id="videoModalBackdrop"></div>
+    <div class="video-modal-dialog">
+      <button class="modal-close-btn" id="btnCloseVideoModal" aria-label="Close video">✕</button>
+      <div class="video-modal-inner">
+        <video id="modalFullscreenVideo" class="modal-fullscreen-player" controls playsinline>
+          <source src="assets/waseem_profile.mp4" type="video/mp4">
+        </video>
+        <div class="video-modal-caption">
+          <h3>Waseem Abbas — Profile & Vision</h3>
+          <p>Full-Stack Web Developer & High-Performance Digital Marketer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
        PROJECT LIGHTBOX MODAL
        ======================================================== -->
   <div class="project-modal" id="projectModal" aria-hidden="true" role="dialog">
@@ -567,7 +618,7 @@
       </div>
       <div class="form-group">
         <label for="inputTagline">Role / Tagline</label>
-        <input type="text" id="inputTagline" class="drawer-input" value="DIGITAL MARKETER & DEVELOPER">
+        <input type="text" id="inputTagline" class="drawer-input" value="FULL-STACK CODE • HIGH-PERFORMANCE GROWTH">
       </div>
       <div class="form-group">
         <label for="inputBio">Bio / Statement</label>
