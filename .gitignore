@@ -6,3 +6,5 @@ node_modules/
 *.tmp
 
 .vercel
+
+ref_analysis_frames/

@@ -20,7 +20,7 @@
   <!-- Three.js 3D Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body class="slideshow-mode">
+<body class="portfolio-page">
 
   <!-- Custom Glow Cursor -->
   <div class="custom-cursor" id="cursor"></div>
@@ -45,9 +45,13 @@
       <div class="scrubber-active-ring" id="scrubberIndicator">
         <div class="ring-arc"></div>
       </div>
-      <a href="#hero" class="scrubber-dot active" data-target="hero" data-index="0" title="01 — Torus Hero"></a>
-      <a href="#skills" class="scrubber-dot" data-target="skills" data-index="1" title="02 — Brand Cards"></a>
-      <a href="#odyssey" class="scrubber-dot" data-target="odyssey" data-index="2" title="03 — Art Unbound Odyssey"></a>
+      <a href="#hero" class="scrubber-dot active" data-target="hero" title="01 — Torus Hero"></a>
+      <a href="#skills" class="scrubber-dot" data-target="skills" title="02 — Expertise Pillars"></a>
+      <a href="#boundless" class="scrubber-dot" data-target="boundless" title="03 — Boundless Keynote"></a>
+      <a href="#odyssey" class="scrubber-dot" data-target="odyssey" title="04 — Growth Odyssey"></a>
+      <a href="#events" class="scrubber-dot" data-target="events" title="05 — Client Collaboration"></a>
+      <a href="#showcase" class="scrubber-dot" data-target="showcase" title="06 — Case Studies"></a>
+      <a href="#contact" class="scrubber-dot" data-target="contact" title="07 — Contact"></a>
     </div>
   </aside>
 
@@ -58,17 +62,21 @@
   <header class="site-header" id="header">
     <div class="header-container">
       <nav class="nav-links left-nav">
-        <a href="about.html" class="nav-item">
-          <span class="nav-text">ABOUT</span>
+        <a href="#hero" class="nav-item active">
+          <span class="nav-text">HOME</span>
         </a>
         <span class="nav-dot-sep">•</span>
-        <a href="work.html" class="nav-item">
-          <span class="nav-text">WORK</span>
+        <a href="#skills" class="nav-item">
+          <span class="nav-text">EXPERTISE</span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="#boundless" class="nav-item">
+          <span class="nav-text">KEYNOTE</span>
         </a>
       </nav>
 
       <!-- Center Logo: WA Monogram -->
-      <a href="index.html" class="brand-monogram" aria-label="Waseem Abbas Portfolio Home">
+      <a href="#hero" class="brand-monogram" aria-label="Waseem Abbas Portfolio Home">
         <svg class="wa-monogram-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -78,64 +86,118 @@
       </a>
 
       <nav class="nav-links right-nav">
-        <a href="services.html" class="nav-item">
-          <span class="nav-text">SERVICES</span>
+        <a href="#odyssey" class="nav-item">
+          <span class="nav-text">ODYSSEY</span>
         </a>
         <span class="nav-dot-sep">•</span>
-        <a href="contact.html" class="nav-item">
+        <a href="#showcase" class="nav-item">
+          <span class="nav-text">WORK</span>
+        </a>
+        <span class="nav-dot-sep">•</span>
+        <a href="#contact" class="nav-item">
           <span class="nav-text">CONTACTS</span>
         </a>
       </nav>
+
+      <!-- Mobile Menu Toggle Button (Visible on mobile only) -->
+      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <!-- MAIN VIEWPORT CONTENT: FULL-SCREEN DRIBBLE SLIDER WRAPPER -->
-  <main class="presentation-slider-wrapper" id="presentationWrapper">
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-brand">WASEEM ABBAS</span>
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close Navigation Menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav-menu">
+        <a href="#hero" class="mobile-nav-link active" data-target="hero">
+          <span class="m-step">01</span>
+          <span class="m-title">HOME</span>
+        </a>
+        <a href="#skills" class="mobile-nav-link" data-target="skills">
+          <span class="m-step">02</span>
+          <span class="m-title">EXPERTISE</span>
+        </a>
+        <a href="#boundless" class="mobile-nav-link" data-target="boundless">
+          <span class="m-step">03</span>
+          <span class="m-title">KEYNOTE</span>
+        </a>
+        <a href="#odyssey" class="mobile-nav-link" data-target="odyssey">
+          <span class="m-step">04</span>
+          <span class="m-title">ODYSSEY</span>
+        </a>
+        <a href="#events" class="mobile-nav-link" data-target="events">
+          <span class="m-step">05</span>
+          <span class="m-title">COLLABORATION</span>
+        </a>
+        <a href="#showcase" class="mobile-nav-link" data-target="showcase">
+          <span class="m-step">06</span>
+          <span class="m-title">WORK</span>
+        </a>
+        <a href="#contact" class="mobile-nav-link" data-target="contact">
+          <span class="m-step">07</span>
+          <span class="m-title">CONTACTS</span>
+        </a>
+      </nav>
+      <div class="mobile-nav-footer">
+        <a href="about.html">About Waseem</a>
+        <a href="services.html">Services &amp; ROI</a>
+        <a href="work.html">Case Studies</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN VIEWPORT CONTENT: CONTINUOUS LUXURY LANDING PAGE (Dribbble Shot 25949833) -->
+  <main class="site-main" id="mainContent">
 
     <!-- ========================================================
-         HERO SECTION: 100% DRIBBLE 3D TORUS SCULPTURE & KINETIC TYPOGRAPHY
+         SECTION 01: HERO — 3D KINETIC TORUS SCULPTURE & TYPOGRAPHY
          ======================================================== -->
-    <section class="section hero-section slide-active" id="hero" data-section-index="01">
+    <section class="section hero-section" id="hero" data-section-index="01">
       <div class="hero-bg-canvas-wrapper" id="heroSculptureWrapper">
-        
-        <!-- 1. Pristine 3D Torus Canvas (Zero Double UI, Zero Simon Sparks, Pure Dribbble Torus in 60fps) -->
         <canvas id="torusCanvas" class="hero-torus-canvas" width="800" height="600"></canvas>
-
-        <!-- 2. Interactive WebGL Particles & Stardust Layer (No conflicting knot geometry!) -->
         <canvas id="threeCanvas" class="hero-3d-canvas"></canvas>
-
       </div>
 
-      <!-- Hero Glow Underlay & Pedestal Shadow -->
       <div class="hero-glow-underlay"></div>
       <div class="hero-pedestal-shadow"></div>
 
-      <!-- Floating Kinetic Typography Overlay (Faithfully matching Dribbble Shot 25949833) -->
+      <!-- Floating Kinetic Typography Overlay -->
       <div class="hero-typography-container">
-        <!-- Top Subtitle -->
-        <div class="hero-sub-label">
-          DIGITAL ARCHITECT
-        </div>
+        <div class="hero-sub-label">DIGITAL ARCHITECT</div>
 
-        <!-- Master Title: WASEEM ABBAS -->
         <h1 class="hero-main-title" id="displayPortfolioName">
           <span class="title-word first-word">WASEEM</span>
           <span class="title-word last-word">ABBAS</span>
         </h1>
 
-        <!-- Directional Indicator Marker -->
         <div class="hero-indicator-triangle">▲</div>
 
-        <!-- Bottom Tagline -->
         <div class="hero-bottom-tagline" id="displayPortfolioTagline">
           GENERATIVE DESIGN
         </div>
       </div>
+
+      <!-- Scroll Prompter -->
+      <a href="#skills" class="hero-scroll-prompter" aria-label="Explore Expertise">
+        <span class="scroll-mouse">
+          <span class="scroll-wheel"></span>
+        </span>
+        <span class="scroll-text">EXPLORE WORK</span>
+      </a>
     </section>
 
     <!-- ========================================================
-         SLIDE 02: BRAND CARDS GRID (100% MATCHING DRIBBBLE REFERENCE)
-         STUDIO 74 • GLOSTER • LINEA VOL. 1 (FEATURED) • CUBE 2.0
+         SECTION 02: BRAND CARDS GRID (STUDIO 74, GLOSTER, LINEA, CUBE)
          ======================================================== -->
     <section class="section brands-section" id="skills" data-section-index="02">
       <div class="section-topo-bg"></div>
@@ -205,10 +267,67 @@
     </section>
 
     <!-- ========================================================
-         SLIDE 03: ART UNBOUND ODYSSEY (100% MATCHING DRIBBBLE REFERENCE)
-         GOLD-FRAMED SPHERES ARTWORK & HIGH-CONTRAST TYPOGRAPHY
+         SECTION 03: BOUNDLESS REACH — KEYNOTE & CODE DISCOVERY STAGE
          ======================================================== -->
-    <section class="section odyssey-section" id="odyssey" data-section-index="03">
+    <section class="section boundless-section" id="boundless" data-section-index="03">
+      <div class="section-topo-bg"></div>
+
+      <div class="container boundless-container">
+        <!-- Section Category Header -->
+        <div class="section-tag-row">
+          <span class="tag-arrow">▸</span>
+          <span class="section-category-label">PORTFOLIO & KEYNOTE</span>
+        </div>
+
+        <!-- Central Stage Production with LED Monitor Display -->
+        <div class="stage-mockup-wrapper interactive-tilt" id="stageWrapper">
+          <div class="stage-frame-border">
+            <img src="assets/cropped/stage_art.png" alt="Waseem Abbas Keynote Stage" class="stage-mockup-img">
+            
+            <!-- Cyber Visualizer in Concert Stage LED Monitor -->
+            <div class="stage-screen-video-holder">
+              <div class="stage-screen-cyber-display">
+                <div class="stage-cyber-grid"></div>
+                <div class="stage-cyber-hud-center">
+                  <div class="stage-cyber-logo">WA</div>
+                  <div class="stage-cyber-title">CODE & GROWTH KEYNOTE</div>
+                  <div class="stage-cyber-spectrum">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="stage-screen-overlay-tag">
+                <span>WASEEM ABBAS • KEYNOTE</span>
+              </div>
+            </div>
+
+            <div class="stage-light-sweep"></div>
+          </div>
+        </div>
+
+        <!-- Editorial Content Description -->
+        <div class="boundless-text-block">
+          <span class="artist-sub-tag" id="displayArtistSub">WASEEM ABBAS</span>
+          <h2 class="boundless-heading">Boundless Reach: Code & Growth Architecture</h2>
+          <p class="boundless-paragraph" id="displayBoundlessBio">
+            As a hybrid Full-Stack Developer and Performance Digital Marketer, I merge high-velocity web engineering with aggressive, data-backed growth marketing. I don't just build lightning-fast web applications—I architect the acquisition engines, search authority, and conversion funnels that scale businesses exponentially.
+          </p>
+
+          <div class="btn-wrap">
+            <a href="#showcase" class="gold-luxury-btn magnetic-btn" id="btnBoundlessReadMore">
+              <span class="btn-text">EXPLORE PROJECTS</span>
+              <span class="btn-arrow">▸</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 04: ART UNBOUND ODYSSEY (GOLD FOIL FRAME & COMPASS)
+         ======================================================== -->
+    <section class="section odyssey-section" id="odyssey" data-section-index="04">
       <div class="section-topo-bg"></div>
       <div class="odyssey-wireframe-guide"></div>
 
@@ -225,7 +344,7 @@
             </div>
           </div>
 
-          <!-- Right Side: Dark Navy Card with Compass Dial & Stacked Serif Typography -->
+          <!-- Right Side: Dark Navy Content with Compass Dial & Typography -->
           <div class="odyssey-content-card">
             <div class="odyssey-card-inner">
               <div class="compass-dial-wrapper">
@@ -248,6 +367,126 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 05: LIVE EVENTS / CLIENT COLLABORATION BANNER
+         ======================================================== -->
+    <section class="section live-events-section" id="events" data-section-index="05">
+      <div class="container live-events-container">
+        <div class="events-cta-row">
+          <div class="events-tag-col">
+            <span class="tag-arrow">▸</span>
+            <span class="events-tag-label">CLIENT COLLABORATION</span>
+          </div>
+
+          <div class="events-heading-col">
+            <h3 class="events-lead-text">Planning your next project or growth campaign?</h3>
+          </div>
+
+          <div class="events-action-col">
+            <a href="#contact" class="gold-luxury-btn magnetic-btn">
+              <span class="btn-text">HIRE WASEEM</span>
+              <span class="btn-arrow">▸</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 06: TRIPLE PROJECT SHOWCASE (TNQ, DREAMS, ESCAPE)
+         ======================================================== -->
+    <section class="section showcase-section" id="showcase" data-section-index="06">
+      <div class="section-topo-bg"></div>
+
+      <div class="container showcase-container">
+        <div class="showcase-cards-grid">
+
+          <!-- Card 1: E-COMMERCE GROWTH PLATFORM -->
+          <article class="showcase-card card-tnq interactive-tilt" data-project="tnq">
+            <div class="showcase-card-inner">
+              <div class="showcase-media-box">
+                <img src="assets/cropped/tnq_art.png" alt="E-Commerce Scale Engine" class="showcase-img">
+                <div class="media-hover-overlay">
+                  <span class="overlay-zoom-icon"><i class="fa-solid fa-expand"></i> Case Study</span>
+                </div>
+              </div>
+              <footer class="showcase-footer-bar">
+                <span class="showcase-project-name">TNQ PROJECT</span>
+                <span class="showcase-arrow">▸</span>
+              </footer>
+            </div>
+          </article>
+
+          <!-- Card 2: SAAS WEB APP & SEO -->
+          <article class="showcase-card card-dreams interactive-tilt" data-project="dreams">
+            <div class="showcase-card-inner">
+              <div class="showcase-media-box">
+                <img src="assets/cropped/dreams_art.png" alt="SaaS Web App & SEO" class="showcase-img">
+                <div class="media-hover-overlay">
+                  <span class="overlay-zoom-icon"><i class="fa-solid fa-expand"></i> Case Study</span>
+                </div>
+              </div>
+              <footer class="showcase-footer-bar">
+                <span class="showcase-project-name">DREAMS</span>
+                <span class="showcase-arrow">▸</span>
+              </footer>
+            </div>
+          </article>
+
+          <!-- Card 3: OMNICHANNEL MARKETING CAMPAIGN -->
+          <article class="showcase-card card-escape interactive-tilt" data-project="escape">
+            <div class="showcase-card-inner">
+              <div class="showcase-media-box">
+                <img src="assets/cropped/escape_art.png" alt="Omnichannel Launch" class="showcase-img">
+                <div class="media-hover-overlay">
+                  <span class="overlay-zoom-icon"><i class="fa-solid fa-expand"></i> Case Study</span>
+                </div>
+              </div>
+              <footer class="showcase-footer-bar">
+                <span class="showcase-project-name">ESCAPE</span>
+                <span class="showcase-arrow">▸</span>
+              </footer>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 07: CONTACT SECTION (GET IN TOUCH WITH WASEEM)
+         ======================================================== -->
+    <section class="section contact-section" id="contact" data-section-index="07">
+      <div class="container contact-container">
+        <div class="contact-box-glass">
+          <span class="contact-sup-tag">LET'S CONNECT</span>
+          <h2 class="contact-title">Let’s Scale Your Brand & Code Your Vision</h2>
+          <p class="contact-desc">Available for full-stack development, paid acquisition campaigns, CRO audits, and growth consulting.</p>
+          
+          <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); alert('Thank you, Waseem Abbas has received your inquiry and will respond shortly!');">
+            <div class="form-row">
+              <input type="text" class="input-glass" placeholder="Your Name" required>
+              <input type="email" class="input-glass" placeholder="Your Email" required>
+            </div>
+            <div class="form-row">
+              <select class="input-glass" style="cursor: pointer; background: rgba(10, 20, 40, 0.9);">
+                <option value="both">Full-Stack Development & Digital Marketing</option>
+                <option value="dev">Full-Stack Web Development Only</option>
+                <option value="marketing">Digital Marketing / Paid Media (Meta & Google Ads)</option>
+                <option value="seo">SEO & Conversion Optimization (CRO)</option>
+              </select>
+              <input type="text" class="input-glass" placeholder="Budget / Timeline">
+            </div>
+            <textarea class="input-glass textarea-glass" placeholder="Tell me about your project, target audience, or current goals..." rows="4" required></textarea>
+            <button type="submit" class="gold-luxury-btn full-width magnetic-btn">
+              <span class="btn-text">SEND MESSAGE TO WASEEM</span>
+              <span class="btn-arrow">▸</span>
+            </button>
+          </form>
         </div>
       </div>
     </section>
@@ -278,119 +517,115 @@
 
       <!-- Center: Bordered Emblem with WA Monogram -->
       <div class="footer-logo-col">
-        <div class="footer-logo-emblem">
-          <svg class="wa-footer-svg" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 10 L13 34 L21 18 L29 34 L37 10" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M29 34 L39 8 L49 34" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M33 24 H46" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            <line x1="17" y1="24" x2="27" y2="24" stroke="var(--accent-gold)" stroke-width="3.5" stroke-linecap="round"/>
-          </svg>
-        </div>
+        <a href="#hero" class="footer-emblem-box" aria-label="Back to Top">
+          <span class="footer-emblem-text">WA</span>
+        </a>
       </div>
 
-      <!-- Right: Footer Nav & Copyright -->
-      <div class="footer-meta-col">
-        <nav class="footer-nav">
-          <a href="#hero" class="footer-nav-link">About</a>
-          <span class="footer-nav-slash">/</span>
-          <a href="#skills" class="footer-nav-link">Work</a>
-          <span class="footer-nav-slash">/</span>
-          <a href="#showcase" class="footer-nav-link">Experience</a>
-          <span class="footer-nav-slash">/</span>
-          <a href="#contact" class="footer-nav-link">Contacts</a>
+      <!-- Right: Navigation Links & Copyright -->
+      <div class="footer-nav-col">
+        <nav class="footer-links">
+          <a href="about.html">About</a>
+          <span class="footer-sep">/</span>
+          <a href="work.html">Work</a>
+          <span class="footer-sep">/</span>
+          <a href="services.html">Services</a>
+          <span class="footer-sep">/</span>
+          <a href="contact.html">Contacts</a>
         </nav>
-        <div class="footer-copyright" id="displayCopyright">
-          2026 COPYRIGHT &nbsp;|&nbsp; WASEEM ABBAS &nbsp;|&nbsp; ALL RIGHTS RESERVED
-        </div>
+        <p class="footer-copyright">
+          &copy; 2026 WASEEM ABBAS. ALL RIGHTS RESERVED.
+        </p>
       </div>
 
     </div>
   </footer>
 
   <!-- ========================================================
-       FULLSCREEN VIDEO MODAL (WASEEM'S REEL)
+       INTERACTIVE TALKING AI AVATAR WIDGET (WASEEM ABBAS)
        ======================================================== -->
-  <div class="video-reel-modal" id="videoReelModal" aria-hidden="true">
-    <div class="modal-backdrop" id="videoModalBackdrop"></div>
-    <div class="video-modal-dialog">
-      <button class="modal-close-btn" id="btnCloseVideoModal" aria-label="Close video">✕</button>
-      <div class="video-modal-inner">
-        <video id="modalFullscreenVideo" class="modal-fullscreen-player" controls playsinline>
-          <source src="assets/waseem_profile.mp4" type="video/mp4">
-        </video>
-        <div class="video-modal-caption">
-          <h3>Waseem Abbas — Profile & Vision</h3>
-          <p>Full-Stack Web Developer & High-Performance Digital Marketer</p>
-        </div>
+  <div class="ai-avatar-widget" id="aiAvatarWidget">
+    <div class="ai-avatar-badge" id="aiAvatarBadge" title="Talk to Waseem's AI Avatar">
+      <div class="avatar-photo-ring">
+        <img src="assets/waseem_portrait.jpg" alt="Waseem Abbas" class="avatar-face-thumb">
+        <span class="avatar-pulse-ring"></span>
+        <span class="avatar-status-dot online"></span>
+      </div>
+      <div class="avatar-info-pill">
+        <span class="avatar-pill-title"><i class="fa-solid fa-sparkles"></i> AI WASEEM</span>
+        <span class="avatar-pill-sub" id="avatarPillStatus">Virtual Host • Click to Talk</span>
+      </div>
+      <div class="avatar-soundwaves" id="avatarWaves">
+        <span></span><span></span><span></span><span></span>
       </div>
     </div>
-  </div>
 
-  <!-- ========================================================
-       PROJECT LIGHTBOX MODAL
-       ======================================================== -->
-  <div class="project-modal" id="projectModal" aria-hidden="true" role="dialog">
-    <div class="modal-backdrop" id="modalBackdrop"></div>
-    <div class="modal-dialog">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">✕</button>
-      <div class="modal-content">
-        <div class="modal-media-wrap">
-          <img src="" alt="Case Study Visual" class="modal-main-img" id="modalImg">
-        </div>
-        <div class="modal-info-wrap">
-          <span class="modal-category" id="modalCategory">CASE STUDY</span>
-          <h2 class="modal-title" id="modalTitle">Project Title</h2>
-          <p class="modal-desc" id="modalDesc">Detailed breakdown of development stack and growth marketing metrics.</p>
-          <div class="modal-tags" id="modalTags">
-            <span class="modal-tag">React / Node.js</span>
-            <span class="modal-tag">Meta Ads & ROAS</span>
-            <span class="modal-tag">Technical SEO</span>
+    <!-- Collapsible Voice Chat Drawer -->
+    <div class="ai-avatar-drawer" id="aiAvatarDrawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-header-left">
+          <span class="ai-glow-orb"></span>
+          <div>
+            <div class="drawer-title">WASEEM ABBAS — AI TWIN</div>
+            <div class="drawer-status"><span class="green-dot"></span> Interactive Voice & Web Agent</div>
           </div>
         </div>
+        <button class="drawer-close-btn" id="btnCloseDrawer" aria-label="Close Assistant">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
+
+      <!-- Hologram Talking Stage -->
+      <div class="hologram-stage" id="hologramStage">
+        <div class="hologram-torus-ring"></div>
+        <div class="hologram-scanlines"></div>
+        <div class="hologram-avatar-circle">
+          <img src="assets/waseem_portrait.jpg" alt="Waseem Talking Avatar" class="hologram-face" id="hologramFace">
+          <div class="lip-sync-overlay" id="lipSyncGlow"></div>
+        </div>
+        <div class="hologram-subtitle-bar" id="avatarSubtitle">
+          "Assalam-o-Alaikum! I am Waseem Abbas's digital twin. Ask me anything about full-stack development, paid ads, or high-converting funnels!"
+        </div>
+      </div>
+
+      <!-- Quick Action Questions -->
+      <div class="drawer-prompts-row">
+        <button class="drawer-chip" data-prompt="What digital marketing services do you offer?">
+          <i class="fa-solid fa-bullhorn"></i> Paid Ads
+        </button>
+        <button class="drawer-chip" data-prompt="What tech stack do you use for development?">
+          <i class="fa-solid fa-code"></i> Tech Stack
+        </button>
+        <button class="drawer-chip" data-prompt="Can we schedule a call for my project?">
+          <i class="fa-solid fa-calendar-check"></i> Book Call
+        </button>
+      </div>
+
+      <!-- Interactive Chat Stream -->
+      <div class="drawer-chat-stream" id="drawerChatStream">
+        <div class="chat-msg ai">
+          <span class="msg-sender">AI Waseem:</span>
+          Welcome to my official portfolio! How can I help scale your brand or build your next application?
+        </div>
+      </div>
+
+      <!-- Input Bar -->
+      <form class="drawer-input-bar" id="drawerInputForm">
+        <button type="button" class="drawer-voice-btn" id="btnVoiceInput" title="Speak via Microphone">
+          <i class="fa-solid fa-microphone"></i>
+        </button>
+        <input type="text" id="avatarTextInput" class="drawer-text-field" placeholder="Ask Waseem Abbas anything..." autocomplete="off">
+        <button type="submit" class="drawer-send-btn" title="Send message">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
     </div>
   </div>
 
-  <!-- ========================================================
-       PORTFOLIO PERSONALIZER DRAWER
-       ======================================================== -->
-  <aside class="customizer-drawer" id="customizerDrawer" aria-hidden="true">
-    <div class="drawer-header">
-      <h3><i class="fa-solid fa-palette"></i> Customize Waseem's Portfolio</h3>
-      <button class="drawer-close" id="btnCloseCustomizer">✕</button>
-    </div>
-    <div class="drawer-body">
-      <p class="drawer-help-text">Apna naam, role aur bio yahan tabdeel kar sakte hain. Changes foran apply ho kar save ho jayengi!</p>
-      
-      <div class="form-group">
-        <label for="inputFirstName">First Name</label>
-        <input type="text" id="inputFirstName" class="drawer-input" value="WASEEM">
-      </div>
-      <div class="form-group">
-        <label for="inputLastName">Last Name</label>
-        <input type="text" id="inputLastName" class="drawer-input" value="ABBAS">
-      </div>
-      <div class="form-group">
-        <label for="inputTagline">Role / Tagline</label>
-        <input type="text" id="inputTagline" class="drawer-input" value="FULL-STACK CODE • HIGH-PERFORMANCE GROWTH">
-      </div>
-      <div class="form-group">
-        <label for="inputBio">Bio / Statement</label>
-        <textarea id="inputBio" class="drawer-input" rows="4">As a hybrid Full-Stack Developer and Performance Digital Marketer, I merge high-velocity web engineering with aggressive, data-backed growth marketing. I build lightning-fast web applications and architect the acquisition engines, search authority, and conversion funnels that scale businesses exponentially.</textarea>
-      </div>
-
-      <div class="drawer-actions">
-        <button class="gold-luxury-btn full-width" id="btnApplyCustomizer">
-          <span class="btn-text">APPLY CHANGES</span>
-        </button>
-        <button class="reset-link-btn" id="btnResetCustomizer">Reset to Waseem's Defaults</button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Interactive Talking AI Avatar Engine -->
-  <script src="ai-avatar.js"></script>
-  <!-- Main JavaScript Engine -->
+  <!-- Main JavaScript File -->
   <script src="main.js"></script>
+
+  <!-- Interactive Talking AI Avatar JavaScript -->
+  <script src="ai-avatar.js"></script>
 </body>
 </html>

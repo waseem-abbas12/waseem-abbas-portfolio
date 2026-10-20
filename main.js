@@ -445,196 +445,218 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // 6. 100% DRIBBLE 1:1 FULL-SCREEN SLIDE TRANSITIONS ENGINE
+  // 6. CONTINUOUS LUXURY LANDING PAGE SCROLL ENGINE (100% DRIBBBLE 1:1 REPLICA)
   // =========================================================================
-  const presentationWrapper = document.getElementById('presentationWrapper');
-  const slides = document.querySelectorAll('.presentation-slider-wrapper .section');
+  const sectionIds = ['hero', 'skills', 'boundless', 'odyssey', 'events', 'showcase', 'contact'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
   const activeSectionNum = document.getElementById('activeSectionNum');
   const scrubberDots = document.querySelectorAll('.scrubber-dot');
   const scrubberIndicator = document.getElementById('scrubberIndicator');
   const header = document.getElementById('header');
+  const navItems = document.querySelectorAll('.nav-item');
+  const mobileNavToggle = document.getElementById('mobileNavToggle');
+  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+  const mobileNavClose = document.getElementById('mobileNavClose');
+  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-  let currentSlide = 0;
-  let isSliding = false;
-  const isSlideshow = document.body.classList.contains('slideshow-mode') && slides.length > 0;
+  let currentActiveId = 'hero';
 
-  function goToSlide(targetIdx, forceDirection) {
-    if (isSliding) return;
-    if (!slides || slides.length === 0) return;
+  // Determine active section based on current scroll position & visible coverage
+  function getActiveSection() {
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
 
-    // Handle smooth wrapping / keynote loop matching reference video
-    if (targetIdx >= slides.length) {
-      targetIdx = 0;
-    } else if (targetIdx < 0) {
-      targetIdx = slides.length - 1;
+    // If reached bottom of document, activate the last section (Contact)
+    if (scrollY + viewportHeight >= docHeight - 60) {
+      return sections[sections.length - 1];
     }
 
-    if (targetIdx === currentSlide && document.querySelector('.presentation-slider-wrapper .section.slide-active')) return;
+    let bestSection = sections[0];
+    let maxVisibleRatio = -Infinity;
 
-    isSliding = true;
-    const direction = forceDirection || (targetIdx > currentSlide ? 'down' : 'up');
-    const oldIdx = currentSlide;
-    currentSlide = targetIdx;
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      const visibleTop = Math.max(0, rect.top);
+      const visibleBottom = Math.min(viewportHeight, rect.bottom);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
 
-    slides.forEach((slide, i) => {
-      slide.classList.remove('slide-active', 'slide-up', 'slide-down', 'slide-prev');
-      if (i === targetIdx) {
-        slide.classList.add('slide-active');
-      } else if (i < targetIdx) {
-        slide.classList.add('slide-up');
-      } else {
-        slide.classList.add('slide-down');
-      }
-    });
-
-    const currentSection = slides[targetIdx];
-    const currentSectionId = currentSection ? currentSection.id : 'hero';
-    const indexStr = String(targetIdx + 1).padStart(2, '0');
-
-    // Update active section step number (01 ⟶, 02 ⟶, 03 ⟶)
-    if (activeSectionNum) {
-      activeSectionNum.textContent = indexStr;
-    }
-
-    // Update scrubber dots & active ring
-    scrubberDots.forEach((dot, idx) => {
-      if (idx === targetIdx || dot.getAttribute('data-target') === currentSectionId) {
-        dot.classList.add('active');
-        if (scrubberIndicator) {
-          scrubberIndicator.style.top = `${dot.offsetTop}px`;
+      if (visibleHeight > 0) {
+        // Proportional coverage of the section inside current viewport
+        const coverage = visibleHeight / Math.min(rect.height, viewportHeight);
+        if (coverage > maxVisibleRatio) {
+          maxVisibleRatio = coverage;
+          bestSection = sec;
         }
-      } else {
-        dot.classList.remove('active');
       }
     });
 
-    // Header styling
+    return bestSection;
+  }
+
+  // Update UI indicators (01 ⟶, scrubber ring, header blur, nav highlights)
+  function updateScrollUI() {
+    const scrollY = window.scrollY;
+
+    // Header blur state
     if (header) {
-      if (targetIdx > 0) {
+      if (scrollY > 40) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
     }
 
-    // Navigation links highlighting
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      const href = item.getAttribute('href');
-      if (href === `#${currentSectionId}`) {
-        item.classList.add('active');
-      } else {
-        item.classList.remove('active');
+    // Determine current section in view
+    const activeSec = getActiveSection();
+    if (!activeSec) return;
+    const activeId = activeSec.id;
+
+    if (activeId !== currentActiveId) {
+      currentActiveId = activeId;
+      const index = sectionIds.indexOf(activeId) + 1;
+      const indexStr = String(index).padStart(2, '0');
+
+      // 1. Update left side step number (01 ⟶, 02 ⟶, 03 ⟶, etc.)
+      if (activeSectionNum) {
+        activeSectionNum.textContent = indexStr;
       }
-    });
 
-    // Unlock transition after smooth animation completes
-    setTimeout(() => {
-      isSliding = false;
-    }, 850);
-  }
-
-  // Expose for external navigation and debugging
-  window.goToSlide = goToSlide;
-
-  if (isSlideshow) {
-    // Initial slide state
-    goToSlide(0);
-
-    // Mouse wheel slide trigger (with debounce)
-    let lastWheelTime = 0;
-    window.addEventListener('wheel', (e) => {
-      const now = Date.now();
-      if (now - lastWheelTime < 650) return;
-      if (Math.abs(e.deltaY) > 15) {
-        lastWheelTime = now;
-        if (e.deltaY > 0) {
-          goToSlide(currentSlide + 1, 'down');
+      // 2. Update right scrubber dots & indicator ring
+      let matchedDot = null;
+      scrubberDots.forEach(dot => {
+        if (dot.getAttribute('data-target') === activeId) {
+          dot.classList.add('active');
+          matchedDot = dot;
         } else {
-          goToSlide(currentSlide - 1, 'up');
-        }
-      }
-    }, { passive: true });
-
-    // Keyboard arrow navigation
-    window.addEventListener('keydown', (e) => {
-      if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
-        e.preventDefault();
-        goToSlide(currentSlide + 1, 'down');
-      } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
-        e.preventDefault();
-        goToSlide(currentSlide - 1, 'up');
-      } else if (e.key === 'Home') {
-        e.preventDefault();
-        goToSlide(0, 'up');
-      } else if (e.key === 'End') {
-        e.preventDefault();
-        goToSlide(slides.length - 1, 'down');
-      }
-    });
-
-    // Touch swipe support (Mobile / Tablet)
-    let touchStartY = 0;
-    window.addEventListener('touchstart', (e) => {
-      if (e.touches && e.touches.length > 0) {
-        touchStartY = e.touches[0].clientY;
-      }
-    }, { passive: true });
-
-    window.addEventListener('touchend', (e) => {
-      if (e.changedTouches && e.changedTouches.length > 0) {
-        const touchEndY = e.changedTouches[0].clientY;
-        const diffY = touchStartY - touchEndY;
-        if (Math.abs(diffY) > 40) {
-          if (diffY > 0) {
-            goToSlide(currentSlide + 1, 'down');
-          } else {
-            goToSlide(currentSlide - 1, 'up');
-          }
-        }
-      }
-    }, { passive: true });
-
-    // Scrubber dot clicks
-    scrubberDots.forEach((dot, idx) => {
-      dot.addEventListener('click', (e) => {
-        e.preventDefault();
-        const dir = idx > currentSlide ? 'down' : 'up';
-        goToSlide(idx, dir);
-      });
-    });
-
-    // Smooth anchor link clicks
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (href && href.length > 1) {
-          const targetElem = document.querySelector(href);
-          if (targetElem) {
-            const slideArr = Array.from(slides);
-            const idx = slideArr.indexOf(targetElem);
-            if (idx !== -1) {
-              e.preventDefault();
-              goToSlide(idx);
-            }
-          }
+          dot.classList.remove('active');
         }
       });
-    });
 
-  } else {
-    // Fallback standard document scroll tracking for standard pages
-    function onScroll() {
-      const scrollY = window.scrollY;
-      if (scrollY > 50) {
-        header && header.classList.add('scrolled');
-      } else {
-        header && header.classList.remove('scrolled');
+      if (matchedDot && scrubberIndicator) {
+        scrubberIndicator.style.top = `${matchedDot.offsetTop}px`;
       }
+
+      // 3. Update header navigation active states
+      navItems.forEach(item => {
+        const href = item.getAttribute('href');
+        if (href === `#${activeId}`) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // 4. Update mobile drawer links active states
+      mobileNavLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${activeId}`) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
   }
+
+  // Attach passive scroll listener with RAF throttling for 60fps smoothness
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        updateScrollUI();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  // Initial call on load
+  updateScrollUI();
+
+  // Smooth scroll handler for all internal anchor links
+  function smoothScrollTo(targetSelector) {
+    if (!targetSelector || targetSelector === '#') return;
+    const targetEl = document.querySelector(targetSelector);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Scrubber dot clicks
+  scrubberDots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = dot.getAttribute('data-target');
+      smoothScrollTo(`#${targetId}`);
+    });
+  });
+
+  // Nav item clicks
+  navItems.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        smoothScrollTo(href);
+      }
+    });
+  });
+
+  // Generic internal anchor links (e.g. #skills, #contact, #hero)
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.length > 1 && !link.classList.contains('scrubber-dot') && !link.classList.contains('nav-item') && !link.classList.contains('mobile-nav-link')) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          smoothScrollTo(href);
+        }
+      }
+    });
+  });
+
+  // Mobile Navigation Drawer logic
+  function openMobileNav() {
+    if (!mobileNavDrawer) return;
+    mobileNavDrawer.classList.add('open');
+    mobileNavDrawer.setAttribute('aria-hidden', 'false');
+    if (mobileNavToggle) mobileNavToggle.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    if (!mobileNavDrawer) return;
+    mobileNavDrawer.classList.remove('open');
+    mobileNavDrawer.setAttribute('aria-hidden', 'true');
+    if (mobileNavToggle) mobileNavToggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileNavToggle) {
+    mobileNavToggle.addEventListener('click', () => {
+      if (mobileNavDrawer && mobileNavDrawer.classList.contains('open')) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
+    });
+  }
+
+  if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
+  if (mobileNavBackdrop) mobileNavBackdrop.addEventListener('click', closeMobileNav);
+
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        closeMobileNav();
+        smoothScrollTo(href);
+      }
+    });
+  });
 
   // =========================================================================
   // 7. 3D PARALLAX TILT ON CARDS (.interactive-tilt)
