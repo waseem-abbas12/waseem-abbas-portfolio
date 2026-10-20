@@ -1,0 +1,121 @@
+/**
+ * WASEEM ABBAS — NEXT-GEN 3D MOTION PORTFOLIO
+ * Animations & Keyframe System (css/animations.css)
+ */
+
+/* 1. Orbit Floating & 3D Wobble */
+@keyframes floatWobble {
+  0%, 100% {
+    transform: translateY(0px) rotateZ(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotateZ(1deg);
+  }
+}
+
+.float-animated {
+  animation: floatWobble 4.5s ease-in-out infinite;
+}
+
+/* 2. Shimmer & Specular Light Sweep */
+@keyframes specularSweep {
+  0% {
+    left: -120%;
+  }
+  50%, 100% {
+    left: 150%;
+  }
+}
+
+.specular-sweep-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.specular-sweep-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: skewX(-25deg);
+  animation: specularSweep 5s infinite;
+  pointer-events: none;
+}
+
+/* 3. Glowing Neon Core Pulse */
+@keyframes corePulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 45px rgba(223, 167, 83, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 75px rgba(56, 189, 248, 0.65), inset 0 0 30px rgba(223, 167, 83, 0.5);
+  }
+}
+
+.orbit-center-core {
+  animation: corePulseGlow 3.5s ease-in-out infinite;
+}
+
+/* 4. Active Node Orbital Halo */
+@keyframes haloRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbit-node.active::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 14px;
+  border: 1.5px solid var(--accent-cyan);
+  box-shadow: 0 0 15px var(--accent-cyan-glow);
+  pointer-events: none;
+}
+
+/* 5. Horizontal Timeline Smooth Transforms */
+.story-chapter {
+  transition: opacity 0.6s ease;
+}
+
+.story-content-side, .story-visual-side {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+/* 6. Soundwave Audio Equalizer */
+@keyframes soundwaveAnim {
+  0%, 100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1.2);
+  }
+}
+
+.avatar-soundwaves span {
+  display: inline-block;
+  width: 2px;
+  height: 12px;
+  background: var(--accent-gold);
+  border-radius: 1px;
+  animation: soundwaveAnim 0.8s infinite ease-in-out alternate;
+}
+
+.avatar-soundwaves span:nth-child(2) { animation-delay: 0.2s; }
+.avatar-soundwaves span:nth-child(3) { animation-delay: 0.4s; }
+.avatar-soundwaves span:nth-child(4) { animation-delay: 0.15s; }
+
+/* 7. Hover Card Tilt Perspective helper */
+.interactive-tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+}

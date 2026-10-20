@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WASEEM ABBAS — Digital Marketer & Developer Portfolio</title>
-  <meta name="description" content="Official portfolio of Waseem Abbas: Full-Stack Developer & Performance Digital Marketer. High-end web development, growth marketing, and scalable digital solutions.">
+  <title>WASEEM ABBAS — Next-Gen 3D Motion Portfolio & Digital Agency</title>
+  <meta name="description" content="Official portfolio of Waseem Abbas (Watech / Abbas Consultants): High-End 3D Web Development, Interactive 3D Service Orbit Wheel, and Performance Growth Marketing.">
 
   <!-- Google Fonts: Cormorant Garamond, Cinzel, Plus Jakarta Sans, Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,19 +14,24 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Main Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
 
   <!-- Three.js 3D Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body class="portfolio-page">
 
-  <!-- Custom Glow Cursor -->
+  <!-- Custom Glow Reactive Cursor -->
   <div class="custom-cursor" id="cursor"></div>
   <div class="custom-cursor-follower" id="cursorFollower"></div>
 
-  <!-- Noise Film Grain -->
+  <!-- Noise Film Grain Overlay -->
   <div class="film-grain"></div>
 
   <!-- Ambient Dynamic Mouse Glow -->
@@ -46,10 +51,10 @@
         <div class="ring-arc"></div>
       </div>
       <a href="#hero" class="scrubber-dot active" data-target="hero" title="01 — Torus Hero"></a>
-      <a href="#skills" class="scrubber-dot" data-target="skills" title="02 — Expertise Pillars"></a>
-      <a href="#boundless" class="scrubber-dot" data-target="boundless" title="03 — Boundless Keynote"></a>
-      <a href="#odyssey" class="scrubber-dot" data-target="odyssey" title="04 — Growth Odyssey"></a>
-      <a href="#events" class="scrubber-dot" data-target="events" title="05 — Client Collaboration"></a>
+      <a href="#orbit" class="scrubber-dot" data-target="orbit" title="02 — 3D Service Orbit Wheel"></a>
+      <a href="#storytelling" class="scrubber-dot" data-target="storytelling" title="03 — Storytelling Timeline"></a>
+      <a href="#skills" class="scrubber-dot" data-target="skills" title="04 — Brand Architecture"></a>
+      <a href="#boundless" class="scrubber-dot" data-target="boundless" title="05 — Boundless Keynote"></a>
       <a href="#showcase" class="scrubber-dot" data-target="showcase" title="06 — Case Studies"></a>
       <a href="#contact" class="scrubber-dot" data-target="contact" title="07 — Contact"></a>
     </div>
@@ -57,7 +62,6 @@
 
   <!-- ========================================================
        SITE HEADER: WASEEM ABBAS SIGNATURE NAVIGATION
-       ABOUT • WORK • [CENTER WA MONOGRAM] • SERVICES • CONTACTS
        ======================================================== -->
   <header class="site-header" id="header">
     <div class="header-container">
@@ -66,12 +70,12 @@
           <span class="nav-text">HOME</span>
         </a>
         <span class="nav-dot-sep">•</span>
-        <a href="#skills" class="nav-item">
-          <span class="nav-text">EXPERTISE</span>
+        <a href="#orbit" class="nav-item">
+          <span class="nav-text">SERVICES</span>
         </a>
         <span class="nav-dot-sep">•</span>
-        <a href="#boundless" class="nav-item">
-          <span class="nav-text">KEYNOTE</span>
+        <a href="#storytelling" class="nav-item">
+          <span class="nav-text">ODYSSEY</span>
         </a>
       </nav>
 
@@ -86,8 +90,8 @@
       </a>
 
       <nav class="nav-links right-nav">
-        <a href="#odyssey" class="nav-item">
-          <span class="nav-text">ODYSSEY</span>
+        <a href="#skills" class="nav-item">
+          <span class="nav-text">BRANDS</span>
         </a>
         <span class="nav-dot-sep">•</span>
         <a href="#showcase" class="nav-item">
@@ -99,7 +103,7 @@
         </a>
       </nav>
 
-      <!-- Mobile Menu Toggle Button (Visible on mobile only) -->
+      <!-- Mobile Menu Toggle Button -->
       <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation Menu">
         <span></span>
         <span></span>
@@ -123,25 +127,25 @@
           <span class="m-step">01</span>
           <span class="m-title">HOME</span>
         </a>
-        <a href="#skills" class="mobile-nav-link" data-target="skills">
+        <a href="#orbit" class="mobile-nav-link" data-target="orbit">
           <span class="m-step">02</span>
-          <span class="m-title">EXPERTISE</span>
+          <span class="m-title">3D SERVICES</span>
+        </a>
+        <a href="#storytelling" class="mobile-nav-link" data-target="storytelling">
+          <span class="m-step">03</span>
+          <span class="m-title">EXPERIENCE ODYSSEY</span>
+        </a>
+        <a href="#skills" class="mobile-nav-link" data-target="skills">
+          <span class="m-step">04</span>
+          <span class="m-title">BRAND ARCHITECTURE</span>
         </a>
         <a href="#boundless" class="mobile-nav-link" data-target="boundless">
-          <span class="m-step">03</span>
-          <span class="m-title">KEYNOTE</span>
-        </a>
-        <a href="#odyssey" class="mobile-nav-link" data-target="odyssey">
-          <span class="m-step">04</span>
-          <span class="m-title">ODYSSEY</span>
-        </a>
-        <a href="#events" class="mobile-nav-link" data-target="events">
           <span class="m-step">05</span>
-          <span class="m-title">COLLABORATION</span>
+          <span class="m-title">KEYNOTE STAGE</span>
         </a>
         <a href="#showcase" class="mobile-nav-link" data-target="showcase">
           <span class="m-step">06</span>
-          <span class="m-title">WORK</span>
+          <span class="m-title">CASE STUDIES</span>
         </a>
         <a href="#contact" class="mobile-nav-link" data-target="contact">
           <span class="m-step">07</span>
@@ -156,7 +160,7 @@
     </div>
   </div>
 
-  <!-- MAIN VIEWPORT CONTENT: CONTINUOUS LUXURY LANDING PAGE (Dribbble Shot 25949833) -->
+  <!-- MAIN VIEWPORT CONTENT -->
   <main class="site-main" id="mainContent">
 
     <!-- ========================================================
@@ -165,7 +169,6 @@
     <section class="section hero-section" id="hero" data-section-index="01">
       <div class="hero-bg-canvas-wrapper" id="heroSculptureWrapper">
         <canvas id="torusCanvas" class="hero-torus-canvas" width="800" height="600"></canvas>
-        <canvas id="threeCanvas" class="hero-3d-canvas"></canvas>
       </div>
 
       <div class="hero-glow-underlay"></div>
@@ -173,7 +176,7 @@
 
       <!-- Floating Kinetic Typography Overlay -->
       <div class="hero-typography-container">
-        <div class="hero-sub-label">DIGITAL ARCHITECT</div>
+        <div class="hero-sub-label">DIGITAL ARCHITECT • WATECH</div>
 
         <h1 class="hero-main-title" id="displayPortfolioName">
           <span class="title-word first-word">WASEEM</span>
@@ -183,23 +186,233 @@
         <div class="hero-indicator-triangle">▲</div>
 
         <div class="hero-bottom-tagline" id="displayPortfolioTagline">
-          GENERATIVE DESIGN
+          NEXT-GEN 3D MOTION &amp; DIGITAL AGENCY
         </div>
       </div>
 
       <!-- Scroll Prompter -->
-      <a href="#skills" class="hero-scroll-prompter" aria-label="Explore Expertise">
+      <a href="#orbit" class="hero-scroll-prompter" aria-label="Explore Services">
         <span class="scroll-mouse">
           <span class="scroll-wheel"></span>
         </span>
-        <span class="scroll-text">EXPLORE WORK</span>
+        <span class="scroll-text">DISCOVER MATRIX</span>
       </a>
     </section>
 
     <!-- ========================================================
-         SECTION 02: BRAND CARDS GRID (STUDIO 74, GLOSTER, LINEA, CUBE)
+         SECTION 02: INTERACTIVE 3D SERVICE ORBIT WHEEL
          ======================================================== -->
-    <section class="section brands-section" id="skills" data-section-index="02">
+    <section class="section orbit-wheel-section" id="orbit" data-section-index="02">
+      <div class="section-topo-bg"></div>
+
+      <div class="container">
+        <header class="orbit-section-header">
+          <span class="orbit-badge">CAPABILITIES MATRIX</span>
+          <h2 class="orbit-title">Interactive 3D Service Orbit Wheel</h2>
+          <p class="orbit-subtitle">Hover or drag nodes to navigate the multi-disciplinary engineering and growth ecosystem.</p>
+        </header>
+
+        <!-- 3D Orbit Stage Arena -->
+        <div class="orbit-stage-wrapper" id="orbitStageWrapper">
+          <div class="orbit-wheel-container" id="orbitWheelContainer">
+            
+            <!-- Concentric Orbital Wireframe Rings -->
+            <div class="orbit-ring orbit-ring-outer"></div>
+            <div class="orbit-ring orbit-ring-mid"></div>
+            <div class="orbit-ring orbit-ring-inner"></div>
+
+            <!-- Central Sun Core -->
+            <div class="orbit-center-core" id="orbitCore">
+              <span class="core-brand-wa">WA</span>
+              <span class="core-sub">AGENCY</span>
+            </div>
+
+            <!-- Floating 3D Node 01: Web Dev -->
+            <div class="orbit-node node-web active" data-service="web-dev">
+              <div class="node-icon-box">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h4 class="node-title">Web Dev</h4>
+              <span class="node-tag">Full-Stack &amp; WebGL</span>
+            </div>
+
+            <!-- Floating 3D Node 02: Digital Marketing -->
+            <div class="orbit-node node-marketing" data-service="marketing">
+              <div class="node-icon-box">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <h4 class="node-title">Marketing</h4>
+              <span class="node-tag">Paid Media &amp; ROAS</span>
+            </div>
+
+            <!-- Floating 3D Node 03: AI Automation -->
+            <div class="orbit-node node-ai" data-service="ai-automation">
+              <div class="node-icon-box">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <h4 class="node-title">AI Agents</h4>
+              <span class="node-tag">Autonomous Systems</span>
+            </div>
+
+            <!-- Floating 3D Node 04: Real Estate -->
+            <div class="orbit-node node-realestate" data-service="real-estate">
+              <div class="node-icon-box">
+                <i class="fa-solid fa-building"></i>
+              </div>
+              <h4 class="node-title">Real Estate</h4>
+              <span class="node-tag">High-Ticket Funnels</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Live Service Detail Information Card -->
+        <div class="orbit-detail-card" id="orbitDetailCard">
+          <div class="orbit-detail-left">
+            <span class="orbit-detail-category" id="orbitDetailCategory">ENGINEERING &amp; ARCHITECTURE</span>
+            <h3 class="orbit-detail-heading" id="orbitDetailHeading">Full-Stack Web &amp; WebGL Motion</h3>
+            <p class="orbit-detail-desc" id="orbitDetailDesc">
+              High-velocity web applications engineered with Next.js, Three.js WebGL, and scalable cloud microservices. Built for sub-second Core Web Vitals and immersive 3D experiences.
+            </p>
+          </div>
+          <a href="#contact" class="gold-luxury-btn magnetic-btn">
+            <span>INQUIRE BRIEF</span>
+            <span>▸</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 03: HORIZONTAL STORYTELLING SCROLL TIMELINE (GSAP PINNED)
+         ======================================================== -->
+    <section class="storytelling-section" id="storytelling" data-section-index="03">
+      <div class="storytelling-wrapper">
+
+        <!-- Chapter 01: Foundations -->
+        <article class="story-chapter chapter-01">
+          <div class="chapter-bg-gradient"></div>
+          <div class="story-card-grid">
+            <div class="story-content-side">
+              <span class="story-year-pip"><i class="fa-solid fa-compass"></i> CHAPTER 01 • 2021-2022</span>
+              <h2 class="story-title">The Genesis of Code &amp; Visual Mastery</h2>
+              <p class="story-lead">
+                Started as an obsessive frontend craftsman, dissecting 3D geometry and shader physics to engineer digital web products that don't just load—they captivate.
+              </p>
+              <div class="story-metric-row">
+                <div class="story-metric-item">
+                  <span class="metric-val">100+</span>
+                  <span class="metric-lbl">Components Shipped</span>
+                </div>
+                <div class="story-metric-item">
+                  <span class="metric-val">&lt; 0.8s</span>
+                  <span class="metric-lbl">Average FCP</span>
+                </div>
+              </div>
+            </div>
+            <div class="story-visual-side">
+              <div class="story-visual-frame interactive-tilt">
+                <img src="assets/cropped/spheres_art.png" alt="Genesis Chapter 3D Spheres" class="story-img">
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter 02: Performance Scaling -->
+        <article class="story-chapter chapter-02">
+          <div class="chapter-bg-gradient"></div>
+          <div class="story-card-grid">
+            <div class="story-content-side">
+              <span class="story-year-pip"><i class="fa-solid fa-bolt"></i> CHAPTER 02 • 2023</span>
+              <h2 class="story-title">High-Velocity Full-Stack Systems</h2>
+              <p class="story-lead">
+                Evolved into full-stack architecture: marrying custom backend APIs with conversion-engineered user interfaces to handle massive peak traffic without latency spikes.
+              </p>
+              <div class="story-metric-row">
+                <div class="story-metric-item">
+                  <span class="metric-val">99.9%</span>
+                  <span class="metric-lbl">Uptime Architecture</span>
+                </div>
+                <div class="story-metric-item">
+                  <span class="metric-val">4.8x</span>
+                  <span class="metric-lbl">Average ROAS</span>
+                </div>
+              </div>
+            </div>
+            <div class="story-visual-side">
+              <div class="story-visual-frame interactive-tilt">
+                <img src="assets/cropped/linea_art.png" alt="High-Velocity Architecture Artwork" class="story-img">
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter 03: Data & Acquisition -->
+        <article class="story-chapter chapter-03">
+          <div class="chapter-bg-gradient"></div>
+          <div class="story-card-grid">
+            <div class="story-content-side">
+              <span class="story-year-pip"><i class="fa-solid fa-bullseye"></i> CHAPTER 03 • 2024-2025</span>
+              <h2 class="story-title">Omnichannel Growth &amp; Paid Funnels</h2>
+              <p class="story-lead">
+                Bridged the critical divide between software development and performance digital marketing—transforming high-end websites into relentless revenue generation machines.
+              </p>
+              <div class="story-metric-row">
+                <div class="story-metric-item">
+                  <span class="metric-val">$1.2M+</span>
+                  <span class="metric-lbl">Client Ad Spend Managed</span>
+                </div>
+                <div class="story-metric-item">
+                  <span class="metric-val">+140%</span>
+                  <span class="metric-lbl">Conversion Lift</span>
+                </div>
+              </div>
+            </div>
+            <div class="story-visual-side">
+              <div class="story-visual-frame interactive-tilt">
+                <img src="assets/cropped/stage_art.png" alt="Growth Keynote Stage" class="story-img">
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter 04: The Future Matrix -->
+        <article class="story-chapter chapter-04">
+          <div class="chapter-bg-gradient"></div>
+          <div class="story-card-grid">
+            <div class="story-content-side">
+              <span class="story-year-pip"><i class="fa-solid fa-robot"></i> CHAPTER 04 • 2026 &amp; BEYOND</span>
+              <h2 class="story-title">Autonomous AI Agency Ecosystem</h2>
+              <p class="story-lead">
+                Now deploying intelligent AI agents, interactive voice twins, and real estate acquisition engines that operate autonomously around the clock for global clients.
+              </p>
+              <div class="story-metric-row">
+                <div class="story-metric-item">
+                  <span class="metric-val">10x</span>
+                  <span class="metric-lbl">Execution Velocity</span>
+                </div>
+                <div class="story-metric-item">
+                  <span class="metric-val">Global</span>
+                  <span class="metric-lbl">Enterprise Reach</span>
+                </div>
+              </div>
+            </div>
+            <div class="story-visual-side">
+              <div class="story-visual-frame interactive-tilt">
+                <img src="assets/cropped/escape_art.png" alt="AI Agency Ecosystem Artwork" class="story-img">
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 04: BRAND CARDS GRID (STUDIO 74, GLOSTER, LINEA, CUBE)
+         ======================================================== -->
+    <section class="section brands-section" id="skills" data-section-index="04">
       <div class="section-topo-bg"></div>
 
       <div class="container brands-container">
@@ -234,12 +447,12 @@
               </div>
             </article>
 
-            <!-- Card 03: LINEA VOL.1 (Featured Active Card with Rich Organic Artwork) -->
+            <!-- Card 03: LINEA VOL.1 (Featured Active Card) -->
             <article class="brand-card featured-active" data-card-id="3">
               <div class="card-inner">
                 <div class="card-top-marker">▼</div>
                 <div class="card-featured-artwork">
-                  <img src="assets/cropped/linea_art.png" alt="Linea Vol.1 Organic Artwork" class="artwork-img">
+                  <img src="assets/cropped/linea_art.png" alt="Linea Vol.1 Artwork" class="artwork-img">
                 </div>
                 <h3 class="card-title">LINEA <span class="vol-tag">VOL.1</span></h3>
                 <span class="card-index accent-index">03</span>
@@ -267,32 +480,29 @@
     </section>
 
     <!-- ========================================================
-         SECTION 03: BOUNDLESS REACH — KEYNOTE & CODE DISCOVERY STAGE
+         SECTION 05: BOUNDLESS REACH — KEYNOTE & STAGE PRODUCTION
          ======================================================== -->
-    <section class="section boundless-section" id="boundless" data-section-index="03">
+    <section class="section boundless-section" id="boundless" data-section-index="05">
       <div class="section-topo-bg"></div>
 
       <div class="container boundless-container">
-        <!-- Section Category Header -->
         <div class="section-tag-row">
           <span class="tag-arrow">▸</span>
-          <span class="section-category-label">PORTFOLIO & KEYNOTE</span>
+          <span class="section-category-label">PORTFOLIO &amp; KEYNOTE</span>
         </div>
 
-        <!-- Central Stage Production with LED Monitor Display -->
+        <!-- Concert Stage with Visualizer Display -->
         <div class="stage-mockup-wrapper interactive-tilt" id="stageWrapper">
           <div class="stage-frame-border">
             <img src="assets/cropped/stage_art.png" alt="Waseem Abbas Keynote Stage" class="stage-mockup-img">
             
-            <!-- Cyber Visualizer in Concert Stage LED Monitor -->
             <div class="stage-screen-video-holder">
               <div class="stage-screen-cyber-display">
                 <div class="stage-cyber-grid"></div>
                 <div class="stage-cyber-hud-center">
                   <div class="stage-cyber-logo">WA</div>
-                  <div class="stage-cyber-title">CODE & GROWTH KEYNOTE</div>
+                  <div class="stage-cyber-title">CODE &amp; GROWTH KEYNOTE</div>
                   <div class="stage-cyber-spectrum">
-                    <span></span><span></span><span></span><span></span><span></span>
                     <span></span><span></span><span></span><span></span><span></span>
                   </div>
                 </div>
@@ -306,90 +516,18 @@
           </div>
         </div>
 
-        <!-- Editorial Content Description -->
+        <!-- Content Description -->
         <div class="boundless-text-block">
-          <span class="artist-sub-tag" id="displayArtistSub">WASEEM ABBAS</span>
-          <h2 class="boundless-heading">Boundless Reach: Code & Growth Architecture</h2>
-          <p class="boundless-paragraph" id="displayBoundlessBio">
+          <span class="artist-sub-tag">WASEEM ABBAS</span>
+          <h2 class="boundless-heading">Boundless Reach: Code &amp; Growth Architecture</h2>
+          <p class="boundless-paragraph">
             As a hybrid Full-Stack Developer and Performance Digital Marketer, I merge high-velocity web engineering with aggressive, data-backed growth marketing. I don't just build lightning-fast web applications—I architect the acquisition engines, search authority, and conversion funnels that scale businesses exponentially.
           </p>
 
           <div class="btn-wrap">
-            <a href="#showcase" class="gold-luxury-btn magnetic-btn" id="btnBoundlessReadMore">
-              <span class="btn-text">EXPLORE PROJECTS</span>
-              <span class="btn-arrow">▸</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         SECTION 04: ART UNBOUND ODYSSEY (GOLD FOIL FRAME & COMPASS)
-         ======================================================== -->
-    <section class="section odyssey-section" id="odyssey" data-section-index="04">
-      <div class="section-topo-bg"></div>
-      <div class="odyssey-wireframe-guide"></div>
-
-      <div class="container odyssey-container">
-        <div class="odyssey-split-grid">
-
-          <!-- Left Side: Golden-framed Organic Beaded Spheres Artwork -->
-          <div class="odyssey-artwork-card interactive-tilt">
-            <div class="gold-foil-outer-frame">
-              <div class="gold-foil-inner">
-                <img src="assets/cropped/spheres_art.png" alt="Art Unbound Odyssey 3D Spheres" class="spheres-img">
-                <div class="specular-shine"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Side: Dark Navy Content with Compass Dial & Typography -->
-          <div class="odyssey-content-card">
-            <div class="odyssey-card-inner">
-              <div class="compass-dial-wrapper">
-                <div class="compass-circle-gradient">
-                  <div class="compass-needle"></div>
-                </div>
-              </div>
-
-              <h2 class="odyssey-title">
-                <span>ART</span>
-                <span>UNBOUND</span>
-                <span>ODYSSEY</span>
-              </h2>
-
-              <div class="odyssey-indicator-triangle">▲</div>
-
-              <div class="odyssey-project-label">
-                PERSONAL PROJECT
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         SECTION 05: LIVE EVENTS / CLIENT COLLABORATION BANNER
-         ======================================================== -->
-    <section class="section live-events-section" id="events" data-section-index="05">
-      <div class="container live-events-container">
-        <div class="events-cta-row">
-          <div class="events-tag-col">
-            <span class="tag-arrow">▸</span>
-            <span class="events-tag-label">CLIENT COLLABORATION</span>
-          </div>
-
-          <div class="events-heading-col">
-            <h3 class="events-lead-text">Planning your next project or growth campaign?</h3>
-          </div>
-
-          <div class="events-action-col">
-            <a href="#contact" class="gold-luxury-btn magnetic-btn">
-              <span class="btn-text">HIRE WASEEM</span>
-              <span class="btn-arrow">▸</span>
+            <a href="#showcase" class="gold-luxury-btn magnetic-btn">
+              <span>EXPLORE CASE STUDIES</span>
+              <span>▸</span>
             </a>
           </div>
         </div>
@@ -405,7 +543,7 @@
       <div class="container showcase-container">
         <div class="showcase-cards-grid">
 
-          <!-- Card 1: E-COMMERCE GROWTH PLATFORM -->
+          <!-- Card 1: E-Commerce Growth -->
           <article class="showcase-card card-tnq interactive-tilt" data-project="tnq">
             <div class="showcase-card-inner">
               <div class="showcase-media-box">
@@ -421,7 +559,7 @@
             </div>
           </article>
 
-          <!-- Card 2: SAAS WEB APP & SEO -->
+          <!-- Card 2: SaaS Web App & SEO -->
           <article class="showcase-card card-dreams interactive-tilt" data-project="dreams">
             <div class="showcase-card-inner">
               <div class="showcase-media-box">
@@ -437,7 +575,7 @@
             </div>
           </article>
 
-          <!-- Card 3: OMNICHANNEL MARKETING CAMPAIGN -->
+          <!-- Card 3: Omnichannel Campaign -->
           <article class="showcase-card card-escape interactive-tilt" data-project="escape">
             <div class="showcase-card-inner">
               <div class="showcase-media-box">
@@ -458,33 +596,34 @@
     </section>
 
     <!-- ========================================================
-         SECTION 07: CONTACT SECTION (GET IN TOUCH WITH WASEEM)
+         SECTION 07: CONTACT SECTION
          ======================================================== -->
     <section class="section contact-section" id="contact" data-section-index="07">
       <div class="container contact-container">
         <div class="contact-box-glass">
           <span class="contact-sup-tag">LET'S CONNECT</span>
-          <h2 class="contact-title">Let’s Scale Your Brand & Code Your Vision</h2>
-          <p class="contact-desc">Available for full-stack development, paid acquisition campaigns, CRO audits, and growth consulting.</p>
+          <h2 class="contact-title">Let’s Scale Your Brand &amp; Code Your Vision</h2>
+          <p class="contact-desc">Available for international development retainers, paid acquisition campaigns, and agency partnerships.</p>
           
-          <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); alert('Thank you, Waseem Abbas has received your inquiry and will respond shortly!');">
+          <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); alert('Thank you! Waseem Abbas has received your inquiry.');">
             <div class="form-row">
               <input type="text" class="input-glass" placeholder="Your Name" required>
               <input type="email" class="input-glass" placeholder="Your Email" required>
             </div>
             <div class="form-row">
-              <select class="input-glass" style="cursor: pointer; background: rgba(10, 20, 40, 0.9);">
-                <option value="both">Full-Stack Development & Digital Marketing</option>
-                <option value="dev">Full-Stack Web Development Only</option>
-                <option value="marketing">Digital Marketing / Paid Media (Meta & Google Ads)</option>
-                <option value="seo">SEO & Conversion Optimization (CRO)</option>
+              <select class="input-glass" style="cursor: pointer; background: rgba(10, 20, 40, 0.95);">
+                <option value="both">Full-Stack Development &amp; Digital Marketing</option>
+                <option value="dev">Full-Stack Web &amp; WebGL 3D Application</option>
+                <option value="marketing">Performance Marketing (Meta &amp; Google Ads)</option>
+                <option value="ai">AI Agent Automation &amp; Workflows</option>
+                <option value="realestate">Real Estate Growth Funnel Architecture</option>
               </select>
-              <input type="text" class="input-glass" placeholder="Budget / Timeline">
+              <input type="text" class="input-glass" placeholder="Estimated Budget / Timeline">
             </div>
-            <textarea class="input-glass textarea-glass" placeholder="Tell me about your project, target audience, or current goals..." rows="4" required></textarea>
+            <textarea class="input-glass textarea-glass" placeholder="Tell me about your project, target audience, or current business goals..." rows="4" required></textarea>
             <button type="submit" class="gold-luxury-btn full-width magnetic-btn">
-              <span class="btn-text">SEND MESSAGE TO WASEEM</span>
-              <span class="btn-arrow">▸</span>
+              <span>SEND INQUIRY TO WASEEM</span>
+              <span>▸</span>
             </button>
           </form>
         </div>
@@ -567,7 +706,7 @@
           <span class="ai-glow-orb"></span>
           <div>
             <div class="drawer-title">WASEEM ABBAS — AI TWIN</div>
-            <div class="drawer-status"><span class="green-dot"></span> Interactive Voice & Web Agent</div>
+            <div class="drawer-status"><span class="green-dot"></span> Interactive Voice &amp; Web Agent</div>
           </div>
         </div>
         <button class="drawer-close-btn" id="btnCloseDrawer" aria-label="Close Assistant">
@@ -622,10 +761,10 @@
     </div>
   </div>
 
-  <!-- Main JavaScript File -->
-  <script src="main.js"></script>
-
-  <!-- Interactive Talking AI Avatar JavaScript -->
+  <!-- Modular Scripts Execution -->
+  <script src="js/orbit-wheel.js"></script>
+  <script src="js/gsap-config.js"></script>
+  <script src="js/app.js"></script>
   <script src="ai-avatar.js"></script>
 </body>
 </html>
