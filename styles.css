@@ -223,19 +223,19 @@ body {
    -------------------------------------------------------------------------- */
 .floating-utility-dock {
   position: fixed;
-  top: 18px;
-  right: 24px;
+  bottom: 28px;
+  left: 28px;
   z-index: 990;
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(3, 8, 20, 0.7);
+  background: rgba(3, 8, 20, 0.8);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .dock-theme-group {
@@ -778,37 +778,36 @@ body {
   justify-content: center;
 }
 
-.hero-centerpiece-video {
+.hero-torus-canvas {
   position: absolute;
-  top: 40%;
+  top: 38%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 680px;
-  max-width: 85vw;
+  width: 720px;
+  max-width: 88vw;
   height: auto;
-  display: none;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.7));
-  mix-blend-mode: screen;
+  aspect-ratio: 4 / 3;
+  z-index: 2;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.85));
+  pointer-events: auto;
+  cursor: grab;
+  transition: transform 0.15s ease-out;
+  -webkit-mask-image: radial-gradient(ellipse 65% 65% at 50% 50%, #000 50%, transparent 92%);
+  mask-image: radial-gradient(ellipse 65% 65% at 50% 50%, #000 50%, transparent 92%);
 }
 
-.hero-centerpiece-video.active {
-  display: block;
-  opacity: 1;
+.hero-torus-canvas:active {
+  cursor: grabbing;
 }
 
 .hero-3d-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  display: none;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.hero-3d-canvas.active {
-  display: block;
-  opacity: 1;
+  pointer-events: none;
+  z-index: 3;
 }
 
 .hero-centerpiece-still {
@@ -3182,4 +3181,107 @@ body {
   .contact-form-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Fix for Stylized AI Avatar Stage & Circular Face Hologram */
+.ai-avatar-stage {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: radial-gradient(circle at center, #071738 0%, #020612 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ai-avatar-portrait-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.4), inset 0 0 15px rgba(56, 189, 248, 0.3);
+  margin-top: 5px;
+  z-index: 5;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.ai-avatar-portrait-wrap.talking {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 40px var(--accent-gold-glow);
+  animation: portraitTalkPulse 1s infinite alternate;
+}
+
+@keyframes portraitTalkPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+.ai-avatar-base-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.ai-mouth-sync-layer {
+  position: absolute;
+  bottom: 24%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(180, 80, 80, 0.15);
+  pointer-events: none;
+  transition: all 0.08s ease;
+  z-index: 6;
+}
+
+.ai-mouth-sync-layer.talking {
+  background: radial-gradient(ellipse, #b91c1c 40%, rgba(220, 38, 38, 0.6) 80%);
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+}
+
+.ai-mode-switch-btn {
+  margin-top: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+}
+
+.ai-mode-switch-btn:hover {
+  background: var(--accent-gold);
+  color: #000;
+  border-color: var(--accent-gold);
+}
+
+.ai-embedded-video {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
+.ai-embedded-video.active {
+  display: block;
 }

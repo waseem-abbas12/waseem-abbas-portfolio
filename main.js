@@ -235,27 +235,90 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initThree();
+  if (sculptureGroup) sculptureGroup.visible = false;
 
   // =========================================================================
-  // 3. DRIBBLE 3D TORUS CINEMA LOOP & EXECUTIVE REEL
+  // 2B. CLEAN 3D TORUS CANVAS PLAYER (60 pristine frames, Zero Simon Sparks)
   // =========================================================================
-  const heroCinemaVideo = document.getElementById('heroCinemaVideo');
-  if (heroCinemaVideo) {
-    heroCinemaVideo.play().catch(() => {});
-    // Perfectly loop the Dribbble Torus rotation sequence
-    heroCinemaVideo.addEventListener('timeupdate', () => {
-      if (heroCinemaVideo.currentTime >= 2.15) {
-        heroCinemaVideo.currentTime = 0.04;
+  const torusCanvas = document.getElementById('torusCanvas');
+  if (torusCanvas) {
+    const ctx = torusCanvas.getContext('2d');
+    const totalFrames = 60;
+    const cleanFrames = [];
+    let currentFrameIdx = 0;
+    let framesLoaded = 0;
+
+    for (let i = 0; i < totalFrames; i++) {
+      const img = new Image();
+      const numStr = String(i).padStart(3, '0');
+      img.src = `assets/torus_clean_frames/f_${numStr}.jpg`;
+      img.onload = () => {
+        framesLoaded++;
+        if (framesLoaded === 1) {
+          ctx.drawImage(img, 0, 0, torusCanvas.width, torusCanvas.height);
+        }
+      };
+      cleanFrames.push(img);
+    }
+
+    let lastTime = 0;
+    const frameInterval = 1000 / 30; // 30 fps smooth playback
+
+    function renderTorusFrame(time) {
+      if (!window._pauseAnimation) {
+        if (time - lastTime >= frameInterval) {
+          if (cleanFrames[currentFrameIdx] && cleanFrames[currentFrameIdx].complete) {
+            ctx.clearRect(0, 0, torusCanvas.width, torusCanvas.height);
+            ctx.drawImage(cleanFrames[currentFrameIdx], 0, 0, torusCanvas.width, torusCanvas.height);
+          }
+          currentFrameIdx = (currentFrameIdx + 1) % totalFrames;
+          lastTime = time;
+        }
+      }
+      requestAnimationFrame(renderTorusFrame);
+    }
+    requestAnimationFrame(renderTorusFrame);
+
+    // Mouse Parallax Tilt on Torus Canvas
+    window.addEventListener('mousemove', (e) => {
+      const normX = (e.clientX / window.innerWidth) - 0.5;
+      const normY = (e.clientY / window.innerHeight) - 0.5;
+      const tiltX = normY * -10;
+      const tiltY = normX * 14;
+      torusCanvas.style.transform = `translate(-50%, -50%) perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+    });
+
+    // Interactive Drag to Scrub 3D Rotation
+    let isDragging = false;
+    let startX = 0;
+    torusCanvas.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+    });
+    window.addEventListener('mouseup', () => isDragging = false);
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const deltaX = e.clientX - startX;
+        startX = e.clientX;
+        currentFrameIdx = (currentFrameIdx + Math.round(deltaX * 0.25) + totalFrames) % totalFrames;
+        if (cleanFrames[currentFrameIdx] && cleanFrames[currentFrameIdx].complete) {
+          ctx.clearRect(0, 0, torusCanvas.width, torusCanvas.height);
+          ctx.drawImage(cleanFrames[currentFrameIdx], 0, 0, torusCanvas.width, torusCanvas.height);
+        }
       }
     });
   }
 
+  // =========================================================================
+  // 3. 3D TORUS MODE TOGGLES (Clean Canvas vs WebGL Canvas)
+  // =========================================================================
   const btnModeProfile = document.getElementById('btnModeProfile');
   const btnMode3D = document.getElementById('btnMode3D');
 
-  if (btnModeProfile && heroCinemaVideo) {
+  if (btnModeProfile && torusCanvas) {
     btnModeProfile.addEventListener('click', () => {
-      heroCinemaVideo.classList.add('active');
+      torusCanvas.style.display = 'block';
+      if (sculptureGroup) sculptureGroup.visible = false;
       btnModeProfile.classList.add('active');
       if (btnMode3D) btnMode3D.classList.remove('active');
     });
@@ -263,7 +326,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnMode3D && canvas) {
     btnMode3D.addEventListener('click', () => {
-      if (heroCinemaVideo) heroCinemaVideo.classList.remove('active');
+      if (torusCanvas) torusCanvas.style.display = 'none';
+      if (sculptureGroup) sculptureGroup.visible = true;
       btnMode3D.classList.add('active');
       if (btnModeProfile) btnModeProfile.classList.remove('active');
     });
