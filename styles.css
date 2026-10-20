@@ -3285,3 +3285,189 @@ body {
 .ai-embedded-video.active {
   display: block;
 }
+
+/* ==========================================================================
+   DRIBBLE 1:1 FULL-SCREEN SLIDE TRANSITIONS ENGINE
+   ========================================================================== */
+body.slideshow-mode {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.presentation-slider-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.presentation-slider-wrapper .section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s ease;
+  will-change: transform, opacity;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(100vh);
+}
+
+.presentation-slider-wrapper .section::-webkit-scrollbar {
+  display: none;
+}
+
+.presentation-slider-wrapper .section.slide-active {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 5;
+}
+
+.presentation-slider-wrapper .section.slide-prev {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-100vh);
+  z-index: 2;
+}
+
+/* Staggered Entrance Animations matching Dribbble Shot */
+.presentation-slider-wrapper .section.slide-active .brand-card:nth-child(1) {
+  animation: cardSlideEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+.presentation-slider-wrapper .section.slide-active .brand-card:nth-child(2) {
+  animation: cardSlideEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+.presentation-slider-wrapper .section.slide-active .brand-card:nth-child(3) {
+  animation: cardSlideEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+.presentation-slider-wrapper .section.slide-active .brand-card:nth-child(4) {
+  animation: cardSlideEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+@keyframes cardSlideEntrance {
+  0% { opacity: 0; transform: translateY(60px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.presentation-slider-wrapper .section.slide-active .odyssey-artwork-card {
+  animation: odysseyArtIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+.presentation-slider-wrapper .section.slide-active .odyssey-content-card {
+  animation: odysseyTextIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+@keyframes odysseyArtIn {
+  0% { opacity: 0; transform: translateX(-60px) scale(0.96); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes odysseyTextIn {
+  0% { opacity: 0; transform: translateX(60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.presentation-slider-wrapper .section.slide-active .stage-mockup-wrapper {
+  animation: stageZoomIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@keyframes stageZoomIn {
+  0% { opacity: 0; transform: scale(0.92) translateY(40px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Stage Cyber Display */
+.stage-screen-cyber-display {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #071e42 0%, #020714 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.stage-cyber-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(56, 189, 248, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+  animation: cyberGridDrift 20s linear infinite;
+}
+
+@keyframes cyberGridDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: 16px 16px; }
+}
+
+.stage-cyber-hud-center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stage-cyber-logo {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 15px var(--accent-gold-glow);
+}
+
+.stage-cyber-title {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  color: var(--accent-cyan);
+}
+
+.stage-cyber-spectrum {
+  display: flex;
+  gap: 3px;
+  height: 14px;
+  align-items: flex-end;
+  margin-top: 4px;
+}
+
+.stage-cyber-spectrum span {
+  width: 3px;
+  height: 4px;
+  background: var(--accent-cyan);
+  border-radius: 1px;
+  animation: cyberEq 1s infinite alternate;
+}
+
+.stage-cyber-spectrum span:nth-child(2) { animation-delay: 0.15s; }
+.stage-cyber-spectrum span:nth-child(3) { animation-delay: 0.3s; }
+.stage-cyber-spectrum span:nth-child(4) { animation-delay: 0.45s; }
+.stage-cyber-spectrum span:nth-child(5) { animation-delay: 0.2s; }
+.stage-cyber-spectrum span:nth-child(6) { animation-delay: 0.5s; }
+.stage-cyber-spectrum span:nth-child(7) { animation-delay: 0.35s; }
+.stage-cyber-spectrum span:nth-child(8) { animation-delay: 0.1s; }
+.stage-cyber-spectrum span:nth-child(9) { animation-delay: 0.4s; }
+.stage-cyber-spectrum span:nth-child(10) { animation-delay: 0.25s; }
+
+@keyframes cyberEq {
+  0% { height: 3px; }
+  100% { height: 14px; background: var(--accent-gold); }
+}

@@ -20,7 +20,7 @@
   <!-- Three.js 3D Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body>
+<body class="slideshow-mode">
 
   <!-- Custom Glow Cursor -->
   <div class="custom-cursor" id="cursor"></div>
@@ -120,13 +120,13 @@
     </div>
   </header>
 
-  <!-- MAIN VIEWPORT CONTENT -->
-  <main>
+  <!-- MAIN VIEWPORT CONTENT: FULL-SCREEN DRIBBLE SLIDER WRAPPER -->
+  <main class="presentation-slider-wrapper" id="presentationWrapper">
 
     <!-- ========================================================
          HERO SECTION: 100% DRIBBLE 3D TORUS SCULPTURE & KINETIC TYPOGRAPHY
          ======================================================== -->
-    <section class="section hero-section" id="hero" data-section-index="01">
+    <section class="section hero-section slide-active" id="hero" data-section-index="01">
       <div class="hero-bg-canvas-wrapper" id="heroSculptureWrapper">
         
         <!-- 1. Pristine 3D Torus Canvas (Zero Double UI, Zero Simon Sparks, Pure Dribbble Torus in 60fps) -->
@@ -273,13 +273,21 @@
           <div class="stage-frame-border">
             <img src="assets/cropped/stage_art.png" alt="Waseem Abbas Keynote Stage" class="stage-mockup-img">
             
-            <!-- Video Embedded Perfectly in the Concert LED Screen -->
+            <!-- Cyber Visualizer in Concert Stage LED Monitor -->
             <div class="stage-screen-video-holder">
-              <video class="stage-screen-video" autoplay playsinline muted loop>
-                <source src="assets/waseem_profile.mp4" type="video/mp4">
-              </video>
+              <div class="stage-screen-cyber-display">
+                <div class="stage-cyber-grid"></div>
+                <div class="stage-cyber-hud-center">
+                  <div class="stage-cyber-logo">WA</div>
+                  <div class="stage-cyber-title">CODE & GROWTH KEYNOTE</div>
+                  <div class="stage-cyber-spectrum">
+                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
               <div class="stage-screen-overlay-tag">
-                <span>WASEEM ABBAS • LIVE</span>
+                <span>WASEEM ABBAS • KEYNOTE</span>
               </div>
             </div>
 
@@ -360,34 +368,9 @@
     </section>
 
     <!-- ========================================================
-         LIVE EVENTS / COLLABORATION CTA BANNER
-         ======================================================== -->
-    <section class="section live-events-section" id="events" data-section-index="05">
-      <div class="container live-events-container">
-        <div class="events-cta-row">
-          <div class="events-tag-col">
-            <span class="tag-arrow">▸</span>
-            <span class="events-tag-label">CLIENT COLLABORATION</span>
-          </div>
-
-          <div class="events-heading-col">
-            <h3 class="events-lead-text">Planning your next project or campaign?</h3>
-          </div>
-
-          <div class="events-action-col">
-            <a href="#contact" class="gold-luxury-btn magnetic-btn">
-              <span class="btn-text">HIRE WASEEM</span>
-              <span class="btn-arrow">▸</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
          TRIPLE CASE STUDY GRID (TNQ, DREAMS, ESCAPE)
          ======================================================== -->
-    <section class="section showcase-section" id="showcase" data-section-index="06">
+    <section class="section showcase-section" id="showcase" data-section-index="05">
       <div class="section-topo-bg"></div>
 
       <div class="container showcase-container">
@@ -442,13 +425,30 @@
           </article>
 
         </div>
+
+        <!-- Inline Quick CTA Row -->
+        <div class="events-cta-row" style="margin-top: 24px; padding: 16px 24px;">
+          <div class="events-tag-col">
+            <span class="tag-arrow">▸</span>
+            <span class="events-tag-label">CLIENT COLLABORATION</span>
+          </div>
+          <div class="events-heading-col">
+            <h3 class="events-lead-text" style="font-size: 1rem;">Planning your next project or campaign?</h3>
+          </div>
+          <div class="events-action-col">
+            <a href="contact.html" class="gold-luxury-btn magnetic-btn">
+              <span class="btn-text">HIRE WASEEM</span>
+              <span class="btn-arrow">▸</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ========================================================
          CONTACT SECTION (GET IN TOUCH WITH WASEEM)
          ======================================================== -->
-    <section class="section contact-section" id="contact" data-section-index="07">
+    <section class="section contact-section" id="contact" data-section-index="06">
       <div class="container contact-container">
         <div class="contact-box-glass">
           <span class="contact-sup-tag">LET'S CONNECT</span>

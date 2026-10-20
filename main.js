@@ -434,66 +434,178 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // 6. SCROLL TRACKING & DYNAMIC STEP NUMBER (01 ⟶, 02 ⟶ ...)
+  // 6. 100% DRIBBLE 1:1 FULL-SCREEN SLIDE TRANSITIONS ENGINE
   // =========================================================================
-  const sections = document.querySelectorAll('.section');
+  const presentationWrapper = document.getElementById('presentationWrapper');
+  const slides = document.querySelectorAll('.presentation-slider-wrapper .section');
   const activeSectionNum = document.getElementById('activeSectionNum');
   const scrubberDots = document.querySelectorAll('.scrubber-dot');
   const scrubberIndicator = document.getElementById('scrubberIndicator');
   const header = document.getElementById('header');
 
-  function onScroll() {
-    const scrollY = window.scrollY;
+  let currentSlide = 0;
+  let isSliding = false;
+  const isSlideshow = document.body.classList.contains('slideshow-mode') && slides.length > 0;
 
-    if (scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+  function goToSlide(targetIdx) {
+    if (targetIdx < 0 || targetIdx >= slides.length) return;
+    if (isSliding) return;
+    isSliding = true;
 
-    let currentSectionId = 'hero';
-    let currentIndex = '01';
-
-    sections.forEach((sec, idx) => {
-      const top = sec.offsetTop - 300;
-      const height = sec.offsetHeight;
-      if (scrollY >= top && scrollY < top + height) {
-        currentSectionId = sec.id;
-        currentIndex = sec.getAttribute('data-section-index') || `0${idx + 1}`;
+    slides.forEach((slide, i) => {
+      slide.classList.remove('slide-active', 'slide-prev');
+      if (i < targetIdx) {
+        slide.classList.add('slide-prev');
+      } else if (i === targetIdx) {
+        slide.classList.add('slide-active');
       }
     });
 
+    currentSlide = targetIdx;
+    const currentSection = slides[targetIdx];
+    const currentSectionId = currentSection ? currentSection.id : 'hero';
+    const indexStr = String(targetIdx + 1).padStart(2, '0');
+
+    // Update active section step number (01 ⟶, 02 ⟶ ...)
     if (activeSectionNum) {
-      activeSectionNum.textContent = currentIndex;
+      activeSectionNum.textContent = indexStr;
     }
 
-    scrubberDots.forEach((dot) => {
-      if (dot.getAttribute('data-target') === currentSectionId) {
+    // Update scrubber dots & arc indicator
+    scrubberDots.forEach((dot, idx) => {
+      if (idx === targetIdx || dot.getAttribute('data-target') === currentSectionId) {
         dot.classList.add('active');
         if (scrubberIndicator) {
-          const dotTop = dot.offsetTop;
-          scrubberIndicator.style.transform = `translateY(${dotTop + 7}px)`;
+          scrubberIndicator.style.transform = `translateY(${dot.offsetTop + 7}px)`;
         }
       } else {
         dot.classList.remove('active');
       }
     });
 
+    // Header styling
+    if (header) {
+      if (targetIdx > 0) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    // Navigation links highlighting
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
       const href = item.getAttribute('href');
       if (href === `#${currentSectionId}`) {
         item.classList.add('active');
-      } else if (currentSectionId === 'brands' && href === '#brands') {
-        item.classList.add('active');
       } else {
         item.classList.remove('active');
       }
     });
+
+    // Unlock transition after smooth animation
+    setTimeout(() => {
+      isSliding = false;
+    }, 850);
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  if (isSlideshow) {
+    // Initial slide state
+    goToSlide(0);
+
+    // Mouse wheel slide trigger (with debounce)
+    let lastWheelTime = 0;
+    window.addEventListener('wheel', (e) => {
+      const now = Date.now();
+      if (now - lastWheelTime < 600) return;
+      if (Math.abs(e.deltaY) > 20) {
+        lastWheelTime = now;
+        if (e.deltaY > 0) {
+          goToSlide(currentSlide + 1);
+        } else {
+          goToSlide(currentSlide - 1);
+        }
+      }
+    }, { passive: true });
+
+    // Keyboard arrow navigation
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
+        e.preventDefault();
+        goToSlide(currentSlide + 1);
+      } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
+        e.preventDefault();
+        goToSlide(currentSlide - 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        goToSlide(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        goToSlide(slides.length - 1);
+      }
+    });
+
+    // Touch swipe support (Mobile / Tablet)
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length > 0) {
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        const touchEndY = e.changedTouches[0].clientY;
+        const diffY = touchStartY - touchEndY;
+        if (Math.abs(diffY) > 50) {
+          if (diffY > 0) {
+            goToSlide(currentSlide + 1);
+          } else {
+            goToSlide(currentSlide - 1);
+          }
+        }
+      }
+    }, { passive: true });
+
+    // Scrubber dot clicks
+    scrubberDots.forEach((dot, idx) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSlide(idx);
+      });
+    });
+
+    // Smooth anchor link clicks
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.length > 1) {
+          const targetElem = document.querySelector(href);
+          if (targetElem) {
+            const slideArr = Array.from(slides);
+            const idx = slideArr.indexOf(targetElem);
+            if (idx !== -1) {
+              e.preventDefault();
+              goToSlide(idx);
+            }
+          }
+        }
+      });
+    });
+
+  } else {
+    // Fallback standard document scroll tracking for standard pages
+    function onScroll() {
+      const scrollY = window.scrollY;
+      if (scrollY > 50) {
+        header && header.classList.add('scrolled');
+      } else {
+        header && header.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
   // =========================================================================
   // 7. 3D PARALLAX TILT ON CARDS (.interactive-tilt)
