@@ -1,29 +1,157 @@
 /**
  * WASEEM ABBAS — NEXT-GEN 3D MOTION PORTFOLIO
- * Animations & Keyframe System (css/animations.css)
+ * Complete Keyframe & CSS Animation Engine (css/animations.css)
+ * 100% Native CSS Animations: Text Shimmer, Picture Levitation, Sheen Sweeps, Glowing Cores
  */
 
-/* 1. Orbit Floating & 3D Wobble */
-@keyframes floatWobble {
-  0%, 100% {
-    transform: translateY(0px) rotateZ(0deg);
+/* ==========================================================================
+   1. KINETIC TEXT ANIMATIONS (Headings, Subtitles, Badges)
+   ========================================================================== */
+
+/* Liquid Metallic Shimmer for Hero Titles & Major Headings */
+@keyframes textShimmerFlow {
+  0% {
+    background-position: 0% 50%;
   }
   50% {
-    transform: translateY(-8px) rotateZ(1deg);
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    120deg,
+    #ffffff 0%,
+    #dfa753 25%,
+    #fefefe 50%,
+    #38bdf8 75%,
+    #dfa753 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmerFlow 6s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Subtle Breathing Glow behind Golden Typography */
+@keyframes textGlowBreathe {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(223, 167, 83, 0.25), 0 0 45px rgba(223, 167, 83, 0.15);
+  }
+  50% {
+    text-shadow: 0 0 35px rgba(56, 189, 248, 0.4), 0 0 60px rgba(223, 167, 83, 0.3);
+  }
+}
+
+.text-glow-animated {
+  animation: textGlowBreathe 4s ease-in-out infinite;
+}
+
+/* Gentle Floating for Kinetic Typography */
+@keyframes textLevitate {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.text-float {
+  animation: textLevitate 5s ease-in-out infinite;
+}
+
+/* Glowing Pulsing Badge Animation */
+@keyframes badgePulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(223, 167, 83, 0.2), inset 0 0 5px rgba(223, 167, 83, 0.1);
+    border-color: rgba(223, 167, 83, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), inset 0 0 10px rgba(56, 189, 248, 0.2);
+    border-color: rgba(56, 189, 248, 0.6);
+  }
+}
+
+.orbit-badge, .hero-sub-label, .story-year-pip, .section-category-label {
+  animation: badgePulseGlow 3.5s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   2. PICTURE & ARTWORK LEVITATION ANIMATIONS
+   ========================================================================== */
+
+/* Smooth Organic 3D Floating Levitation for Artwork & Pictures */
+@keyframes floatWobble {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotate(0.6deg);
+  }
+  66% {
+    transform: translateY(-4px) rotate(-0.6deg);
+  }
+}
+
+@keyframes floatWobbleAlt {
+  0%, 100% {
+    transform: translateY(-6px) rotate(-0.5deg);
+  }
+  50% {
+    transform: translateY(4px) rotate(0.8deg);
   }
 }
 
 .float-animated {
-  animation: floatWobble 4.5s ease-in-out infinite;
+  animation: floatWobble 6s ease-in-out infinite !important;
+  will-change: transform;
 }
 
-/* 2. Shimmer & Specular Light Sweep */
+.float-animated-delayed {
+  animation: floatWobbleAlt 6.5s ease-in-out infinite 0.8s !important;
+  will-change: transform;
+}
+
+/* Artwork Image Hover Zoom & Specular Depth */
+.story-visual-frame, .showcase-thumb, .stage-frame-border, .brand-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-visual-frame:hover, .showcase-thumb:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(223, 167, 83, 0.25);
+}
+
+.story-img, .showcase-img, .stage-mockup-img, .artwork-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  will-change: transform;
+}
+
+.story-visual-frame:hover .story-img,
+.showcase-thumb:hover .showcase-img {
+  transform: scale(1.05);
+  filter: brightness(1.08) contrast(1.04);
+}
+
+/* Luxury Diagonal Specular Light Sheen Sweep Across Cards & Images */
 @keyframes specularSweep {
   0% {
-    left: -120%;
+    left: -130%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
   }
   50%, 100% {
-    left: 150%;
+    left: 160%;
+    opacity: 0;
   }
 }
 
@@ -35,87 +163,176 @@
 .specular-sweep-effect::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: -120%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
-  transform: skewX(-25deg);
-  animation: specularSweep 5s infinite;
+  top: -50%;
+  left: -130%;
+  width: 65%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 20%,
+    rgba(223, 167, 83, 0.25) 50%,
+    rgba(56, 189, 248, 0.2) 70%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  animation: specularSweep 7s ease-in-out infinite;
   pointer-events: none;
+  z-index: 4;
 }
 
-/* 3. Glowing Neon Core Pulse */
+/* ==========================================================================
+   3. BRAND CARDS ANIMATION & HOVER
+   ========================================================================== */
+.brand-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  animation: floatWobble 7s ease-in-out infinite;
+}
+
+.brand-card:nth-child(2) { animation-delay: 1.2s; }
+.brand-card:nth-child(3) { animation-delay: 2.4s; }
+.brand-card:nth-child(4) { animation-delay: 3.6s; }
+
+.brand-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  border-color: var(--accent-gold);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-gold-glow);
+}
+
+.brand-card.featured-active {
+  animation: cardActiveGlow 3s ease-in-out infinite alternate, floatWobble 6s ease-in-out infinite;
+}
+
+@keyframes cardActiveGlow {
+  0% {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(223, 167, 83, 0.35);
+  }
+  100% {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 45px rgba(223, 167, 83, 0.65), 0 0 25px rgba(56, 189, 248, 0.3);
+  }
+}
+
+/* ==========================================================================
+   4. 3D ORBIT WHEEL CONTINUOUS ROTATION & GLOW CORES
+   ========================================================================== */
 @keyframes corePulseGlow {
   0%, 100% {
     box-shadow: 0 0 45px rgba(223, 167, 83, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    box-shadow: 0 0 75px rgba(56, 189, 248, 0.65), inset 0 0 30px rgba(223, 167, 83, 0.5);
+    box-shadow: 0 0 75px rgba(56, 189, 248, 0.7), inset 0 0 30px rgba(223, 167, 83, 0.6);
+    transform: translate(-50%, -50%) scale(1.05);
   }
 }
 
-.orbit-center-core {
-  animation: corePulseGlow 3.5s ease-in-out infinite;
+.orbit-center-core, .social-center-core {
+  animation: corePulseGlow 3.5s ease-in-out infinite !important;
 }
 
-/* 4. Active Node Orbital Halo */
-@keyframes haloRotate {
+@keyframes ringSpinContinuous {
   from {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
-.orbit-node.active::before {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border-radius: 14px;
-  border: 1.5px solid var(--accent-cyan);
-  box-shadow: 0 0 15px var(--accent-cyan-glow);
-  pointer-events: none;
+@keyframes ringSpinReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
 }
 
-/* 5. Horizontal Timeline Smooth Transforms */
-.story-chapter {
-  transition: opacity 0.6s ease;
+.orbit-wheel-ring.ring-outer {
+  animation: ringSpinContinuous 40s linear infinite;
 }
 
-.story-content-side, .story-visual-side {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+.orbit-wheel-ring.ring-inner {
+  animation: ringSpinReverse 28s linear infinite;
 }
 
-/* 6. Soundwave Audio Equalizer */
-@keyframes soundwaveAnim {
+/* ==========================================================================
+   5. VIDEO CARDS & CONCERT STAGE LED SCREEN
+   ========================================================================== */
+@keyframes stageScanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.stage-light-sweep {
+  animation: stageScanline 4s linear infinite;
+}
+
+@keyframes liveDotBlink {
   0%, 100% {
-    transform: scaleY(0.3);
+    opacity: 1;
+    transform: scale(1);
   }
   50% {
-    transform: scaleY(1.2);
+    opacity: 0.4;
+    transform: scale(0.85);
   }
 }
 
-.avatar-soundwaves span {
+.live-indicator-dot {
   display: inline-block;
-  width: 2px;
-  height: 12px;
-  background: var(--accent-gold);
-  border-radius: 1px;
-  animation: soundwaveAnim 0.8s infinite ease-in-out alternate;
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+  animation: liveDotBlink 1.4s ease-in-out infinite;
 }
 
-.avatar-soundwaves span:nth-child(2) { animation-delay: 0.2s; }
-.avatar-soundwaves span:nth-child(3) { animation-delay: 0.4s; }
-.avatar-soundwaves span:nth-child(4) { animation-delay: 0.15s; }
+/* ==========================================================================
+   6. SOUNDWAVE AUDIO EQUALIZER (Voice & Stage Keynotes)
+   ========================================================================== */
+@keyframes soundwaveAnim {
+  0%, 100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1.3);
+  }
+}
 
-/* 7. Hover Card Tilt Perspective helper */
-.interactive-tilt {
-  transform-style: preserve-3d;
-  will-change: transform;
+.avatar-soundwaves span, .stage-cyber-spectrum span {
+  display: inline-block;
+  width: 3px;
+  height: 14px;
+  background: var(--accent-gold);
+  border-radius: 2px;
+  animation: soundwaveAnim 0.75s infinite ease-in-out alternate;
+}
+
+.avatar-soundwaves span:nth-child(2), .stage-cyber-spectrum span:nth-child(2) { animation-delay: 0.18s; }
+.avatar-soundwaves span:nth-child(3), .stage-cyber-spectrum span:nth-child(3) { animation-delay: 0.36s; }
+.avatar-soundwaves span:nth-child(4), .stage-cyber-spectrum span:nth-child(4) { animation-delay: 0.12s; }
+.avatar-soundwaves span:nth-child(5), .stage-cyber-spectrum span:nth-child(5) { animation-delay: 0.28s; }
+
+/* ==========================================================================
+   7. SCROLL-TRIGGERED FADE-IN-UP (Pure CSS Fallback if GSAP is Delayed)
+   ========================================================================== */
+@keyframes fadeInUpKey {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-on-scroll {
+  animation: fadeInUpKey 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

@@ -374,5 +374,172 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // =========================================================================
+  // 5. HERO SHOWCASE SWITCHER (3D Torus vs AI Talking Avatar vs Website Video)
+  // =========================================================================
+  const btnModeTorus = document.getElementById('btnModeTorus');
+  const btnModeAvatar = document.getElementById('btnModeAvatar');
+  const btnOpenShowcaseVideo = document.getElementById('btnOpenShowcaseVideo');
+  const torusCanvasEl = document.getElementById('torusCanvas');
+  const heroWaseemCard = document.getElementById('heroWaseemCard');
+  const heroWaseemVideo = document.getElementById('heroWaseemVideo');
+  const btnToggleHeroAudio = document.getElementById('btnToggleHeroAudio');
+  const heroAudioIcon = document.getElementById('heroAudioIcon');
+
+  if (btnModeTorus && btnModeAvatar) {
+    btnModeTorus.addEventListener('click', () => {
+      btnModeTorus.classList.add('active');
+      btnModeAvatar.classList.remove('active');
+      if (torusCanvasEl) torusCanvasEl.style.display = 'block';
+      if (heroWaseemCard) heroWaseemCard.classList.remove('active');
+      if (heroWaseemVideo) heroWaseemVideo.pause();
+    });
+
+    btnModeAvatar.addEventListener('click', () => {
+      btnModeAvatar.classList.add('active');
+      btnModeTorus.classList.remove('active');
+      if (torusCanvasEl) torusCanvasEl.style.display = 'none';
+      if (heroWaseemCard) {
+        heroWaseemCard.classList.add('active');
+        if (heroWaseemVideo) {
+          heroWaseemVideo.play().catch(() => {});
+        }
+      }
+    });
+  }
+
+  // Hero AI Video Audio Toggle
+  if (btnToggleHeroAudio && heroWaseemVideo && heroAudioIcon) {
+    btnToggleHeroAudio.addEventListener('click', (e) => {
+      e.stopPropagation();
+      heroWaseemVideo.muted = !heroWaseemVideo.muted;
+      if (heroWaseemVideo.muted) {
+        heroAudioIcon.classList.remove('fa-volume-high');
+        heroAudioIcon.classList.add('fa-volume-xmark');
+      } else {
+        heroAudioIcon.classList.remove('fa-volume-xmark');
+        heroAudioIcon.classList.add('fa-volume-high');
+      }
+    });
+  }
+
+  // =========================================================================
+  // 6. BOUNDLESS KEYNOTE STAGE VIDEO CONTROLS
+  // =========================================================================
+  const stageKeynoteVideo = document.getElementById('stageKeynoteVideo');
+  const btnStagePlayPause = document.getElementById('btnStagePlayPause');
+  const stagePlayIcon = document.getElementById('stagePlayIcon');
+  const btnStageAudio = document.getElementById('btnStageAudio');
+  const stageAudioIcon = document.getElementById('stageAudioIcon');
+  const btnStageFullscreen = document.getElementById('btnStageFullscreen');
+
+  if (stageKeynoteVideo && btnStagePlayPause && stagePlayIcon) {
+    btnStagePlayPause.addEventListener('click', () => {
+      if (stageKeynoteVideo.paused) {
+        stageKeynoteVideo.play();
+        stagePlayIcon.classList.remove('fa-play');
+        stagePlayIcon.classList.add('fa-pause');
+      } else {
+        stageKeynoteVideo.pause();
+        stagePlayIcon.classList.remove('fa-pause');
+        stagePlayIcon.classList.add('fa-play');
+      }
+    });
+  }
+
+  if (stageKeynoteVideo && btnStageAudio && stageAudioIcon) {
+    btnStageAudio.addEventListener('click', () => {
+      stageKeynoteVideo.muted = !stageKeynoteVideo.muted;
+      if (stageKeynoteVideo.muted) {
+        stageAudioIcon.classList.remove('fa-volume-high');
+        stageAudioIcon.classList.add('fa-volume-xmark');
+      } else {
+        stageAudioIcon.classList.remove('fa-volume-xmark');
+        stageAudioIcon.classList.add('fa-volume-high');
+      }
+    });
+  }
+
+  // =========================================================================
+  // 7. FULLSCREEN CINEMATIC VIDEO REEL MODAL ENGINE
+  // =========================================================================
+  const videoReelModal = document.getElementById('videoReelModal');
+  const btnCloseVideoModal = document.getElementById('btnCloseVideoModal');
+  const videoModalBackdrop = document.getElementById('videoModalBackdrop');
+  const modalFullscreenVideo = document.getElementById('modalFullscreenVideo');
+  const modalVideoSource = document.getElementById('modalVideoSource');
+  const modalVideoTitle = document.getElementById('modalVideoTitle');
+  const modalVideoDesc = document.getElementById('modalVideoDesc');
+
+  function openVideoModal(videoSrc, title, desc) {
+    if (!videoReelModal || !modalFullscreenVideo) return;
+    if (modalVideoSource && videoSrc) {
+      modalVideoSource.src = videoSrc;
+      modalFullscreenVideo.load();
+    }
+    if (modalVideoTitle && title) modalVideoTitle.textContent = title;
+    if (modalVideoDesc && desc) modalVideoDesc.textContent = desc;
+
+    videoReelModal.classList.add('open');
+    videoReelModal.setAttribute('aria-hidden', 'false');
+    modalFullscreenVideo.play().catch(() => {});
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoModal() {
+    if (!videoReelModal || !modalFullscreenVideo) return;
+    videoReelModal.classList.remove('open');
+    videoReelModal.setAttribute('aria-hidden', 'true');
+    modalFullscreenVideo.pause();
+    document.body.style.overflow = '';
+  }
+
+  if (btnOpenShowcaseVideo) {
+    btnOpenShowcaseVideo.addEventListener('click', () => {
+      openVideoModal(
+        'assets/website_showcase.mp4',
+        'Waseem Abbas — 3D Motion Portfolio Showcase',
+        'Official 3D Motion Experience & Digital Agency System Architecture'
+      );
+    });
+  }
+
+  if (btnStageFullscreen) {
+    btnStageFullscreen.addEventListener('click', () => {
+      openVideoModal(
+        'assets/website_showcase.mp4',
+        'Waseem Abbas — Keynote Stage Showcase',
+        'High-Velocity Digital Growth & Interactive Full-Stack Demonstration'
+      );
+    });
+  }
+
+  if (btnCloseVideoModal) btnCloseVideoModal.addEventListener('click', closeVideoModal);
+  if (videoModalBackdrop) videoModalBackdrop.addEventListener('click', closeVideoModal);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoReelModal && videoReelModal.classList.contains('open')) {
+      closeVideoModal();
+    }
+  });
+
+  // =========================================================================
+  // 8. SCROLL REVEAL OBSERVER (Guaranteed Native Animation Trigger)
+  // =========================================================================
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-on-scroll');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.story-slide, .brand-card, .showcase-card, .stage-mockup-wrapper, .contact-box-glass').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
   console.log('⚡ Waseem Abbas Next-Gen 3D Motion Portfolio Initialized');
 });
