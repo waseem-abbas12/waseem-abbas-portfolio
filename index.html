@@ -17,6 +17,10 @@
   <!-- Main Stylesheets -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.20/dist/lenis.css">
+
+  <!-- Lenis Smooth Scrolling Engine (lenis.dev) -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 
   <!-- Three.js 3D Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -36,6 +40,25 @@
 
   <!-- Ambient Dynamic Mouse Glow -->
   <div class="ambient-glow" id="ambientGlow"></div>
+
+  <!-- ========================================================
+       LENIS.DEV HUD & VELOCITY TELEMETRY BAR
+       ======================================================== -->
+  <aside class="lenis-hud-bar" id="lenisHudBar" aria-label="Engine Telemetry">
+    <div class="hud-item hud-engine">
+      <span class="hud-status-dot"></span>
+      <span class="hud-label">LENIS.DEV ENGINE</span>
+    </div>
+    <div class="hud-sep">•</div>
+    <div class="hud-item hud-velocity">
+      <span class="hud-tag">VEL:</span>
+      <span class="hud-val" id="hudVelocityVal">0.00 PX/S</span>
+    </div>
+    <div class="hud-sep">•</div>
+    <div class="hud-item hud-fps">
+      <span class="hud-val" id="hudFpsVal">60 FPS</span>
+    </div>
+  </aside>
 
   <!-- ========================================================
        SIDE STEP INDICATOR & RIGHT SCRUBBER TRACK (100% DRIBBBLE REPLICA)
@@ -239,6 +262,39 @@
     </section>
 
     <!-- ========================================================
+         KINETIC EDITORIAL MARQUEE RIBBON (LENIS.DEV SIGNATURE)
+         ======================================================== -->
+    <div class="lenis-marquee-strip" id="kineticMarquee">
+      <div class="marquee-track" id="marqueeTrack">
+        <span class="marquee-chunk">✦ FULL-STACK ARCHITECTURE</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk gold">4.8X VERIFIED ROAS</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk">AUTONOMOUS AGENTIC AI</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk cyan">HIGH-TICKET REAL ESTATE</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk">THREE.JS 3D WEBGL MOTION</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk gold">WASEEM ABBAS DIGITAL AGENCY</span>
+        <span class="marquee-sep">•</span>
+        <!-- Infinite Duplicate Track -->
+        <span class="marquee-chunk">✦ FULL-STACK ARCHITECTURE</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk gold">4.8X VERIFIED ROAS</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk">AUTONOMOUS AGENTIC AI</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk cyan">HIGH-TICKET REAL ESTATE</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk">THREE.JS 3D WEBGL MOTION</span>
+        <span class="marquee-sep">•</span>
+        <span class="marquee-chunk gold">WASEEM ABBAS DIGITAL AGENCY</span>
+        <span class="marquee-sep">•</span>
+      </div>
+    </div>
+
+    <!-- ========================================================
          SECTION 02: INTERACTIVE 3D SERVICE ORBIT WHEEL
          ======================================================== -->
     <section class="section orbit-wheel-section" id="orbit" data-section-index="02">
@@ -388,7 +444,7 @@
                   </div>
                 </div>
                 <div class="story-visual-side">
-                  <div class="story-visual-frame interactive-tilt specular-sweep-effect">
+                  <div class="story-visual-frame curtain-clip-frame interactive-tilt specular-sweep-effect">
                     <img src="assets/generated/web_dev_art.jpg" alt="3D Web Development &amp; WebGL Architecture" class="story-img float-animated">
                   </div>
                 </div>
@@ -422,7 +478,7 @@
                   </div>
                 </div>
                 <div class="story-visual-side">
-                  <div class="story-visual-frame interactive-tilt specular-sweep-effect">
+                  <div class="story-visual-frame curtain-clip-frame interactive-tilt specular-sweep-effect">
                     <img src="assets/generated/marketing_art.jpg" alt="Performance Digital Marketing &amp; ROAS Analytics" class="story-img float-animated-delayed">
                   </div>
                 </div>
@@ -456,7 +512,7 @@
                   </div>
                 </div>
                 <div class="story-visual-side">
-                  <div class="story-visual-frame interactive-tilt specular-sweep-effect">
+                  <div class="story-visual-frame curtain-clip-frame interactive-tilt specular-sweep-effect">
                     <img src="assets/generated/real_estate_art.jpg" alt="High-Ticket Luxury Real Estate &amp; Funnel Architecture" class="story-img float-animated">
                   </div>
                 </div>
@@ -490,7 +546,7 @@
                   </div>
                 </div>
                 <div class="story-visual-side">
-                  <div class="story-visual-frame interactive-tilt specular-sweep-effect">
+                  <div class="story-visual-frame curtain-clip-frame interactive-tilt specular-sweep-effect">
                     <img src="assets/generated/ai_automation_art.jpg" alt="Autonomous Agentic AI Ecosystem" class="story-img float-animated-delayed">
                   </div>
                 </div>
@@ -643,7 +699,7 @@
           <!-- Card 1: E-Commerce Growth -->
           <article class="showcase-card card-tnq interactive-tilt specular-sweep-effect" data-project="tnq">
             <div class="showcase-card-inner">
-              <div class="showcase-media-box">
+              <div class="showcase-media-box curtain-clip-frame">
                 <img src="assets/generated/ecommerce_case_art.jpg" alt="E-Commerce Scale Engine" class="showcase-img float-animated">
                 <div class="media-hover-overlay">
                   <span class="overlay-zoom-icon"><i class="fa-solid fa-expand"></i> Case Study</span>
@@ -659,7 +715,7 @@
           <!-- Card 2: SaaS Web App & SEO -->
           <article class="showcase-card card-dreams interactive-tilt specular-sweep-effect" data-project="dreams">
             <div class="showcase-card-inner">
-              <div class="showcase-media-box">
+              <div class="showcase-media-box curtain-clip-frame">
                 <img src="assets/generated/saas_case_art.jpg" alt="SaaS Web App &amp; SEO Engine" class="showcase-img float-animated-delayed">
                 <div class="media-hover-overlay">
                   <span class="overlay-zoom-icon"><i class="fa-solid fa-expand"></i> Case Study</span>
@@ -675,7 +731,7 @@
           <!-- Card 3: Omnichannel Campaign -->
           <article class="showcase-card card-escape interactive-tilt specular-sweep-effect" data-project="escape">
             <div class="showcase-card-inner">
-              <div class="showcase-media-box">
+              <div class="showcase-media-box curtain-clip-frame">
                 <img src="assets/generated/ai_automation_art.jpg" alt="Agentic AI Automation Pipeline" class="showcase-img float-animated">
                 <div class="media-hover-overlay">
                   <span class="overlay-zoom-icon"><i class="fa-solid fa-expand"></i> Case Study</span>

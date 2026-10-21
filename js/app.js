@@ -7,6 +7,71 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // =========================================================================
+  // 0. LENIS.DEV INERTIAL SMOOTH SCROLL & TELEMETRY ENGINE
+  // =========================================================================
+  let lenis = null;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.25,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.5,
+    });
+
+    if (typeof ScrollTrigger !== 'undefined') {
+      lenis.on('scroll', ScrollTrigger.update);
+      if (typeof gsap !== 'undefined') {
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      }
+    } else {
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+  }
+
+  // Telemetry HUD & Kinetic Marquee Velocity Controller
+  const hudVelocityVal = document.getElementById('hudVelocityVal');
+  const hudFpsVal = document.getElementById('hudFpsVal');
+  const marqueeTrack = document.getElementById('marqueeTrack');
+
+  // Live FPS Counter
+  let lastFpsTime = performance.now();
+  let frameCount = 0;
+  function calcFps(now) {
+    frameCount++;
+    if (now - lastFpsTime >= 500) {
+      const fps = Math.round((frameCount * 1000) / (now - lastFpsTime));
+      if (hudFpsVal) hudFpsVal.textContent = `${fps} FPS`;
+      frameCount = 0;
+      lastFpsTime = now;
+    }
+    requestAnimationFrame(calcFps);
+  }
+  requestAnimationFrame(calcFps);
+
+  if (lenis) {
+    lenis.on('scroll', (e) => {
+      const vel = Math.abs(e.velocity || 0);
+      if (hudVelocityVal) {
+        hudVelocityVal.textContent = `${vel.toFixed(1)} PX/S`;
+      }
+      if (marqueeTrack) {
+        const speed = Math.max(10, 28 - Math.min(18, vel * 1.6));
+        marqueeTrack.style.animationDuration = `${speed}s`;
+      }
+    });
+  }
+
+  // =========================================================================
   // 1. CUSTOM REACTIVE CURSOR
   // =========================================================================
   const cursor = document.getElementById('cursor');
@@ -266,7 +331,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!targetSelector || targetSelector === '#') return;
     const targetEl = document.querySelector(targetSelector);
     if (targetEl) {
-      targetEl.scrollIntoView({ behavior: 'smooth' });
+      if (lenis) {
+        lenis.scrollTo(targetEl, { offset: -25, duration: 1.2 });
+      } else {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 
@@ -515,7 +584,69 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // 8. SCROLL REVEAL OBSERVER (Guaranteed Native Animation Trigger)
+  // 8. SPLITTEXT WORD-BY-WORD MASK REVEAL (LENIS.DEV & AWWWARDS SIGNATURE)
+  // =========================================================================
+  function initSplitTextWordMasks() {
+    const headings = document.querySelectorAll('.orbit-title, .story-title, .boundless-heading');
+    headings.forEach(heading => {
+      if (heading.dataset.splitDone) return;
+      heading.dataset.splitDone = 'true';
+
+      const originalText = heading.textContent.trim();
+      const words = originalText.split(/\s+/);
+      heading.innerHTML = words.map(w => `<span class="line-mask"><span class="mask-word">${w}</span></span>`).join(' ');
+    });
+
+    // Animate Hero Name Words
+    const heroWords = document.querySelectorAll('.hero-main-title .title-word');
+    setTimeout(() => {
+      heroWords.forEach((word, idx) => {
+        setTimeout(() => {
+          word.classList.add('revealed');
+        }, idx * 120);
+      });
+    }, 200);
+
+    // IntersectionObserver for Section Headings
+    if ('IntersectionObserver' in window) {
+      const headingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const words = entry.target.querySelectorAll('.mask-word');
+            words.forEach((w, i) => {
+              setTimeout(() => {
+                w.classList.add('revealed');
+              }, i * 65);
+            });
+            headingObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      headings.forEach(h => headingObserver.observe(h));
+    }
+  }
+  initSplitTextWordMasks();
+
+  // =========================================================================
+  // 9. CURTAIN CLIP-PATH SHUTTER REVEAL OBSERVER (Awwwards Polygon Unmask)
+  // =========================================================================
+  const curtainFrames = document.querySelectorAll('.curtain-clip-frame');
+  if (curtainFrames.length > 0 && 'IntersectionObserver' in window) {
+    const curtainObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          curtainObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    curtainFrames.forEach(f => curtainObserver.observe(f));
+  }
+
+  // =========================================================================
+  // 10. SCROLL REVEAL OBSERVER (Guaranteed Native Animation Trigger)
   // =========================================================================
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
@@ -532,5 +663,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  console.log('⚡ Waseem Abbas Next-Gen 3D Motion Portfolio Initialized');
+  console.log('⚡ Waseem Abbas Next-Gen 3D Motion Portfolio Initialized with Lenis.dev Engine');
 });
