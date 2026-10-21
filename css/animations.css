@@ -1,14 +1,13 @@
 /**
  * WASEEM ABBAS — NEXT-GEN 3D MOTION PORTFOLIO
- * Complete Keyframe & CSS Animation Engine (css/animations.css)
- * 100% Native CSS Animations: Text Shimmer, Picture Levitation, Sheen Sweeps, Glowing Cores
+ * High-Velocity CSS & Kinetic Animation Engine (css/animations.css)
+ * 100% Guaranteed Active Animations: Flowing Metallic Text, Floating 3D Artwork, Neon Sweeps
  */
 
 /* ==========================================================================
-   1. KINETIC TEXT ANIMATIONS (Headings, Subtitles, Badges)
+   1. KINETIC TEXT ANIMATIONS (Headings, Shimmers & Glowing Typography)
    ========================================================================== */
 
-/* Liquid Metallic Shimmer for Hero Titles & Major Headings */
 @keyframes textShimmerFlow {
   0% {
     background-position: 0% 50%;
@@ -21,136 +20,160 @@
   }
 }
 
-.text-shimmer {
+/* Master Shimmer for Hero Title & Section Headings */
+.text-shimmer,
+.hero-main-title .first-word,
+.hero-main-title .last-word {
   background: linear-gradient(
     120deg,
     #ffffff 0%,
-    #dfa753 25%,
-    #fefefe 50%,
-    #38bdf8 75%,
-    #dfa753 100%
-  );
-  background-size: 250% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textShimmerFlow 6s ease-in-out infinite;
+    #dfa753 22%,
+    #ffffff 45%,
+    #38bdf8 68%,
+    #dfa753 90%,
+    #ffffff 100%
+  ) !important;
+  background-size: 250% auto !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  animation: textShimmerFlow 4.5s ease-in-out infinite !important;
   display: inline-block;
+  filter: drop-shadow(0 0 22px rgba(223, 167, 83, 0.45));
 }
 
-/* Subtle Breathing Glow behind Golden Typography */
-@keyframes textGlowBreathe {
-  0%, 100% {
-    text-shadow: 0 0 20px rgba(223, 167, 83, 0.25), 0 0 45px rgba(223, 167, 83, 0.15);
-  }
-  50% {
-    text-shadow: 0 0 35px rgba(56, 189, 248, 0.4), 0 0 60px rgba(223, 167, 83, 0.3);
-  }
-}
-
-.text-glow-animated {
-  animation: textGlowBreathe 4s ease-in-out infinite;
-}
-
-/* Gentle Floating for Kinetic Typography */
-@keyframes textLevitate {
+/* Floating Breathing Typography */
+@keyframes textBreathingFloat {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
   }
 }
 
-.text-float {
-  animation: textLevitate 5s ease-in-out infinite;
+.hero-typography-container {
+  animation: textBreathingFloat 5s ease-in-out infinite;
 }
 
-/* Glowing Pulsing Badge Animation */
-@keyframes badgePulseGlow {
+/* Animated Shimmer on Section Headings */
+.orbit-title, .boundless-heading, .story-title {
+  background: linear-gradient(135deg, #ffffff 30%, #dfa753 75%, #38bdf8 100%) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  animation: textShimmerFlow 7s ease-in-out infinite alternate !important;
+}
+
+/* Glowing Pulsing Badges */
+@keyframes badgeNeonPulse {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(223, 167, 83, 0.2), inset 0 0 5px rgba(223, 167, 83, 0.1);
-    border-color: rgba(223, 167, 83, 0.35);
+    box-shadow: 0 0 10px rgba(223, 167, 83, 0.25), inset 0 0 4px rgba(223, 167, 83, 0.15);
+    border-color: rgba(223, 167, 83, 0.45);
+    transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), inset 0 0 10px rgba(56, 189, 248, 0.2);
-    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.55), inset 0 0 8px rgba(56, 189, 248, 0.25);
+    border-color: rgba(56, 189, 248, 0.7);
+    transform: scale(1.02);
   }
 }
 
-.orbit-badge, .hero-sub-label, .story-year-pip, .section-category-label {
-  animation: badgePulseGlow 3.5s ease-in-out infinite;
+.orbit-badge, .hero-sub-label, .story-year-pip, .section-category-label, .waseem-video-tag-pill {
+  animation: badgeNeonPulse 3s ease-in-out infinite !important;
+}
+
+/* Tagline Glowing Breath */
+@keyframes taglineBreath {
+  0%, 100% {
+    color: var(--text-secondary);
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
+  }
+  50% {
+    color: #e2e8f0;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5), 0 0 35px rgba(223, 167, 83, 0.3);
+  }
+}
+
+.hero-bottom-tagline {
+  animation: taglineBreath 4s ease-in-out infinite;
 }
 
 /* ==========================================================================
-   2. PICTURE & ARTWORK LEVITATION ANIMATIONS
+   2. PICTURE & ARTWORK 3D FLOATING LEVITATION
    ========================================================================== */
 
-/* Smooth Organic 3D Floating Levitation for Artwork & Pictures */
-@keyframes floatWobble {
+/* Dramatic Floating Levitation for Image Frames */
+@keyframes floatFrameDynamic {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(223, 167, 83, 0.2);
   }
   33% {
-    transform: translateY(-8px) rotate(0.6deg);
+    transform: translateY(-12px) rotate(0.5deg);
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.35);
   }
   66% {
-    transform: translateY(-4px) rotate(-0.6deg);
+    transform: translateY(-6px) rotate(-0.5deg);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(223, 167, 83, 0.25);
   }
 }
 
-@keyframes floatWobbleAlt {
+@keyframes floatFrameDynamicAlt {
   0%, 100% {
-    transform: translateY(-6px) rotate(-0.5deg);
+    transform: translateY(-10px) rotate(-0.6deg);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(56, 189, 248, 0.3);
   }
   50% {
-    transform: translateY(4px) rotate(0.8deg);
+    transform: translateY(5px) rotate(0.6deg);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(223, 167, 83, 0.2);
   }
 }
 
 .float-animated {
-  animation: floatWobble 6s ease-in-out infinite !important;
-  will-change: transform;
+  animation: floatFrameDynamic 6.5s ease-in-out infinite !important;
+  will-change: transform, box-shadow;
 }
 
 .float-animated-delayed {
-  animation: floatWobbleAlt 6.5s ease-in-out infinite 0.8s !important;
-  will-change: transform;
+  animation: floatFrameDynamicAlt 7s ease-in-out infinite 0.75s !important;
+  will-change: transform, box-shadow;
 }
 
-/* Artwork Image Hover Zoom & Specular Depth */
-.story-visual-frame, .showcase-thumb, .stage-frame-border, .brand-card {
+/* Image Inner Scale & Depth */
+.story-visual-frame, .showcase-media-box, .stage-frame-border {
   position: relative;
   overflow: hidden;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 16px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-.story-visual-frame:hover, .showcase-thumb:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(223, 167, 83, 0.25);
-}
-
-.story-img, .showcase-img, .stage-mockup-img, .artwork-img {
+.story-img, .showcase-img, .stage-mockup-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
   will-change: transform;
 }
 
 .story-visual-frame:hover .story-img,
-.showcase-thumb:hover .showcase-img {
-  transform: scale(1.05);
-  filter: brightness(1.08) contrast(1.04);
+.showcase-media-box:hover .showcase-img {
+  transform: scale(1.08);
+  filter: brightness(1.1) contrast(1.05);
 }
 
-/* Luxury Diagonal Specular Light Sheen Sweep Across Cards & Images */
-@keyframes specularSweep {
+/* Glass Specular Light Beam Gliding Across Pictures */
+@keyframes specularSheenSweep {
   0% {
-    left: -130%;
+    left: -150%;
     opacity: 0;
   }
-  20% {
+  15% {
     opacity: 1;
   }
   50%, 100% {
-    left: 160%;
+    left: 170%;
     opacity: 0;
   }
 }
@@ -163,71 +186,74 @@
 .specular-sweep-effect::after {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -130%;
-  width: 65%;
-  height: 200%;
+  top: -60%;
+  left: -150%;
+  width: 70%;
+  height: 220%;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.04) 20%,
-    rgba(223, 167, 83, 0.25) 50%,
-    rgba(56, 189, 248, 0.2) 70%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(223, 167, 83, 0.45) 50%,
+    rgba(56, 189, 248, 0.35) 75%,
     transparent 100%
   );
   transform: rotate(25deg);
-  animation: specularSweep 7s ease-in-out infinite;
+  animation: specularSheenSweep 5.5s ease-in-out infinite;
   pointer-events: none;
-  z-index: 4;
+  z-index: 5;
 }
 
 /* ==========================================================================
-   3. BRAND CARDS ANIMATION & HOVER
+   3. BRAND CARDS ANIMATION & INTERACTION
    ========================================================================== */
 .brand-card {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
-  animation: floatWobble 7s ease-in-out infinite;
+  animation: floatFrameDynamic 8s ease-in-out infinite;
 }
 
-.brand-card:nth-child(2) { animation-delay: 1.2s; }
-.brand-card:nth-child(3) { animation-delay: 2.4s; }
-.brand-card:nth-child(4) { animation-delay: 3.6s; }
+.brand-card:nth-child(1) { animation-delay: 0s; }
+.brand-card:nth-child(2) { animation-delay: 1.5s; }
+.brand-card:nth-child(3) { animation-delay: 3s; }
+.brand-card:nth-child(4) { animation-delay: 4.5s; }
 
 .brand-card:hover {
-  transform: translateY(-8px) scale(1.04);
+  transform: translateY(-10px) scale(1.04);
   border-color: var(--accent-gold);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-gold-glow);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85), 0 0 35px var(--accent-gold-glow);
 }
 
 .brand-card.featured-active {
-  animation: cardActiveGlow 3s ease-in-out infinite alternate, floatWobble 6s ease-in-out infinite;
+  animation: activeCardNeon 3s ease-in-out infinite alternate, floatFrameDynamic 7s ease-in-out infinite;
 }
 
-@keyframes cardActiveGlow {
+@keyframes activeCardNeon {
   0% {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(223, 167, 83, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 30px rgba(223, 167, 83, 0.4);
+    border-color: rgba(223, 167, 83, 0.6);
   }
   100% {
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 45px rgba(223, 167, 83, 0.65), 0 0 25px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.9), 0 0 55px rgba(223, 167, 83, 0.8), 0 0 30px rgba(56, 189, 248, 0.4);
+    border-color: var(--accent-gold);
   }
 }
 
 /* ==========================================================================
-   4. 3D ORBIT WHEEL CONTINUOUS ROTATION & GLOW CORES
+   4. 3D ORBIT WHEEL CONTINUOUS REVOLUTION & GLOW
    ========================================================================== */
 @keyframes corePulseGlow {
   0%, 100% {
-    box-shadow: 0 0 45px rgba(223, 167, 83, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 45px rgba(223, 167, 83, 0.45), inset 0 0 25px rgba(255, 255, 255, 0.35);
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    box-shadow: 0 0 75px rgba(56, 189, 248, 0.7), inset 0 0 30px rgba(223, 167, 83, 0.6);
-    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 0 85px rgba(56, 189, 248, 0.75), inset 0 0 35px rgba(223, 167, 83, 0.65);
+    transform: translate(-50%, -50%) scale(1.06);
   }
 }
 
 .orbit-center-core, .social-center-core {
-  animation: corePulseGlow 3.5s ease-in-out infinite !important;
+  animation: corePulseGlow 3s ease-in-out infinite !important;
 }
 
 @keyframes ringSpinContinuous {
@@ -248,84 +274,66 @@
   }
 }
 
-.orbit-wheel-ring.ring-outer {
-  animation: ringSpinContinuous 40s linear infinite;
+.orbit-wheel-ring.ring-outer, .social-wheel-ring.ring-outer {
+  animation: ringSpinContinuous 35s linear infinite;
 }
 
-.orbit-wheel-ring.ring-inner {
-  animation: ringSpinReverse 28s linear infinite;
-}
-
-/* ==========================================================================
-   5. VIDEO CARDS & CONCERT STAGE LED SCREEN
-   ========================================================================== */
-@keyframes stageScanline {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-.stage-light-sweep {
-  animation: stageScanline 4s linear infinite;
-}
-
-@keyframes liveDotBlink {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(0.85);
-  }
-}
-
-.live-indicator-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: #22c55e;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #22c55e;
-  animation: liveDotBlink 1.4s ease-in-out infinite;
+.orbit-wheel-ring.ring-inner, .social-wheel-ring.ring-inner {
+  animation: ringSpinReverse 25s linear infinite;
 }
 
 /* ==========================================================================
-   6. SOUNDWAVE AUDIO EQUALIZER (Voice & Stage Keynotes)
+   5. SOUNDWAVES & EQUALIZER AUDIO FREQUENCY BARS
    ========================================================================== */
 @keyframes soundwaveAnim {
   0%, 100% {
-    transform: scaleY(0.25);
+    transform: scaleY(0.2);
   }
   50% {
-    transform: scaleY(1.3);
+    transform: scaleY(1.4);
   }
 }
 
-.avatar-soundwaves span, .stage-cyber-spectrum span {
+.avatar-soundwaves span, .stage-cyber-spectrum span, .ai-audio-visualizer .viz-bar {
   display: inline-block;
   width: 3px;
   height: 14px;
   background: var(--accent-gold);
   border-radius: 2px;
-  animation: soundwaveAnim 0.75s infinite ease-in-out alternate;
+  animation: soundwaveAnim 0.7s infinite ease-in-out alternate;
 }
 
-.avatar-soundwaves span:nth-child(2), .stage-cyber-spectrum span:nth-child(2) { animation-delay: 0.18s; }
-.avatar-soundwaves span:nth-child(3), .stage-cyber-spectrum span:nth-child(3) { animation-delay: 0.36s; }
-.avatar-soundwaves span:nth-child(4), .stage-cyber-spectrum span:nth-child(4) { animation-delay: 0.12s; }
-.avatar-soundwaves span:nth-child(5), .stage-cyber-spectrum span:nth-child(5) { animation-delay: 0.28s; }
+.avatar-soundwaves span:nth-child(2), .stage-cyber-spectrum span:nth-child(2), .ai-audio-visualizer .viz-bar:nth-child(2) { animation-delay: 0.18s; }
+.avatar-soundwaves span:nth-child(3), .stage-cyber-spectrum span:nth-child(3), .ai-audio-visualizer .viz-bar:nth-child(3) { animation-delay: 0.36s; }
+.avatar-soundwaves span:nth-child(4), .stage-cyber-spectrum span:nth-child(4), .ai-audio-visualizer .viz-bar:nth-child(4) { animation-delay: 0.12s; }
+.avatar-soundwaves span:nth-child(5), .stage-cyber-spectrum span:nth-child(5), .ai-audio-visualizer .viz-bar:nth-child(5) { animation-delay: 0.28s; }
 
 /* ==========================================================================
-   7. SCROLL-TRIGGERED FADE-IN-UP (Pure CSS Fallback if GSAP is Delayed)
+   6. METRIC VALUES GLOW & PULSE
+   ========================================================================== */
+@keyframes metricGlow {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(223, 167, 83, 0.3);
+    color: #ffffff;
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 45px rgba(223, 167, 83, 0.4);
+    color: #fefefe;
+  }
+}
+
+.metric-val {
+  animation: metricGlow 3.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   7. SCROLL-TRIGGERED ENTRANCE (Reliable CSS Fade-Up)
    ========================================================================== */
 @keyframes fadeInUpKey {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(32px);
   }
   to {
     opacity: 1;

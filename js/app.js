@@ -102,9 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderTorusFrame(time) {
       if (time - lastTime >= frameInterval) {
-        if (cleanFrames[currentFrameIdx] && cleanFrames[currentFrameIdx].complete) {
+        const frame = cleanFrames[currentFrameIdx];
+        if (frame && frame.complete && frame.naturalWidth > 0) {
           ctx.clearRect(0, 0, torusCanvas.width, torusCanvas.height);
-          ctx.drawImage(cleanFrames[currentFrameIdx], 0, 0, torusCanvas.width, torusCanvas.height);
+          ctx.drawImage(frame, 0, 0, torusCanvas.width, torusCanvas.height);
         }
         currentFrameIdx = (currentFrameIdx + 1) % totalFrames;
         lastTime = time;
@@ -494,22 +495,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  if (btnOpenShowcaseVideo) {
-    btnOpenShowcaseVideo.addEventListener('click', () => {
-      openVideoModal(
-        'assets/website_showcase.mp4',
-        'Waseem Abbas — 3D Motion Portfolio Showcase',
-        'Official 3D Motion Experience & Digital Agency System Architecture'
-      );
-    });
-  }
-
   if (btnStageFullscreen) {
     btnStageFullscreen.addEventListener('click', () => {
       openVideoModal(
-        'assets/website_showcase.mp4',
-        'Waseem Abbas — Keynote Stage Showcase',
-        'High-Velocity Digital Growth & Interactive Full-Stack Demonstration'
+        'assets/waseem_avatar_talking.mp4',
+        'Waseem Abbas — Live Keynote & Stage Presentation',
+        'High-Velocity Digital Growth, 3D Web Engineering & AI Architecture'
       );
     });
   }
