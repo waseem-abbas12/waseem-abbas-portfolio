@@ -1,0 +1,27 @@
+{
+  "engine": "LENIS INERTIAL SCROLL V1.1.20",
+  "framerate": 60,
+  "lerp": 0.08,
+  "smoothTouch": true,
+  "multiInputNormalized": true,
+  "metrics": {
+    "totalRevenueDriven": "$42.8M+",
+    "verifiedAverageROAS": "4.8X",
+    "enterpriseDeployments": "48+",
+    "weeklyHumanHoursSaved": "400+ Hrs",
+    "clientSatisfactionRate": "99.4%",
+    "globalCountriesReached": "14 Countries"
+  },
+  "terminalCommands": [
+    {
+      "label": "Initiate Partnership",
+      "cmd": "npx waseem-agency --start-project",
+      "action": "COPY_AND_WHATSAPP"
+    },
+    {
+      "label": "Inspect Architecture",
+      "cmd": "curl -sL https://waseem-abbas-portfolio.vercel.app/api/v1/stack",
+      "action": "MODAL_STACK"
+    }
+  ]
+}

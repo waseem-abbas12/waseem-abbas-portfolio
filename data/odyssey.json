@@ -1,0 +1,62 @@
+[
+  {
+    "chapter": "01",
+    "year": "2021 — 2022",
+    "title": "Genesis of WebGL & 3D Engineering",
+    "subtitle": "Transcending static web templates into GPU-accelerated interactive art",
+    "description": "Started in core full-stack systems engineering, mastering JavaScript, TypeScript, Three.js shaders, and WebGL buffers. Transformed ordinary commercial websites into sensory digital experiences that earned early international design recognition.",
+    "themeColor": "#38bdf8",
+    "bgToken": "chapter-cyan",
+    "image": "assets/generated/web_dev_art.jpg",
+    "highlights": [
+      "Mastery of Three.js & Custom GLSL Shaders",
+      "Next.js headless frontends with sub-second speeds",
+      "Awwwards & FWA competitive engineering standard"
+    ]
+  },
+  {
+    "chapter": "02",
+    "year": "2023 — 2024",
+    "title": "Performance Capital & $12M Ad Scaling",
+    "subtitle": "Fusing high-converting engineering with algorithmic ad buying",
+    "description": "Recognized that beautiful design without traffic does not print revenue. Engineered end-to-end paid acquisition machines across Meta & Google Ads, achieving an audited average of 4.8x ROAS across multi-million dollar e-commerce and SaaS brands.",
+    "themeColor": "#dfa753",
+    "bgToken": "chapter-gold",
+    "image": "assets/generated/marketing_art.jpg",
+    "highlights": [
+      "$12M+ ad capital deployed with positive cash-flow",
+      "Server-side Conversions API (CAPI) data integrity",
+      "Custom high-ticket funnel conversion rate optimization"
+    ]
+  },
+  {
+    "chapter": "03",
+    "year": "2024 — 2025",
+    "title": "High-Ticket Real Estate & Global Portals",
+    "subtitle": "Bridging international luxury developers with ultra-high-net-worth investors",
+    "description": "Entered the high-ticket real estate domain in Dubai, UK, and Pakistan. Built interactive 3D virtual villa tours and algorithmic investor acquisition pipelines that closed over $18,000,000 in direct property transactions.",
+    "themeColor": "#e16259",
+    "bgToken": "chapter-coral",
+    "image": "assets/generated/real_estate_art.jpg",
+    "highlights": [
+      "$18M+ verified gross property transaction value",
+      "VIP investor qualification and concierge CRM pipelines",
+      "Photorealistic 3D architectural web walkthroughs"
+    ]
+  },
+  {
+    "chapter": "04",
+    "year": "2026 & Beyond",
+    "title": "Autonomous Agentic AI Ecosystem",
+    "subtitle": "Pioneering multi-agent self-orchestrating digital enterprise machinery",
+    "description": "Today, we deploy autonomous agentic AI networks that plan, execute, and optimize business operations in real-time. Combining generative LLMs, automated CRM voice/chat pipelines, and headless cloud architecture to build the sovereign digital agency of tomorrow.",
+    "themeColor": "#a855f7",
+    "bgToken": "chapter-purple",
+    "image": "assets/generated/ai_automation_art.jpg",
+    "highlights": [
+      "Autonomous multi-agent LangGraph & CrewAI workflows",
+      "Real-time WhatsApp & Voice customer qualification",
+      "Lenis 60 FPS smooth web applications with AI backends"
+    ]
+  }
+]

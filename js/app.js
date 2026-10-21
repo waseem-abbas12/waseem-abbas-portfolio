@@ -663,5 +663,108 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  console.log('⚡ Waseem Abbas Next-Gen 3D Motion Portfolio Initialized with Lenis.dev Engine');
+  // =========================================================================
+  // 11. LENIS.DEV COMPARISON DIAGRAM SWITCHER
+  // =========================================================================
+  const diagramBtns = document.querySelectorAll('.diagram-tab-btn');
+  const diagramImg = document.getElementById('diagramDisplayImg');
+  const diagramCaption = document.getElementById('diagramCaptionTitle');
+
+  const diagramData = {
+    input: {
+      src: 'assets/diagrams/input_normalization.svg',
+      title: 'INPUT NORMALIZATION: TOUCH • WHEEL • TRACKPAD'
+    },
+    fps: {
+      src: 'assets/diagrams/framerate_consistency.svg',
+      title: 'FRAMETIME CONSISTENCY: LOCKED 60 FPS FLUIDITY'
+    },
+    bezier: {
+      src: 'assets/diagrams/bezier_acceleration.svg',
+      title: 'INERTIAL MOMENTUM: CUBIC-BEZIER(0.16, 1, 0.3, 1) DECAY'
+    }
+  };
+
+  diagramBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      diagramBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const diagramKey = btn.getAttribute('data-diagram');
+      if (diagramData[diagramKey] && diagramImg) {
+        diagramImg.style.opacity = '0';
+        diagramImg.style.transform = 'scale(0.96)';
+
+        setTimeout(() => {
+          diagramImg.src = diagramData[diagramKey].src;
+          if (diagramCaption) diagramCaption.textContent = diagramData[diagramKey].title;
+          diagramImg.style.opacity = '1';
+          diagramImg.style.transform = 'scale(1)';
+        }, 150);
+      }
+    });
+  });
+
+  // =========================================================================
+  // 12. SINGLE-LINE TERMINAL PROTOCOL COPY HANDLER
+  // =========================================================================
+  const btnCopyTerminalCmd = document.getElementById('btnCopyTerminalCmd');
+  const terminalToast = document.getElementById('terminalToast');
+  const terminalCmdText = document.getElementById('terminalCmdText');
+  const btnCopyTerminalText = document.getElementById('btnCopyTerminalText');
+
+  if (btnCopyTerminalCmd && terminalCmdText) {
+    btnCopyTerminalCmd.addEventListener('click', () => {
+      const textToCopy = terminalCmdText.textContent.trim();
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        if (terminalToast) {
+          terminalToast.classList.add('show');
+          setTimeout(() => terminalToast.classList.remove('show'), 2500);
+        }
+        if (btnCopyTerminalText) {
+          btnCopyTerminalText.textContent = 'COPIED!';
+          setTimeout(() => {
+            btnCopyTerminalText.textContent = 'COPY COMMAND';
+          }, 2000);
+        }
+      }).catch(() => {
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        if (terminalToast) {
+          terminalToast.classList.add('show');
+          setTimeout(() => terminalToast.classList.remove('show'), 2500);
+        }
+      });
+    });
+  }
+
+  // =========================================================================
+  // 13. LIVE PAKISTANI TIMEZONE CLOCK (PKT UTC+5) FOR FOOTER TELEMETRY
+  // =========================================================================
+  const footerPktTime = document.getElementById('footerPktTime');
+  function updatePktClock() {
+    if (!footerPktTime) return;
+    try {
+      const now = new Date();
+      const options = {
+        timeZone: 'Asia/Karachi',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      const pktString = new Intl.DateTimeFormat('en-GB', options).format(now);
+      footerPktTime.textContent = `${pktString} PKT (UTC+5)`;
+    } catch (e) {
+      footerPktTime.textContent = 'LIVE PKT (UTC+5)';
+    }
+  }
+  updatePktClock();
+  setInterval(updatePktClock, 1000);
+
+  console.log('✦ Waseem Abbas Next-Gen 3D Motion Portfolio Initialized with Lenis.dev Engine');
 });

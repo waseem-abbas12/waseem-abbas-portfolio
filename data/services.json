@@ -1,0 +1,94 @@
+[
+  {
+    "id": "web-engineering",
+    "number": "01",
+    "title": "Full-Stack Web & 3D WebGL Motion",
+    "badge": "Awwwards Standard",
+    "accentColor": "#38bdf8",
+    "shortDescription": "Enterprise web applications engineered with Next.js 15, Three.js 3D shaders, and Lenis inertial smooth scroll physics.",
+    "longDescription": "We eliminate digital friction. By harmonizing GPU-accelerated WebGL geometry with headless microservice architecture, we build interfaces that command immediate authority and convert cold visitors into high-ticket clients.",
+    "image": "assets/generated/web_dev_art.jpg",
+    "deliverables": [
+      "Custom 3D WebGL / Three.js Interactive Scenes",
+      "Next.js 15 & React 19 Server Components Architecture",
+      "Lenis Smooth Inertial Virtual Scrolling & GSAP Timelines",
+      "Sub-second LCP (Largest Contentful Paint) Performance",
+      "Full Headless CMS Integration (Sanity / Strapi / Supabase)"
+    ],
+    "techStack": ["Next.js 15", "TypeScript", "Three.js", "GSAP ScrollTrigger", "Lenis", "Tailwind CSS", "WebGL 2.0"],
+    "metrics": {
+      "framerate": "60 FPS Locked",
+      "coreWebVitals": "99+ Performance",
+      "conversionUplift": "+210% Engagement"
+    }
+  },
+  {
+    "id": "paid-acquisition",
+    "number": "02",
+    "title": "Performance Paid Ads & 4.8x ROAS",
+    "badge": "Growth Engine",
+    "accentColor": "#dfa753",
+    "shortDescription": "Algorithmic paid media buying across Meta Ads, Google Ads & TikTok Ads engineered for maximum return on ad spend.",
+    "longDescription": "We do not guess ad creatives; we run quantitative growth engineering. Using real-time telemetry, server-side CAPI tracking, and dynamic high-ticket funnels, we systematically scale ad budgets while preserving profit margins.",
+    "image": "assets/generated/marketing_art.jpg",
+    "deliverables": [
+      "Meta Ads & Google Ads Full-Funnel Scaling Architecture",
+      "Server-Side Conversions API (CAPI) & First-Party Data Setup",
+      "High-Converting Landing Page Design with A/B Split Testing",
+      "Audience Segmentation & Algorithmic Retargeting Matrix",
+      "Real-Time Executive Telemetry & ROAS Growth Reports"
+    ],
+    "techStack": ["Meta Graph API", "Google Ads 360", "TikTok Pixel CAPI", "Segment CDP", "Looker Studio", "Triple Whale"],
+    "metrics": {
+      "avgROAS": "4.8X Verified",
+      "adSpendManaged": "$12M+ Capital Scaled",
+      "customerAcquisitionCost": "-38% Lower CAC"
+    }
+  },
+  {
+    "id": "agentic-ai",
+    "number": "03",
+    "title": "Agentic AI & Intelligent Automation",
+    "badge": "Autonomous Systems",
+    "accentColor": "#a855f7",
+    "shortDescription": "Autonomous multi-agent LLM systems, n8n orchestration, and custom voice/chat AI agents replacing 40+ manual human hours weekly.",
+    "longDescription": "Empower your enterprise with autonomous self-healing workflows. From inbound lead qualification agents to complex data extraction pipelines, we deploy AI systems that execute round the clock with zero human fatigue.",
+    "image": "assets/generated/ai_automation_art.jpg",
+    "deliverables": [
+      "Multi-Agent LangGraph & CrewAI Autonomous Pipelines",
+      "Enterprise n8n / Make.com Cloud Workflow Orchestration",
+      "Custom Fine-Tuned LLM Models & Private RAG Knowledge Bases",
+      "AI Voice Calling & WhatsApp Customer Qualification Agents",
+      "Automated CRM Lead Routing (HubSpot, Salesforce, GoHighLevel)"
+    ],
+    "techStack": ["LangChain", "LangGraph", "Python", "OpenAI / Claude API", "n8n Cloud", "Pinecone Vector DB", "PostgreSQL"],
+    "metrics": {
+      "timeSaved": "40+ Hours / Week",
+      "leadResponseTime": "< 12 Seconds",
+      "operationalCost": "-65% Overhead"
+    }
+  },
+  {
+    "id": "luxury-real-estate",
+    "number": "04",
+    "title": "High-Ticket Real Estate Lead Funnels",
+    "badge": "Luxury Sector",
+    "accentColor": "#e16259",
+    "shortDescription": "Immersive 3D architectural showcases, virtual penthouse tours, and qualified VIP investor acquisition funnels.",
+    "longDescription": "Selling multi-million dollar properties requires unmatched presentation. We combine photorealistic architectural renders with precision geo-targeted HNWI investor campaigns to close high-ticket contracts globally.",
+    "image": "assets/generated/real_estate_art.jpg",
+    "deliverables": [
+      "Interactive 3D Penthouse & Luxury Villa Walkthrough Portals",
+      "High-Net-Worth Investor (HNWI) Targeted Ad Funnels",
+      "VIP Automated WhatsApp & Email Concierge Sequences",
+      "Dynamic Floorplan Selector & Unit Availability CRM",
+      "Private Investor Pitch Decks & Digital Brochure Microsites"
+    ],
+    "techStack": ["Three.js 3D Viewers", "Blender 3D Renders", "Meta Precision Targeting", "GoHighLevel CRM", "Stripe VIP Deposit"],
+    "metrics": {
+      "closedVolume": "$18M+ In Property Sales",
+      "qualifiedVIPLeads": "450+ High-Ticket Investors",
+      "costPerQualifiedBuyer": "$42 / Verified Lead"
+    }
+  }
+]

@@ -1683,7 +1683,7 @@ body.cursor-hover .custom-cursor-follower {
 
 .showcase-cards-grid {
   display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
 
@@ -3333,4 +3333,451 @@ body.cursor-hover .custom-cursor-follower {
   .ai-avatar-info {
     display: none;
   }
+}
+
+
+/* ==========================================================================
+   LENIS.DEV 1:1 MASTER ARCHITECTURE: COMPARISON STAGE, TERMINAL & TALL DECK
+   ========================================================================== */
+
+/* Typography Overrides: Anton All-Caps Brutalist Luxury */
+.hero-main-title {
+  font-family: 'Anton', sans-serif !important;
+  font-size: clamp(3.8rem, 13.5vw, 13rem) !important;
+  letter-spacing: clamp(1px, 0.02em, 4px) !important;
+  line-height: 0.9 !important;
+  text-transform: uppercase !important;
+  font-weight: 900 !important;
+}
+
+.orbit-title,
+.comparison-section-title,
+.story-title,
+.boundless-heading,
+.footer-giant-brand {
+  font-family: 'Anton', sans-serif !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+  font-weight: 800 !important;
+}
+
+/* --------------------------------------------------------------------------
+   01. The Comparison Stage ("Why Waseem Abbas? / One Feel, Every Input")
+   -------------------------------------------------------------------------- */
+.lenis-comparison-section {
+  position: relative;
+  padding: clamp(80px, 10vw, 160px) 0;
+  background: linear-gradient(180deg, #040711 0%, #060a16 50%, #040711 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.comparison-header {
+  margin-bottom: clamp(40px, 6vw, 70px);
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+@media (min-width: 992px) {
+  .comparison-grid {
+    grid-template-columns: 1.05fr 1.35fr;
+    align-items: start;
+  }
+}
+
+/* Left Pinned Diagram Deck */
+.comparison-left-sticky {
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .comparison-left-sticky {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+.diagram-viewer-card {
+  background: rgba(9, 14, 28, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: clamp(18px, 3vw, 28px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+}
+
+.diagram-viewer-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.diagram-viewer-card::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 30%;
+  right: 30%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+}
+
+.diagram-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 14px;
+}
+
+.diagram-tab-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.diagram-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.diagram-tab-btn.active {
+  background: rgba(223, 167, 83, 0.15);
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 16px rgba(223, 167, 83, 0.25);
+}
+
+.diagram-svg-stage {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #030610;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.diagram-svg-img {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  display: block;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.diagram-caption-footer {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.diagram-caption-footer .status-pill {
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Right Pillar Cards */
+.comparison-right-cards {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.5vw, 40px);
+}
+
+.tech-pillar-card {
+  background: rgba(10, 16, 32, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: clamp(22px, 3vw, 36px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-pillar-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.15);
+}
+
+.tech-pillar-card .pillar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.tech-pillar-card .pillar-number {
+  font-family: 'Anton', sans-serif;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1;
+}
+
+.tech-pillar-card .pillar-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--accent-gold);
+  border: 1px solid rgba(223, 167, 83, 0.3);
+  text-transform: uppercase;
+}
+
+.tech-pillar-card .pillar-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+
+.tech-pillar-card .pillar-desc {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.pillar-media-frame {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pillar-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-pillar-card:hover .pillar-media-img {
+  transform: scale(1.06);
+}
+
+.pillar-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.spec-item {
+  font-family: var(--font-mono);
+}
+
+.spec-item .spec-val {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.spec-item .spec-lbl {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   02. The Single-Line Darkroom Terminal Widget ("Ship It In A Single Click")
+   -------------------------------------------------------------------------- */
+.lenis-terminal-section {
+  padding: clamp(60px, 8vw, 110px) 0;
+  background: #03060e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-box-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  background: rgba(11, 17, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: clamp(20px, 3.5vw, 36px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 40px rgba(56, 189, 248, 0.08);
+  position: relative;
+}
+
+.terminal-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.terminal-dot.dot-red { background: #ef4444; }
+.terminal-dot.dot-yellow { background: #f59e0b; }
+.terminal-dot.dot-green { background: #10b981; }
+
+.terminal-title-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.terminal-content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .terminal-content-grid {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.terminal-code-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #040813;
+  padding: 14px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  flex-grow: 1;
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1.8vw, 0.95rem);
+  color: #38bdf8;
+  overflow-x: auto;
+}
+
+.terminal-prompt-char {
+  color: #10b981;
+  font-weight: 700;
+  user-select: none;
+}
+
+.terminal-cmd-text {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.terminal-copy-btn {
+  background: var(--accent-gold);
+  color: #030610;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 14px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.terminal-copy-btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(223, 167, 83, 0.5);
+}
+
+.terminal-copy-toast {
+  position: absolute;
+  top: 14px;
+  right: 24px;
+  background: #10b981;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: all 0.3s ease;
+}
+
+.terminal-copy-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   03. Full-Viewport Sticky Inverted Footer (lenis.dev signature)
+   -------------------------------------------------------------------------- */
+.footer-giant-brand {
+  font-family: 'Anton', sans-serif !important;
+  font-size: clamp(4rem, 16vw, 16rem) !important;
+  text-align: center;
+  line-height: 0.82;
+  color: rgba(255, 255, 255, 0.08);
+  letter-spacing: clamp(2px, 0.04em, 8px);
+  user-select: none;
+  transition: color 0.6s ease;
+  margin: 30px 0;
+}
+
+.footer-giant-brand:hover {
+  color: rgba(255, 255, 255, 0.16);
 }

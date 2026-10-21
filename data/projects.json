@@ -1,0 +1,74 @@
+[
+  {
+    "id": "tnq-commerce",
+    "title": "TNQ Luxury Commerce",
+    "category": "E-Commerce Scaling & WebGL 3D",
+    "year": "2025",
+    "client": "TNQ Global",
+    "challenge": "Client faced plateaued revenue at $40k/mo with high bounce rates on generic Shopify templates.",
+    "solution": "Architected a custom headless 3D interactive product configurator paired with Meta CAPI algorithmic scale campaigns.",
+    "metrics": {
+      "revenue": "$2.4M ARR Scaled",
+      "roas": "5.2X Meta ROAS",
+      "crUplift": "+185% Conversion Rate"
+    },
+    "image": "assets/generated/ecommerce_case_art.jpg",
+    "badge": "Case Study 01",
+    "tag": "E-Commerce",
+    "url": "https://tnq-commerce.com"
+  },
+  {
+    "id": "dreams-saas",
+    "title": "Dreams Cloud Analytics",
+    "category": "SaaS Platform & Enterprise Dashboard",
+    "year": "2025",
+    "client": "Dreams Inc.",
+    "challenge": "Complex backend microservices needed a real-time, responsive multi-tenant dashboard handling 100k daily queries.",
+    "solution": "Built Next.js 15 enterprise platform with server actions, Tailwind UI, WebSockets telemetry, and sub-100ms response times.",
+    "metrics": {
+      "users": "120k Monthly Active Users",
+      "uptime": "99.99% Cloud Reliability",
+      "speed": "62ms Query Latency"
+    },
+    "image": "assets/generated/saas_case_art.jpg",
+    "badge": "Case Study 02",
+    "tag": "SaaS Web App",
+    "url": "https://dreams-cloud.io"
+  },
+  {
+    "id": "escape-ai",
+    "title": "Escape Autonomous Lead AI",
+    "category": "Autonomous AI Agent Infrastructure",
+    "year": "2026",
+    "client": "Escape Global",
+    "challenge": "High volume inbound customer inquiries were dropping due to 4+ hour manual sales rep response lags.",
+    "solution": "Deployed multi-agent LangGraph workflow with WhatsApp voice/text automation, qualifying leads in 8 seconds and booking calls.",
+    "metrics": {
+      "leads": "14,500+ Qualified Leads/Mo",
+      "speed": "< 8s Instant Response",
+      "revenue": "+$680k Net Pipeline"
+    },
+    "image": "assets/generated/ai_automation_art.jpg",
+    "badge": "Case Study 03",
+    "tag": "AI Automation",
+    "url": "https://escape-ai.tech"
+  },
+  {
+    "id": "elysium-villas",
+    "title": "Elysium High-Ticket Real Estate",
+    "category": "Luxury 3D Real Estate Portal",
+    "year": "2026",
+    "client": "Elysium Developments",
+    "challenge": "Targeting ultra-high-net-worth investors across GCC and Europe for luxury off-plan penthouses.",
+    "solution": "Crafted 3D photorealistic interactive architectural tour with targeted HNWI VIP funnels.",
+    "metrics": {
+      "closed": "$18M In Closed Sales",
+      "investors": "450+ Verified HNWIs",
+      "roi": "14X Pipeline Return"
+    },
+    "image": "assets/generated/real_estate_art.jpg",
+    "badge": "Case Study 04",
+    "tag": "Real Estate 3D",
+    "url": "https://elysium-villas.luxury"
+  }
+]
