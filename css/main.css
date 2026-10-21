@@ -20,7 +20,8 @@
   --accent-magenta: #ff1e70;
   --accent-orange: #ff7828;
 
-  /* Typography */
+  /* Typography (lenis.dev Anton Display + Space Mono + Plus Jakarta Sans) */
+  --font-display: 'Anton', 'Cinzel', sans-serif;
   --font-serif: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Space Mono', monospace;
@@ -54,7 +55,11 @@ html {
 body {
   position: relative;
   min-height: 100vh;
-  background-color: var(--bg-obsidian);
+  background-color: #040711;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.08), transparent);
+  background-size: calc(100vw / 12) 100%, 100% 100%;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -687,15 +692,16 @@ body.cursor-hover .custom-cursor-follower {
 }
 
 .hero-main-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.1rem, 7.5vw, 6.2rem);
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 13vw, 10.5rem);
   font-weight: 400;
-  letter-spacing: 0.08em;
-  line-height: 1;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
   text-transform: uppercase;
   display: flex;
-  gap: 0.35em;
-  margin-bottom: 12px;
+  gap: 0.22em;
+  margin-bottom: 16px;
+  justify-content: center;
 }
 
 .title-word {
